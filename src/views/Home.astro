@@ -162,7 +162,7 @@ const schema = [
         <img id="screen" {...frame(h.air.looks[firstLook][0])} sizes="(max-width: 1440px) 100vw, 1344px" alt={h.air.looks[firstLook][3]} width="1920" height="1080" loading="lazy" decoding="async" />
         <figcaption id="screen-cap" aria-live="polite">{h.air.looks[firstLook][4]}</figcaption>
       </figure>
-      <ul class="looks" aria-label={h.air.looksLabel}>
+      <ul class="looks" aria-label={h.air.looksLabel} hidden>
         {
           h.air.looks.map(([file, name, gloss, alt, cap], i) => {
             const f = frame(file);
@@ -224,27 +224,47 @@ const schema = [
 </BaseLayout>
 
 <script>
-  const motion = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  // The score in the band: 0:0, then 1:0 with the 1 lit, then 2:1. It
-  // renders at 2:1, so this only runs when motion is welcome.
+  // The band's score (sequence in Tick.astro). It holds the rendered 2:1 for
+  // GOAL ms, then shows 0:0 and 1:0 for BEAT ms each. It pauses while the tab
+  // is hidden and stops for good, back on 2:1, once reduced motion is asked for.
+  const GOAL = 5200;
+  const BEAT = 1300;
   const tick = document.querySelector<SVGElement>(".tick--live");
-  if (tick && motion) {
-    let s = 0;
-    tick.dataset.s = "0";
+  if (tick && !still.matches) {
+    let s = 2;
+    let timer: number | undefined;
+    const schedule = () => {
+      timer = window.setTimeout(step, s === 2 ? GOAL : BEAT);
+    };
     const step = () => {
       s = (s + 1) % 3;
       tick.dataset.s = String(s);
-      setTimeout(step, s === 2 ? 5200 : 1300);
+      schedule();
     };
-    setTimeout(step, 1600);
+    const onVisibility = () => {
+      clearTimeout(timer);
+      if (!document.hidden) schedule();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    still.addEventListener("change", () => {
+      if (!still.matches) return;
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
+      tick.dataset.s = "2";
+    });
+    if (!document.hidden) schedule();
   }
 
-  // On air: each look switches the large frame.
+  // On air: each look switches the large frame. The list stays hidden until
+  // this runs, so without JavaScript the page shows the default frame alone.
   const screen = document.getElementById("screen") as HTMLImageElement | null;
   const cap = document.getElementById("screen-cap");
+  const list = document.querySelector<HTMLElement>(".looks");
   const looks = document.querySelectorAll<HTMLButtonElement>(".look");
-  if (screen && cap) {
+  if (screen && cap && list) {
+    list.hidden = false;
     for (const b of looks) {
       b.addEventListener("click", () => {
         for (const o of looks) o.setAttribute("aria-pressed", String(o === b));
@@ -252,13 +272,21 @@ const schema = [
           screen.srcset = b.dataset.srcset ?? "";
           screen.src = b.dataset.src ?? "";
           screen.alt = b.dataset.alt ?? "";
-          cap.textContent = b.dataset.cap ?? "";
-          screen.classList.remove("swap");
+          // A look with no caption still gets announced, by its name.
+          const name = b.querySelector(".look__name")?.textContent?.replace(/\s+/g, " ").trim();
+          cap.textContent = b.dataset.cap || name || "";
+          cap.classList.toggle("sr-only", !b.dataset.cap);
+          const shown = () => screen.classList.remove("swap");
+          screen.decode().then(shown, () => {
+            if (screen.complete) shown();
+            else screen.addEventListener("load", shown, { once: true });
+          });
         };
-        if (motion) {
+        if (still.matches) swap();
+        else {
           screen.classList.add("swap");
           setTimeout(swap, 180);
-        } else swap();
+        }
       });
     }
   }

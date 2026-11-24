@@ -49,28 +49,30 @@ const schema = [
   schema={schema}
 >
   <article>
-    <section class="wrap page-top">
-      <div class="tt"></div>
-      <h1 class="display page-h1">Hallstream vs {alt.name}</h1>
-      <div class="lead-grid">
-        <div>
-          <p class="answer">
-            Hallstream is a free, open-source Windows app that streams a club's home games to YouTube, with scoreboard graphics that take the
-            score from the hall's console or from a phone at the scorer's table. {alt.summary.text} Hallstream suits a basketball club that
-            streams one camera from a Windows PC and wants the score on screen without anyone typing it.
-          </p>
-          {
-            checked && (
-              <p class="checked muted">
-                {alt.name} details checked on {day(checked)}. Send a correction through <a href={product.issues}>GitHub issues</a>.
-              </p>
-            )
-          }
+    <section class="dk page-top">
+      <div class="wrap">
+        <div class="tt"></div>
+        <h1 class="display page-h1">Hallstream vs {alt.name}</h1>
+        <div class="lead-grid">
+          <div>
+            <p class="answer">
+              Hallstream is a free, open-source Windows app that streams a club's home games to YouTube, with scoreboard graphics that take the
+              score from the hall's console or from a phone at the scorer's table. {alt.summary.text} Hallstream suits a basketball club that
+              streams one camera from a Windows PC and wants the score on screen without anyone typing it.
+            </p>
+            {
+              checked && (
+                <p class="checked">
+                  {alt.name} details checked on {day(checked)}. Send a correction through <a href={product.issues}>GitHub issues</a>.
+                </p>
+              )
+            }
+          </div>
+          <figure class="mt28">
+            <Shot src="/images/onair-classico.jpg" alt="Hallstream on air: the Clássico score bug and a player lower third over a basketball court" width={1920} height={1080} ratio="16/9" ink />
+            <figcaption class="cap">Hallstream on air, in the Clássico look.</figcaption>
+          </figure>
         </div>
-        <figure class="mt28">
-          <Shot src="/images/onair-classico.jpg" alt="Hallstream on air: the Clássico score bug and a player lower third over a basketball court" width={1920} height={1080} ratio="16/9" ink />
-          <figcaption class="cap">Hallstream on air, in the Clássico look.</figcaption>
-        </figure>
       </div>
     </section>
 

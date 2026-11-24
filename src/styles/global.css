@@ -666,6 +666,8 @@ figure {
   border: 10px solid var(--marcador);
   background: var(--soalho);
 }
+/* Shows the Estilo list of panel-aparencia.jpg at 1:1, about x 1030 to 1560
+   and y 215 to 835 of the 1600 by 1085 shot. A re-shoot moves these. */
 .crop img {
   position: absolute;
   max-width: none;
@@ -718,6 +720,9 @@ figure {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
 }
+.looks[hidden] {
+  display: none;
+}
 .look {
   display: block;
   width: 100%;
@@ -750,6 +755,8 @@ figure {
   overflow: clip;
   aspect-ratio: 630 / 136;
 }
+/* Shows the score bug of each 760 by 200 bug-*.png at 1:1, about x 30 to
+   660 and y 34 to 170, trimming the court around it. A re-shoot moves these. */
 .bug img {
   position: absolute;
   max-width: none;

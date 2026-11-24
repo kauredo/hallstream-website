@@ -1,4 +1,5 @@
 import type { Download } from "./fallback.ts";
+import { fill } from "./fill.ts";
 import { formatFileSize } from "./platform.ts";
 
 export interface DownloadStrings {
@@ -19,8 +20,6 @@ export interface DownloadCopy {
   /** The SmartScreen line, only once there is a file to open. */
   warning: string | null;
 }
-
-const fill = (s: string, values: Record<string, string>) => s.replace(/\{(\w+)\}/g, (_, k) => values[k] ?? `{${k}}`);
 
 // With no release the button only follows the releases page, so it says so
 // instead of promising a download.

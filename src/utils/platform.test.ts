@@ -10,7 +10,7 @@ const release = (names: string[]) =>
     names.map((name, id) => ({
       id,
       name,
-      browser_download_url: `https://example.test/${name}`,
+      browser_download_url: `https://github.com/kauredo/hallstream/releases/download/v0.1.0/${name}`,
       size: 12_582_912,
       download_count: 0,
       content_type: "application/octet-stream",
@@ -72,7 +72,7 @@ test("a release with no Windows file falls back too", () => {
 
 test("a release with the zip names its version, size and file", () => {
   assert.deepEqual(toDownload(info(["Hallstream-0.1.0.zip"])), {
-    url: "https://example.test/Hallstream-0.1.0.zip",
+    url: "https://github.com/kauredo/hallstream/releases/download/v0.1.0/Hallstream-0.1.0.zip",
     version: "0.1.0",
     size: 12_582_912,
   });

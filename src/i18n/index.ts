@@ -7,8 +7,6 @@ const strings: Record<Lang, Strings> = { en, pt };
 
 export const t = (lang: Lang): Strings => strings[lang];
 
-/** Fills `{name}` placeholders. */
-export const fill = (s: string, values: Record<string, string>) =>
-  s.replace(/\{(\w+)\}/g, (_, k) => values[k] ?? `{${k}}`);
+export { fill } from "../utils/fill.ts";
 
 export const langFromUrl = (url: URL): Lang => (url.pathname.startsWith("/pt/") ? "pt" : "en");
