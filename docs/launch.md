@@ -4,13 +4,15 @@
 
 - Vercel project `kauredos-projects/hallstream-website`, linked to this repo. Pushes to `main` deploy to production; other branches get previews. The `.vercel.app` URLs sit behind Vercel Authentication; only the custom domains are public.
 - The Vercel MCP connector cannot create or change this project (403). Use the Vercel CLI, logged in as the owner.
-- `hallstream.com` and `www.hallstream.com` are attached to the project. Cloudflare hosts the DNS. Each needs a CNAME (`@` and `www`) to `96d2f421a30f6ed4.vercel-dns-016.com`, with the proxy off. Check with `vercel domains verify hallstream.com --scope kauredos-projects`.
+- `hallstream.com` is live (Cloudflare DNS, CNAMEs `@` and `www` to `96d2f421a30f6ed4.vercel-dns-016.com`, proxy off; Let's Encrypt certificate). `www.hallstream.com` 308-redirects to the apex, path kept (a project domain setting, not in `vercel.json`). Check with `vercel domains verify hallstream.com --scope kauredos-projects`.
 
-## Before launch
+## Launch, 25 November 2026
 
-- [ ] DNS at Cloudflare, then verify both domains.
-- [ ] Lighthouse (SEO, accessibility, performance) on the live domain, both languages.
+- [x] DNS at Cloudflare; both domains verified.
+- [x] Lighthouse on the live domain, English and Portuguese, phone and desktop: accessibility, best practices and SEO all 100, no failing audit.
+- [x] Phone trace (Slow 4G, 4x CPU, no cache): CLS 0. LCP was 3.4 s, almost all of it the hero image sharing bandwidth with the maple texture, which the browser fetches early as a CSS background; the texture went from 270 KB to 137 KB.
 - [ ] Baseline the five spot-check prompts in `marketing-aeo.md` once the site is indexed.
+- [ ] Submit `https://hallstream.com/sitemap-index.xml` in Google Search Console and Bing Webmaster Tools (needs the owner's accounts).
 
 ## After launch
 
