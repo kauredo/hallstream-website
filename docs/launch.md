@@ -16,7 +16,7 @@
 
 ## After launch
 
-- [ ] A Vercel deploy hook in the app's release workflow (`kauredo/hallstream`), so a release rebuilds the site and the button switches to "Download for Windows". The hook URL goes in as a GitHub secret.
+- [x] A release rebuilds the site: the Vercel deploy hook `app-release` (branch `main`) is the app repo secret `VERCEL_DEPLOY_HOOK`, called by the app's `release.yml` after it publishes, and by `site.yml` for a release published by hand.
 - [ ] A Portuguese 404 for missing `/pt/` URLs. Vercel serves the root `404.html` for every path; a rewrite would answer 200, so check Vercel's docs for a status-keeping option first.
 - [ ] Recapture the app screenshots in English for the EN pages once the app ships `en.json`.
 - [ ] Optional: blur the third-party sponsor names in the arena photo behind `onair-*.jpg` (see `docs/image-credits.md`).

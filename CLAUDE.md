@@ -27,6 +27,6 @@ Astro 5 static site for hallstream.com. The app is `../app` (its own repo, `kaur
 
 ## Releases and deploys
 
-The build reads the latest release of `kauredo/hallstream` (`src/utils/github.ts`, `assets.ts`, `release.ts`). The app's `build.sh` uploads `Hallstream-<version>.zip`, which `parseAssets` reads as the Windows download. With no release, `fallback.ts` points the button at the releases page and the button says "Follow the first release on GitHub". With one, it reads "Download for Windows", the note names the version and size, and a second line explains the SmartScreen warning (`src/utils/downloadCopy.ts`, tested). A push to `main` deploys on Vercel. `docs/launch.md` has the Vercel project, the domain and DNS state, and the open launch items (the release deploy hook among them).
+The build reads the latest release of `kauredo/hallstream` (`src/utils/github.ts`, `assets.ts`, `release.ts`). The app's `build.sh` uploads `Hallstream-<version>.zip`, which `parseAssets` reads as the Windows download. With no release, `fallback.ts` points the button at the releases page and the button says "Follow the first release on GitHub". With one, it reads "Download for Windows", the note names the version and size, and a second line explains the SmartScreen warning (`src/utils/downloadCopy.ts`, tested). A push to `main` deploys on Vercel, and a release of the app rebuilds the site through a deploy hook (the app's `release.yml`). `docs/launch.md` has the Vercel project, the domain and DNS state, and the open launch items.
 
 Conventional commits. Stage files by name.
