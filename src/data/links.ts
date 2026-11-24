@@ -11,12 +11,11 @@ export const product = {
   license: `${REPO}/blob/main/LICENSE`,
 } as const;
 
-// The maker's other projects, cross-linked from every footer. `note` is a
-// key into the strings, for the one link that needs a line of context.
-export const maker: { name: string; href: string; note?: "fpbNote" }[] = [
+// The maker's other projects, cross-linked from every footer.
+export const maker: { name: string; href: string }[] = [
   { name: "Basketball Video Analyzer", href: withUtm("https://basketballvideoanalyzer.com") },
   { name: "Basketball Stats", href: withUtm("https://basketballstatsapp.com") },
-  { name: "Calendário FPB", href: withUtm("https://calendariofpb.pt"), note: "fpbNote" },
+  { name: "Calendário FPB", href: withUtm("https://calendariofpb.pt") },
   { name: "vascokf.com", href: withUtm("https://vascokf.com") },
   { name: "Ko-fi", href: withUtm("https://ko-fi.com/kauredo") },
 ];

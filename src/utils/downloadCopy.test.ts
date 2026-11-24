@@ -13,13 +13,19 @@ const release = { url: "https://example.test/Hallstream-0.1.0.zip", version: "0.
 for (const lang of ["en", "pt"]) {
   const s = strings(lang);
 
-  test(`${lang}: with no release the button follows the releases page and hides the SmartScreen line`, () => {
+  test(`${lang}: with no release the button follows the releases page under one note`, () => {
     const c = downloadCopy(fallbackDownload, s, "long");
     assert.equal(fallbackDownload.url, RELEASES_URL);
     assert.equal(c.label, s.follow);
     assert.equal(c.file, false);
     assert.equal(c.note, s.none);
     assert.equal(c.warning, null);
+    assert.equal(c.notWindows, null);
+  });
+
+  test(`${lang}: the no-release note says macOS and Linux are coming`, () => {
+    assert.match(s.none, /macOS/);
+    assert.match(s.none, /Linux/);
   });
 
   test(`${lang}: with a release the button downloads, names the version and size, and explains SmartScreen`, () => {
@@ -30,6 +36,7 @@ for (const lang of ["en", "pt"]) {
       // formatFileSize keeps one decimal, so 12 MB prints as "12.0 MB".
       assert.equal(c.note, fill(note === "long" ? s.released : s.releasedShort, { version: "0.1.0", size: "12.0 MB" }));
       assert.equal(c.warning, s.smartScreen);
+      assert.equal(c.notWindows, s.notWindows);
     }
   });
 
@@ -39,5 +46,6 @@ for (const lang of ["en", "pt"]) {
     assert.equal(c.file, false);
     assert.equal(c.note, s.none);
     assert.equal(c.warning, null);
+    assert.equal(c.notWindows, null);
   });
 }

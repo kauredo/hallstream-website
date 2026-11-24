@@ -33,7 +33,7 @@ const c = downloadCopy(dl, s, note);
   </a>
   <p class="dl-note">{c.note}</p>
   {c.warning && <p class="dl-note">{c.warning}</p>}
-  <p class="dl-note" data-not-windows hidden>{s.notWindows}</p>
+  {c.notWindows && <p class="dl-note" data-not-windows hidden>{c.notWindows}</p>}
 </div>
 
 <script>

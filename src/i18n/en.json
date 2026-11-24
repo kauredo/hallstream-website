@@ -21,19 +21,17 @@
       "follow": "Follow the first release on GitHub",
       "released": "Free, open source. Version {version}, {size}, from GitHub Releases.",
       "releasedShort": "Free, open source. Version {version}, {size}.",
-      "none": "Free and open source, for Windows. The first release isn’t out yet.",
+      "none": "Free and open source, for Windows. No release yet; macOS and Linux builds are coming.",
       "smartScreen": "Windows may say the app is from an unknown publisher. Click More info, then Run anyway.",
       "notWindows": "Hallstream runs on Windows. macOS and Linux builds are coming."
     },
     "ptNote": "The app is in Portuguese for now; English is next.",
     "cta": "Stream the next home game.",
     "footer": {
-      "contribute": "Contributors can help with support for another console or sport, a translation, or an afternoon testing it on a real game day.",
+      "contribute": "Contributors can help with support for another console or sport, a translation, or testing at a real game.",
       "contributeLink": "Start on GitHub",
       "maker": "More from the maker",
-      "fpbNote": ", the federation calendar Hallstream reads",
       "product": "Product",
-      "downloadLink": "Download",
       "github": "GitHub",
       "issues": "Report a problem",
       "releases": "Releases",
@@ -43,8 +41,7 @@
       "cameras": "Streaming with two cameras (soon)",
       "language": "Language",
       "licence": "Hallstream is free and open source, under AGPL-3.0."
-    },
-    "placeholder": "Placeholder for {what}"
+    }
   },
   "home": {
     "title": "Hallstream: stream your club’s home games to YouTube",
@@ -88,14 +85,14 @@
     },
     "air": {
       "h2": "On air",
-      "intro": "Five looks for the score bug. Pick one in the control panel.",
+      "intro": "Five looks for the graphics, from the score bug to the final result. Pick one in the control panel.",
       "looksLabel": "Score bug looks",
       "looks": [
         ["classico", "Clássico", "classic", "The Clássico score bug and a player lower third over a court", ""],
-        ["placa", "Placa Esmaltada", "enamel plate", "The Placa Esmaltada score bug over a court", ""],
         ["lombada", "Lombada", "spine", "The Lombada score bug over a court", ""],
-        ["pavilhao", "Chão do Pavilhão", "hall floor", "The Chão do Pavilhão score bug over a court", ""],
-        ["cor-final", "Cor do Clube", "club colour", "The final result screen in the Cor do Clube look", "The final result in the Cor do Clube look, with the score by quarter and the sponsors along the bottom."]
+        ["cor-final", "Cor do Clube", "club colour", "The final result screen in the Cor do Clube look", "The final result in the Cor do Clube look, with the score by quarter and the sponsors along the bottom."],
+        ["placa", "Placa Esmaltada", "enamel plate", "The Placa Esmaltada score bug over a court", ""],
+        ["pavilhao", "Chão do Pavilhão", "hall floor", "The Chão do Pavilhão score bug over a court", ""]
       ],
       "options": "Put the bug in any of six places along the top or bottom of the picture, at 85% to 125% size, with your club’s accent colours and a photo of your hall."
     },
@@ -112,7 +109,7 @@
     },
     "later": {
       "h2": "Coming later",
-      "intro": "Today Hallstream is a Windows app for basketball. These are on the way and not shipped yet:",
+      "intro": "These are on the way:",
       "items": [
         "macOS and Linux builds",
         "More than one camera",
@@ -128,11 +125,10 @@
     "description": "Hallstream reads Stramatel scoreboards through the Stramatel Stream Box over Bluetooth, tested on real basketball games. Any hall can keep the score on a phone instead.",
     "crumbHome": "Hallstream",
     "crumbGuides": "Guides",
+    "crumbLabel": "Breadcrumb",
     "h1": "Supported consoles",
     "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer’s table instead; that page is new and has not been used at a game yet. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
     "checked": "Last checked 24 November 2026.",
-    "photoPlaceholder": "Photo: a Stramatel console and the Stream Box",
-    "photoPlaceholderLabel": "a photo of a Stramatel console and the Stream Box",
     "tableH2": "Console by console",
     "cols": ["Console", "Connection", "Sports", "Status"],
     "rows": [
@@ -141,11 +137,11 @@
       ["Daktronics AllSport", "Serial RS-232", "To be confirmed", "wanted"],
       ["Fair-Play", "Serial RS-232", "To be confirmed", "wanted"],
       ["Bodet", "Serial RS-232", "To be confirmed", "wanted"],
-      ["Any console, or none: a phone at the scorer’s table, on the /marcar page", "The phone’s browser", "Basketball. Other sports when they ship.", "new"]
+      ["Any console, or none: a phone at the scorer’s table, on the scoring page", "The phone’s browser", "Basketball. Other sports when they ship.", "new"]
     ],
     "status": {
-      "tested": "Tested on a real game",
-      "ready": "Decoder ready, needs a recorded game",
+      "tested": "Tested on real games",
+      "ready": "Codes read, needs a recorded game",
       "new": "New, not used at a game yet",
       "wanted": "Wanted, not started"
     },
@@ -165,7 +161,7 @@
     "title": "Privacy",
     "description": "What hallstream.com and the Hallstream app collect: cookieless visit counts on the site, and in the app only what you connect it to.",
     "h1": "Privacy",
-    "intro": "This site sets no cookies and stores nothing in your browser. Updated 24 November 2026.",
+    "intro": "Hallstream sends nothing to us. It talks to YouTube, the federation calendar and OBS only when you set them up. This site sets no cookies. Updated 24 November 2026.",
     "siteH2": "On this website",
     "site": "Vercel Web Analytics counts visits. It records the page, the referring site, your country, and your browser and device type. It recognises a visit by a hash of the request that Vercel deletes after 24 hours, and it sets no cookies. There is no Google Analytics and no advertising.",
     "siteLink": "Vercel’s details",
@@ -178,7 +174,7 @@
       "The Portuguese basketball federation’s data, through calendariofpb.pt, when a Portuguese club chooses to pull squads and fixtures from it.",
       "OBS, on the same PC or network, over obs-websocket."
     ],
-    "logs": "The releases on GitHub send nothing to us or to anyone else. The source code can also send each game’s logs to a server after the stream, but only when it is built with an upload key, and the public releases are built without one. A program built without the key writes that in its own log.",
+    "logs": "The source code can send each game’s logs to a server after the stream, but only when it is built with an upload key, and the public releases are built without one. A program built without the key writes that in its own log.",
     "phone": "The control panel and the scoring page can be opened from a phone on the hall’s wifi. That traffic stays on the local network and needs the PIN.",
     "questionsH2": "Questions",
     "questions": "Open an issue on",

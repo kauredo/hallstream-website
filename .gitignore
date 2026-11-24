@@ -17,3 +17,7 @@ npm-debug.log*
 
 # lint and screenshot scratch
 .hallmark/
+
+# Vercel CLI project link, and the token file it writes
+.vercel/
+.env*
