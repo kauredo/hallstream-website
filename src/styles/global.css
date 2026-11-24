@@ -33,7 +33,6 @@
   --lampada-funda: #b8381e;
   --tint: #f7c9b8;
   --cinza: #5c5346;
-  --soalho-78: rgba(242, 228, 201, 0.78);
 
   /* Tone steps on Marcador, and the unlit segment on Soalho. */
   --ink-on-dark: #e4d7be;
@@ -48,7 +47,6 @@
   --wood-calm-strong: color-mix(in oklch, var(--soalho-claro) 66%, transparent);
 
   --display: 72%;
-  --wide: 113%;
   --cond: 74%;
 
   --page: 1344px;
@@ -203,9 +201,6 @@ button:focus-visible {
   font-weight: 800;
   font-size: var(--h3);
   line-height: 1.1;
-}
-.cond {
-  font-stretch: var(--cond);
 }
 
 .intro {
@@ -1363,8 +1358,5 @@ ul.lined li {
      the frame that matters at 390 px, so the frame takes that cut's shape. */
   .fr-scorer {
     aspect-ratio: 1005 / 739 !important;
-  }
-  .fr-panel {
-    aspect-ratio: 33 / 20 !important;
   }
 }
