@@ -128,6 +128,7 @@
     "description": "Hallstream reads Stramatel scoreboards through the Stramatel Stream Box over Bluetooth, tested on real basketball games. Any hall can keep the score on a phone instead.",
     "crumbHome": "Hallstream",
     "crumbGuides": "Guides",
+    "crumbLabel": "Breadcrumb",
     "h1": "Supported consoles",
     "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer’s table instead; that page is new and has not been used at a game yet. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
     "checked": "Last checked 24 November 2026.",

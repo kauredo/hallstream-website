@@ -101,8 +101,14 @@ h3,
 }
 p,
 li,
-dd {
+dd,
+figcaption {
   text-wrap: pretty;
+}
+
+::selection {
+  background: var(--tint);
+  color: var(--marcador);
 }
 
 img {
@@ -635,7 +641,7 @@ figure {
 }
 .more {
   margin-block-start: 32px;
-  max-width: 64ch;
+  max-width: 56ch;
 }
 .more p {
   margin: 0 0 14px;
@@ -962,6 +968,17 @@ figure {
 .foot-mark {
   align-self: start;
 }
+/* On touch, the footer's stacked links get hit areas about 35px tall instead
+   of 18px. The maker list stays inline: its notes run on after the link. */
+@media (pointer: coarse) {
+  .foot ul:not(.lang) {
+    gap: 0;
+  }
+  .foot ul:not(.lang) a {
+    display: inline-block;
+    padding-block: 5px;
+  }
+}
 .foot-mark svg {
   height: 34px;
 }
@@ -1051,7 +1068,7 @@ figure {
 }
 .prose {
   margin: 18px 0 0;
-  max-width: 70ch;
+  max-width: var(--measure);
 }
 .lined {
   margin: 20px 0 0;

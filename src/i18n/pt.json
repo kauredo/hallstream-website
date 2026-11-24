@@ -128,6 +128,7 @@
     "description": "O Hallstream lê os placards Stramatel através da Stramatel Stream Box, por Bluetooth, testado em jogos de basquetebol a sério. Qualquer pavilhão pode marcar o resultado num telemóvel.",
     "crumbHome": "Hallstream",
     "crumbGuides": "Guias",
+    "crumbLabel": "Caminho até esta página",
     "h1": "Consolas compatíveis",
     "answer": "O Hallstream lê o resultado, o relógio, as faltas e os descontos de tempo dos placards Stramatel através da Stramatel Stream Box, por Bluetooth, e isso está testado em jogos de basquetebol a sério. Um pavilhão sem consola compatível pode marcar o resultado num telemóvel na mesa de marcação; essa página é nova e ainda não foi usada num jogo. As consolas Daktronics AllSport, Fair-Play e Bodet, por porta série RS-232, estão no plano de trabalho.",
     "checked": "Verificado a 24 de novembro de 2026.",
