@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { downloadCopy } from "./downloadCopy.ts";
 import { fallbackDownload, RELEASES_URL } from "./fallback.ts";
+import { fill } from "./fill.ts";
 
 const strings = (lang: string) =>
   JSON.parse(readFileSync(new URL(`../i18n/${lang}.json`, import.meta.url), "utf8")).common.download;
@@ -26,10 +27,17 @@ for (const lang of ["en", "pt"]) {
       const c = downloadCopy(release, s, note);
       assert.equal(c.label, s.button);
       assert.equal(c.file, true);
-      assert.match(c.note, /0\.1\.0/);
-      assert.match(c.note, /12(\.0)? MB/);
-      assert.ok(!c.note.includes("{"), c.note);
+      // formatFileSize keeps one decimal, so 12 MB prints as "12.0 MB".
+      assert.equal(c.note, fill(note === "long" ? s.released : s.releasedShort, { version: "0.1.0", size: "12.0 MB" }));
       assert.equal(c.warning, s.smartScreen);
     }
+  });
+
+  test(`${lang}: a version with no size gets the no-release copy`, () => {
+    const c = downloadCopy({ ...release, size: null }, s, "long");
+    assert.equal(c.label, s.follow);
+    assert.equal(c.file, false);
+    assert.equal(c.note, s.none);
+    assert.equal(c.warning, null);
   });
 }
