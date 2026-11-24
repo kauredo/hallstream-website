@@ -1,0 +1,182 @@
+---
+// The home page, from the canvas board Main.dc.html: the cover, What it
+// does, Where the score comes from, On air, then the back cover (Running
+// order, the 0:0 and the download) inside the footer.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DownloadButton from "@/components/DownloadButton.astro";
+import Shot from "@/components/Shot.astro";
+import Placeholder from "@/components/Placeholder.astro";
+import RuleHead from "@/components/RuleHead.astro";
+import { t, fill } from "@/i18n";
+import { path, type Lang } from "@/i18n/routes";
+import { product } from "@/data/links";
+import { getDownload } from "@/utils/release";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const s = t(lang);
+const h = s.home;
+const note = s.common.ptNote;
+const dl = await getDownload();
+
+const bugs = [
+  ["classico", "Clássico"],
+  ["lombada", "Lombada"],
+  ["cor", "Cor do Clube"],
+  ["placa", "Placa Esmaltada"],
+  ["pavilhao", "Chão do Pavilhão"],
+];
+
+const schema = [
+  {
+    "@type": "SoftwareApplication",
+    name: "Hallstream",
+    url: new URL(path("home", lang), Astro.site).href,
+    description: h.description,
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Windows",
+    inLanguage: "pt-PT",
+    isAccessibleForFree: true,
+    license: "https://www.gnu.org/licenses/agpl-3.0.html",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+    downloadUrl: dl.url,
+    ...(dl.version ? { softwareVersion: dl.version } : {}),
+    codeRepository: product.github,
+    screenshot: new URL("/images/overlay-classico.jpg", Astro.site).href,
+    author: { "@type": "Person", name: "kauredo", url: "https://github.com/kauredo" },
+  },
+];
+---
+
+<BaseLayout lang={lang} route="home" title={h.title} description={h.description} og={`home-${lang}.png`} schema={schema} cover>
+  <Fragment slot="cover">
+    <div class="tt" style="margin-top:28px"></div>
+    <h1 class="display cover-h1">{h.h1}</h1>
+    <div class="cover">
+      <figure>
+        <Shot src="/images/overlay-classico.jpg" phone="/images/overlay-classico-phone.jpg" alt={h.coverAlt} width={1600} height={900} ratio="16/9" frameClass="fr-cover" eager />
+        <figcaption class="cover-cap">
+          <svg viewBox="40 52 17 25" width="10" height="15" aria-hidden="true"><path d="M45.45315,52.98381h8.15383c1.35097,0 2.27269,1.09518 2.05872,2.44615l-2.48989,15.72058c-0.42795,2.70194 -2.96522,4.8923 -5.66716,4.8923h-3.26153c-2.70194,0 -4.54538,-2.19035 -4.11743,-4.8923l2.48989,-15.72058c0.21397,-1.35097 1.48261,-2.44615 2.83358,-2.44615z" fill="#E5482A"></path></svg>
+          <span>{h.coverCaption}</span>
+        </figcaption>
+      </figure>
+      <div class="cover-side">
+        <p class="lede">{h.lede}</p>
+        <DownloadButton lang={lang} />
+      </div>
+    </div>
+  </Fragment>
+
+  <section class="wrap sec" aria-labelledby="what-it-does">
+    <RuleHead rule="double" id="what-it-does">{h.does.h2}</RuleHead>
+    <div class="does">
+      <dl class="rows">
+        {
+          h.does.rows.map(([term, text]) => (
+            <div class="row">
+              <dt>{term}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))
+        }
+        <div class="row">
+          <dt>{h.does.licenceTerm}</dt>
+          <dd>{h.does.licence} <a href={product.github}>{h.does.licenceLink}</a>.</dd>
+        </div>
+      </dl>
+
+      <div>
+        <h3 class="later-h3">{h.does.laterH3}</h3>
+        <p class="later-intro">{h.does.laterIntro}</p>
+        <ul class="later">
+          {h.does.later.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <figure style="margin-top:40px">
+          <Shot src="/images/panel-aparencia.jpg" phone="/images/panel-aparencia-phone.jpg" alt={h.does.panelAlt} width={1600} height={1085} ratio="1600/1085" frameClass="fr-panel" ink />
+          <figcaption class="cap">{h.does.panelCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
+        </figure>
+        <Placeholder lang={lang} text={h.does.phonePlaceholder} label={h.does.phonePlaceholderLabel} ratio="16/5" class="mt24" />
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-bottom:72px" aria-labelledby="score-source">
+    <RuleHead id="score-source">{h.source.h2}</RuleHead>
+    <p class="intro">{h.source.intro}</p>
+    <div class="fix">
+      <div>
+        <h3 class="h3">{h.source.consoleH3}</h3>
+        <p>{h.source.console} <a href={path("consoles", lang)}>{h.source.consoleLink}</a></p>
+        <Placeholder lang={lang} text={h.source.consolePlaceholder} label={h.source.consolePlaceholderLabel} ratio="1600/740" class="mt24" />
+      </div>
+      <div>
+        <h3 class="h3">{h.source.phoneH3}</h3>
+        <p>{h.source.phone}</p>
+        <figure style="margin-top:24px">
+          <Shot src="/images/marcar.jpg" phone="/images/marcar-phone.jpg" alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/740" frameClass="fr-scorer" ink />
+          <figcaption class="cap">{h.source.scorerCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-air" aria-labelledby="on-air">
+    <div class="wrap" style="padding-top:56px;padding-bottom:72px">
+      <RuleHead id="on-air">{h.air.h2}</RuleHead>
+      <p class="intro">{h.air.intro}</p>
+      <div class="bugs">
+        {
+          bugs.map(([file, name]) => (
+            <figure>
+              <img src={`/images/bug-${file}.png`} alt={fill(h.air.bugAlt, { name })} width="760" height="200" loading="lazy" decoding="async" />
+              <figcaption>{name}</figcaption>
+            </figure>
+          ))
+        }
+        <p>{h.air.options}</p>
+      </div>
+      <div class="air2">
+        <Shot src="/images/overlay-cor-final.jpg" phone="/images/overlay-cor-final-phone.jpg" alt={h.air.finalAlt} width={1600} height={900} ratio="16/9" frameClass="fr-cor" ink />
+        <p>{h.air.final}</p>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="back">
+    <section aria-labelledby="running-order">
+      <div class="tt"></div>
+      <h2 class="h2" id="running-order">{h.order.h2}</h2>
+      <p class="intro" style="font-size:17px">{h.order.intro}</p>
+      <ol class="ro-list">
+        {
+          h.order.steps.map(([time, title, text]) => (
+            <li class="ro">
+              <span class="ro-time">{time}</span>
+              <span>
+                <strong>{title}</strong>
+                {text}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <div class="tt" style="margin-top:80px"></div>
+    <div class="back">
+      <div>
+        <p class="display cta">{s.common.cta}</p>
+        <div class="cta-row">
+          <DownloadButton lang={lang} note="short" inline />
+        </div>
+      </div>
+      <figure>
+        <p class="zero">0<span>:</span>0</p>
+        <figcaption>{h.tipoff}</figcaption>
+      </figure>
+    </div>
+  </Fragment>
+</BaseLayout>

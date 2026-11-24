@@ -1,0 +1,145 @@
+---
+// The "Hallstream vs <alternative>" template, from Vs.dc.html. English
+// only for now. Not routed: see docs/vs-pages.md before adding a page that
+// renders it.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Shot from "@/components/Shot.astro";
+import RuleHead from "@/components/RuleHead.astro";
+import type { RouteId } from "@/i18n/routes";
+import { product } from "@/data/links";
+import { alwaysStrengths, hallstream, questions, type VsAlternative } from "@/data/vs";
+
+interface Props {
+  alt: VsAlternative;
+  route: RouteId;
+}
+const { alt, route } = Astro.props;
+const lang = "en";
+const checked = [alt.summary, ...Object.values(alt.facts), ...alt.strengths, alt.samePc]
+  .map((f) => f.checked)
+  .sort()
+  .at(0);
+const day = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+const faq = [
+  ["Is Hallstream free?", "Yes. Hallstream is free and open source under AGPL-3.0, with no account to make."],
+  ["Does Hallstream run on a Mac?", "Not yet. Hallstream is a Windows app today. macOS and Linux builds are on the way."],
+  [
+    "Do I need a scoreboard console?",
+    "No. If the hall has no Stramatel console, someone keeps the score on a phone held sideways at the scorer's table.",
+  ],
+  [`Can I use Hallstream and ${alt.name} on the same PC?`, alt.samePc.text],
+];
+const schema = [
+  {
+    "@type": "FAQPage",
+    mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  route={route}
+  title={`Hallstream vs ${alt.name}`}
+  description={`Hallstream and ${alt.name} compared for streaming a club's home games: cost, platform, score source, graphics, cameras and sports.`}
+  og={`vs-${alt.slug}-en.png`}
+  type="article"
+  schema={schema}
+>
+  <article>
+    <section class="wrap page-top">
+      <div class="tt"></div>
+      <h1 class="display page-h1">Hallstream vs {alt.name}</h1>
+      <div class="lead-grid">
+        <div>
+          <p class="answer">
+            Hallstream is a free, open-source Windows app that streams a club's home games to YouTube, with scoreboard graphics that take the
+            score from the hall's console or from a phone at the scorer's table. {alt.summary.text} Hallstream suits a basketball club that
+            streams one camera from a Windows PC and wants the score on screen without anyone typing it.
+          </p>
+          {
+            checked && (
+              <p class="checked muted">
+                {alt.name} details checked on {day(checked)}. Send a correction through <a href={product.issues}>GitHub issues</a>.
+              </p>
+            )
+          }
+        </div>
+        <figure class="mt28">
+          <Shot src="/images/overlay-classico.jpg" alt="Hallstream on air: the Clássico score bug and a player lower third over a basketball court" width={1600} height={900} ratio="16/9" ink />
+          <figcaption class="cap">Hallstream on air, in the Clássico look.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap psec" aria-labelledby="head-to-head">
+      <RuleHead id="head-to-head">Head to head</RuleHead>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th scope="col" style="width:24%"><span class="sr-only">Question</span></th>
+            <th scope="col" style="width:38%">Hallstream</th>
+            <th scope="col">{alt.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            questions.map((q) => (
+              <tr>
+                <th scope="row">{hallstream[q].label}</th>
+                <td data-label="Hallstream">
+                  {hallstream[q].text}
+                  {hallstream[q].soon && (
+                    <span class="soonw">
+                      <b>Coming:</b> {hallstream[q].soon}
+                    </span>
+                  )}
+                </td>
+                <td data-label={alt.name}>
+                  {alt.facts[q].text} <a href={alt.facts[q].source}>Source</a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </section>
+
+    <section class="wrap psec" aria-labelledby="better">
+      <RuleHead id="better">When {alt.name} is the better choice</RuleHead>
+      <p class="intro" style="margin-top:16px">Some clubs will be better off with {alt.name}. Pick it if one of these is true for you.</p>
+      <ul class="lined">
+        {alwaysStrengths.map((s) => <li>{s}</li>)}
+        {alt.strengths.map((s) => <li>{s.text} <a href={s.source}>Source</a></li>)}
+      </ul>
+    </section>
+
+    <section class="wrap psec" aria-labelledby="switch">
+      <RuleHead id="switch">How to switch</RuleHead>
+      <ol class="lined">
+        <li>Download Hallstream onto the PC in the hall.</li>
+        <li>Install OBS Studio, the free streaming app, and turn on obs-websocket. Hallstream sets up the scene, the overlay and the camera.</li>
+        <li>Bring your squads and fixtures over. Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation.</li>
+        <li>Pick a look and set your club's colours in the control panel.</li>
+        {alt.switchStep && <li>{alt.switchStep.text} <a href={alt.switchStep.source}>Source</a></li>}
+        <li>Run demo mode at home, then stream the next home game.</li>
+      </ol>
+    </section>
+
+    <section class="wrap psec psec--last" aria-labelledby="questions">
+      <RuleHead id="questions">Questions</RuleHead>
+      <div class="faq">
+        {
+          faq.map(([q, a]) => (
+            <div>
+              <h3>{q}</h3>
+              <p>{a}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>

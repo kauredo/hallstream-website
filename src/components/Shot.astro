@@ -1,0 +1,30 @@
+---
+// A screenshot in a 2px frame. With `phone`, a <picture> swaps in the phone
+// crop below 600 px (cut by scripts/crops.mjs), and the frame class sets the
+// crop's aspect ratio there.
+interface Props {
+  src: string;
+  phone?: string;
+  alt: string;
+  width: number;
+  height: number;
+  ratio: string;
+  frameClass?: string;
+  ink?: boolean;
+  eager?: boolean;
+}
+const { src, phone, alt, width, height, ratio, frameClass = "", ink = false, eager = false } = Astro.props;
+---
+
+<div class:list={["frame", { "frame--ink": ink }, frameClass]} style={`aspect-ratio:${ratio}`}>
+  {
+    phone ? (
+      <picture>
+        <source media="(max-width: 600px)" srcset={phone} />
+        <img src={src} alt={alt} width={width} height={height} loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
+      </picture>
+    ) : (
+      <img src={src} alt={alt} width={width} height={height} loading={eager ? "eager" : "lazy"} decoding="async" />
+    )
+  }
+</div>

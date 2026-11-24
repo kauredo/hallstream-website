@@ -1,0 +1,107 @@
+---
+import "@/styles/global.css";
+import Masthead from "@/components/Masthead.astro";
+import Footer from "@/components/Footer.astro";
+import { t } from "@/i18n";
+import { routes, path, htmlLang, ogLocale, other, type Lang, type RouteId } from "@/i18n/routes";
+import { pageDates } from "@/data/pageDates";
+import { jsonLd } from "@/utils/jsonLd";
+
+interface Props {
+  lang: Lang;
+  route: RouteId;
+  title: string;
+  description: string;
+  /** A file in public/og/, rendered by scripts/og.mjs. */
+  og: string;
+  type?: "website" | "article";
+  schema?: Record<string, unknown>[];
+  cover?: boolean;
+}
+
+const { lang, route, title, description, og, type = "website", schema = [], cover = false } = Astro.props;
+const indexed = routes[route].indexed;
+const site = Astro.site!;
+const here = path(route, lang);
+const canonical = new URL(here, site).href;
+const alternate = (l: Lang) => new URL(path(route, l), site).href;
+const image = new URL(`/og/${og}`, site).href;
+const dates = pageDates[here];
+const s = t(lang).common;
+
+const graph = [
+  {
+    "@type": "WebSite",
+    "@id": `${site.href}#website`,
+    name: "Hallstream",
+    url: site.href,
+    inLanguage: ["en", "pt-PT"],
+    publisher: { "@type": "Person", name: "kauredo", url: "https://github.com/kauredo" },
+  },
+  ...schema,
+];
+---
+
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={indexed ? "index, follow" : "noindex, follow"} />
+    {indexed && <link rel="canonical" href={canonical} />}
+    {indexed && <link rel="alternate" hreflang="en" href={alternate("en")} />}
+    {indexed && <link rel="alternate" hreflang="pt-PT" href={alternate("pt")} />}
+    {indexed && <link rel="alternate" hreflang="x-default" href={alternate("en")} />}
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Hallstream" />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    <meta property="og:locale:alternate" content={ogLocale[other(lang)]} />
+    {indexed && <meta property="og:url" content={canonical} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {type === "article" && dates && <meta property="article:published_time" content={dates.published} />}
+    {type === "article" && dates && <meta property="article:modified_time" content={dates.modified} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1C1A17" />
+
+    <link rel="preload" href="/fonts/Archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="application/ld+json" set:html={jsonLd({ "@context": "https://schema.org", "@graph": graph })} />
+  </head>
+  <body>
+    <a class="skip" href="#main">{s.skip}</a>
+    <Masthead lang={lang} route={route} cover={cover}>
+      <slot name="cover" />
+    </Masthead>
+    <main id="main" class:list={{ page: !cover }}>
+      <slot />
+    </main>
+    {
+      Astro.slots.has("back") ? (
+        <Footer lang={lang} route={route}>
+          <slot name="back" />
+        </Footer>
+      ) : (
+        <Footer lang={lang} route={route} />
+      )
+    }
+    <script>
+      import { inject } from "@vercel/analytics";
+      inject();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+// The one action. The build reads the latest GitHub release; with none, the
+// button links to the releases page and the note says the first release is
+// coming, instead of naming a version that does not exist.
+import { t, fill } from "@/i18n";
+import type { Lang } from "@/i18n/routes";
+import { getDownload } from "@/utils/release";
+import { formatFileSize } from "@/utils/platform";
+import { RELEASES_URL } from "@/utils/fallback";
+interface Props {
+  lang: Lang;
+  /** "long" names GitHub Releases; "short" does not. */
+  note?: "long" | "short";
+  /** Puts the note beside the button instead of under it. */
+  inline?: boolean;
+}
+const { lang, note = "long", inline = false } = Astro.props;
+const s = t(lang).common.download;
+const dl = await getDownload();
+const released =
+  dl.version && dl.size
+    ? fill(note === "long" ? s.released : s.releasedShort, { version: dl.version, size: formatFileSize(dl.size) })
+    : null;
+const Note = inline ? "span" : "p";
+---
+
+<a class="btn" href={dl.url}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+  {s.button}
+</a>
+<Note class="dl-note">
+  {released ?? <>{`${s.none} `}<a href={RELEASES_URL}>{s.noneLink}</a>.</>}
+</Note>
+<p class="dl-os" data-not-windows hidden>{s.notWindows}</p>
+
+<script>
+  import { detectPlatform } from "@/utils/platform";
+  const os = detectPlatform();
+  if (os === "macos" || os === "linux") {
+    for (const el of document.querySelectorAll<HTMLElement>("[data-not-windows]")) el.hidden = false;
+  }
+</script>

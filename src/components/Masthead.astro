@@ -1,0 +1,36 @@
+---
+// The ink band at the top of every page. On the home page it is the cover and
+// holds the hero through the slot.
+import Lockup from "./Lockup.astro";
+import LangSwitch from "./LangSwitch.astro";
+import { t } from "@/i18n";
+import { path, type Lang, type RouteId } from "@/i18n/routes";
+import { product } from "@/data/links";
+interface Props {
+  lang: Lang;
+  route: RouteId;
+  cover?: boolean;
+}
+const { lang, route, cover = false } = Astro.props;
+const n = t(lang).common.nav;
+// On the home page the section links are anchors; elsewhere they go home.
+const home = route === "home" ? "" : path("home", lang);
+---
+
+<header class:list={["dk", "masthead", { "masthead--cover": cover }]}>
+  <div class="wrap">
+    <div class="mast-bar">
+      <Lockup lang={lang} />
+      <nav class="nav" aria-label={n.label}>
+        <span class="navlinks">
+          <a href={`${home}#what-it-does`}>{n.whatItDoes}</a>
+          <a href={`${home}#on-air`}>{n.onAir}</a>
+          <a href={`${home}#running-order`}>{n.runningOrder}</a>
+          <a href={product.github}>{n.github}</a>
+        </span>
+        <LangSwitch lang={lang} route={route} />
+      </nav>
+    </div>
+    <slot />
+  </div>
+</header>

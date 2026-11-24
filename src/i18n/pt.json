@@ -1,0 +1,186 @@
+{
+  "common": {
+    "homeLabel": "Início do Hallstream",
+    "skip": "Saltar para o conteúdo",
+    "nav": {
+      "label": "Principal",
+      "whatItDoes": "O que faz",
+      "onAir": "No ar",
+      "runningOrder": "Alinhamento",
+      "github": "GitHub"
+    },
+    "lang": {
+      "label": "Língua",
+      "short": "PT",
+      "otherShort": "EN",
+      "name": "Português",
+      "otherName": "English"
+    },
+    "download": {
+      "button": "Descarregar para Windows",
+      "released": "Grátis e de código aberto. Versão {version}, {size}, no GitHub Releases.",
+      "releasedShort": "Grátis e de código aberto. Versão {version}, {size}.",
+      "none": "A primeira versão sai em breve.",
+      "noneLink": "Acompanhe no GitHub",
+      "notWindows": "O Hallstream funciona em Windows. As versões para macOS e Linux estão a caminho."
+    },
+    "ptNote": "",
+    "cta": "Transmita o próximo jogo em casa.",
+    "footer": {
+      "contribute": "Quem quiser contribuir pode ajudar com outra consola ou outra modalidade, uma tradução, ou uma tarde a testá-lo num dia de jogo a sério.",
+      "contributeLink": "Comece no GitHub",
+      "maker": "Mais do mesmo autor",
+      "fpbNote": ", o calendário da federação que o Hallstream lê",
+      "product": "Produto",
+      "downloadLink": "Descarregar",
+      "github": "GitHub",
+      "issues": "Comunicar um problema",
+      "releases": "Versões",
+      "privacy": "Privacidade",
+      "guides": "Guias",
+      "consoles": "Consolas compatíveis",
+      "cameras": "Transmitir com duas câmaras (em breve)",
+      "language": "Língua",
+      "licence": "O Hallstream é grátis e de código aberto, com licença AGPL-3.0."
+    },
+    "placeholder": "Espaço reservado para {what}"
+  },
+  "home": {
+    "title": "Hallstream: os jogos em casa do seu clube no YouTube",
+    "description": "Uma aplicação grátis e de código aberto para Windows, para clubes de basquetebol. Lê o resultado da consola Stramatel do pavilhão ou de um telemóvel, põe-no na transmissão com as cores do clube e prepara o OBS e o YouTube.",
+    "h1": "Os jogos em casa do seu clube, em direto no YouTube.",
+    "coverAlt": "O Hallstream no ar: o marcador Clássico e o rodapé de um jogador sobre um campo de basquetebol",
+    "coverCaption": "No ar com o estilo Clássico: o marcador e o rodapé do jogador que acabou de marcar.",
+    "lede": "Uma pessoa trata de tudo no computador do pavilhão. O Hallstream lê o resultado da consola do marcador, desenha o grafismo com as cores do clube e prepara o OBS e o direto no YouTube. Não é preciso criar conta.",
+    "does": {
+      "h2": "O que faz",
+      "rows": [
+        ["Resultado", "Lê o resultado, o relógio, as faltas e os descontos de tempo da caixa Stramatel do pavilhão, por Bluetooth. O marcador no ecrã acompanha o placard."],
+        ["Grafismo", "Marcador, rodapés do jogador e do comentador, abertura, desconto de tempo, intervalo, resultado final, patrocinadores, próximo jogo e \"voltamos já\", com as cores do clube."],
+        ["Painel", "Mude de ecrã no browser do computador do pavilhão, ou em qualquer telemóvel na mesma rede wifi, com um PIN."],
+        ["OBS", "O OBS Studio, a aplicação de transmissão grátis, faz a codificação. Instale primeiro a versão 31 ou mais recente. O Hallstream configura-o por obs-websocket, com a cena, o grafismo e a câmara."],
+        ["YouTube", "Cria o direto com título e miniatura. No fim do jogo deixa o vídeo não listado, para ficar no link e fora da página inicial do canal."],
+        ["Plantéis e jogos", "Escreva-os à mão ou importe um CSV. Os clubes portugueses de basquetebol podem trazer os dois da federação. O próximo jogo aparece no ecrã \"próximo jogo\"."],
+        ["Sem internet", "Depois do primeiro arranque, o grafismo, o painel e a página de marcação continuam a funcionar se a internet do pavilhão falhar."],
+        ["Modo demonstração", "Joga um jogo a fingir sem consola ligada, para aprender em casa antes de sábado."],
+        ["Línguas", "A aplicação está em português europeu. O inglês vem a seguir, e outras línguas podem chegar com traduções da comunidade."]
+      ],
+      "licenceTerm": "Licença",
+      "licence": "Grátis e de código aberto, com licença AGPL-3.0. O código está no",
+      "licenceLink": "GitHub",
+      "laterH3": "Mais tarde",
+      "laterIntro": "Hoje o Hallstream é uma aplicação para Windows, para basquetebol. Estas estão a caminho e ainda não saíram:",
+      "later": [
+        "Versões para macOS e Linux",
+        "Mais do que uma câmara",
+        "Futsal, andebol, voleibol e futebol",
+        "Mais consolas, por porta série",
+        "Versões assinadas"
+      ],
+      "panelAlt": "As definições de aparência no ar do painel de controlo, com a pré-visualização do grafismo e a lista de estilos",
+      "panelCaption": "O painel de controlo, em \"Aparência no ar\". A pré-visualização muda à medida que escolhe.",
+      "phonePlaceholder": "Captura de ecrã: o painel de controlo num telemóvel, a mudar para o intervalo",
+      "phonePlaceholderLabel": "uma captura de ecrã do painel de controlo num telemóvel"
+    },
+    "source": {
+      "h2": "De onde vem o resultado",
+      "intro": "O Hallstream lê o resultado da consola do pavilhão, quando há uma. Um telemóvel na mesa de marcação resolve todos os outros casos.",
+      "consoleH3": "Da consola do pavilhão",
+      "console": "Uma caixa Stramatel Stream Box, emparelhada por Bluetooth. O resultado, o relógio, as faltas e os descontos chegam sozinhos.",
+      "consoleLink": "Consolas compatíveis",
+      "consolePlaceholder": "Fotografia: a consola do marcador do pavilhão e a Stream Box",
+      "consolePlaceholderLabel": "uma fotografia da consola do marcador do pavilhão e da Stream Box",
+      "phoneH3": "De um telemóvel na mesa de marcação",
+      "phone": "Na horizontal, na página de marcação. Também assume o resultado se a consola falhar a meio do jogo.",
+      "scorerAlt": "A página de marcação no telemóvel, na horizontal, com pontos, relógio, faltas e descontos, e o relógio a correr",
+      "scorerCaption": "A página de marcação com o relógio a correr. Pontos, faltas e descontos levam um toque cada."
+    },
+    "air": {
+      "h2": "No ar",
+      "intro": "Cinco estilos para o marcador. Escolha um no painel de controlo.",
+      "bugAlt": "O marcador {name} sobre um campo",
+      "options": "Ponha o marcador num de seis lugares, em cima ou em baixo na imagem, entre 85% e 125% do tamanho, com as cores de destaque do clube e uma fotografia do seu pavilhão.",
+      "finalAlt": "O ecrã do resultado final no estilo Cor do Clube",
+      "final": "O resultado final no estilo Cor do Clube, com os parciais por período e os patrocinadores em baixo."
+    },
+    "order": {
+      "h2": "Alinhamento",
+      "intro": "Um jogo em casa com início às 19:00, como um voluntário o faz no computador do pavilhão.",
+      "steps": [
+        ["Na semana antes", "Instalar", "Descarregue o Hallstream para o computador do pavilhão e abra-o. Experimente o modo demonstração uma vez, para conhecer o painel antes do dia."],
+        ["18:15", "Ligar o OBS", "Ligue o obs-websocket. O Hallstream monta a cena, o grafismo e a câmara."],
+        ["18:30", "Escolher o jogo", "Escolha o jogo de hoje na sua lista, escrito à mão, importado ou trazido da federação."],
+        ["18:55", "Entrar em direto", "O Hallstream cria o direto no YouTube. Ponha a abertura no ecrã enquanto as equipas aquecem."]
+      ]
+    },
+    "tipoff": "Antes do salto inicial."
+  },
+  "consoles": {
+    "title": "Consolas compatíveis: que placards o Hallstream lê",
+    "ogTitle": "Consolas compatíveis",
+    "description": "O Hallstream lê os placards Stramatel através da Stramatel Stream Box, por Bluetooth, testado em jogos de basquetebol a sério. Qualquer pavilhão pode marcar o resultado num telemóvel.",
+    "crumbHome": "Hallstream",
+    "crumbGuides": "Guias",
+    "h1": "Consolas compatíveis",
+    "answer": "O Hallstream lê o resultado, o relógio, as faltas e os descontos de tempo dos placards Stramatel através da Stramatel Stream Box, por Bluetooth, e isso está testado em jogos de basquetebol a sério. Um pavilhão sem consola compatível pode marcar o resultado num telemóvel na mesa de marcação. As consolas Daktronics AllSport, Fair-Play e Bodet, por porta série RS-232, estão no plano de trabalho.",
+    "checked": "Verificado a 24 de novembro de 2026.",
+    "photoPlaceholder": "Fotografia: uma consola Stramatel e a Stream Box",
+    "photoPlaceholderLabel": "uma fotografia de uma consola Stramatel e da Stream Box",
+    "tableH2": "Consola a consola",
+    "cols": ["Consola", "Ligação", "Modalidades", "Estado"],
+    "rows": [
+      ["Placards Stramatel, através da Stramatel Stream Box", "Bluetooth", "Basquetebol", "tested"],
+      ["Stramatel Stream Box, modos de andebol, voleibol e hóquei", "Bluetooth", "Andebol, voleibol, hóquei", "ready"],
+      ["Daktronics AllSport", "Porta série RS-232", "Por confirmar", "wanted"],
+      ["Fair-Play", "Porta série RS-232", "Por confirmar", "wanted"],
+      ["Bodet", "Porta série RS-232", "Por confirmar", "wanted"],
+      ["Qualquer consola, ou nenhuma: um telemóvel na mesa de marcação, na página /marcar", "O browser do telemóvel", "Basquetebol. Outras modalidades quando saírem.", "tested"]
+    ],
+    "status": {
+      "tested": "Testado num jogo a sério",
+      "ready": "Descodificador pronto, falta um jogo gravado",
+      "wanted": "Pedido, ainda não começado"
+    },
+    "missingH2": "A sua consola não está na lista?",
+    "missing": "O Hallstream aprende uma consola lendo o que ela envia durante um jogo. Para acrescentar uma, quem contribui precisa de saber a marca, o modelo e como se liga, e mais tarde de uma gravação de uma sessão real para testar o descodificador. O plano de trabalho inclui um modo de captura que grava a sessão diretamente da consola. Até lá, abra um pedido com os dados abaixo. Os modos de andebol, voleibol e hóquei da Stream Box precisam cada um de um jogo gravado antes de contarem como testados.",
+    "stepsBefore": "Abra um pedido no",
+    "stepsLink": "GitHub",
+    "stepsAfter": "com a marca e o modelo da consola.",
+    "steps": [
+      "Diga como se liga (Bluetooth, porta série, ou uma caixa pelo meio) e que modalidades o seu pavilhão usa nela.",
+      "Mais tarde, quando o modo de captura sair, grave um jogo e junte o ficheiro ao pedido."
+    ],
+    "relatedH2": "Guias relacionados",
+    "relatedScore": "De onde vem o resultado: consola ou telemóvel"
+  },
+  "privacy": {
+    "title": "Privacidade",
+    "description": "O que o hallstream.com e a aplicação Hallstream recolhem: contagens de visitas sem cookies no site e, na aplicação, só aquilo a que a ligar.",
+    "h1": "Privacidade",
+    "intro": "Este site não usa cookies e não guarda nada no seu browser. Atualizado a 24 de novembro de 2026.",
+    "siteH2": "Neste site",
+    "site": "O Vercel Web Analytics conta as visitas. Regista a página, o site de onde veio, o país, e o tipo de browser e de dispositivo. Reconhece uma visita por um hash do pedido que a Vercel apaga ao fim de 24 horas, e não usa cookies. Não há Google Analytics nem publicidade.",
+    "siteLink": "Os detalhes da Vercel",
+    "hosting": "O site está alojado na Vercel, que guarda os registos habituais do servidor (endereço IP, hora, página) para manter e proteger o serviço.",
+    "appH2": "Na aplicação",
+    "app": "A aplicação não tem conta. Corre no computador do pavilhão e guarda as definições do clube, os plantéis, os jogos e os registos na sua própria pasta, ao lado do programa.",
+    "appSends": "Liga-se a outros serviços só quando os configura:",
+    "appList": [
+      "O YouTube, quando inicia sessão para criar os diretos.",
+      "Os dados da Federação Portuguesa de Basquetebol, através do calendariofpb.pt, quando um clube português escolhe trazer daí os plantéis e os jogos.",
+      "O OBS, no mesmo computador ou na mesma rede, por obs-websocket."
+    ],
+    "logs": "Uma versão compilada com um token de envio também manda os registos de cada jogo para o calendariofpb.pt quando a transmissão termina: o que a consola enviou, o resultado ao longo do jogo, o registo do próprio programa e os dispositivos Bluetooth que ouviu durante a procura. Uma versão sem o token não envia nada e escreve isso no registo.",
+    "phone": "O painel de controlo e a página de marcação abrem num telemóvel na rede wifi do pavilhão. Esse tráfego fica na rede local e pede o PIN.",
+    "questionsH2": "Dúvidas",
+    "questions": "Abra um pedido no",
+    "questionsLink": "GitHub"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "Esta página não existe no hallstream.com.",
+    "h1": "Página não encontrada",
+    "body": "Esta página não está aqui. O link pode ser antigo ou ter uma gralha.",
+    "home": "Ir para a página inicial"
+  }
+}

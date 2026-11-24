@@ -1,0 +1,117 @@
+---
+// The "Supported consoles" guide, from Guide-Consoles.dc.html. The opening
+// paragraph is the direct answer and has to stand alone when quoted.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Placeholder from "@/components/Placeholder.astro";
+import RuleHead from "@/components/RuleHead.astro";
+import StatusMark from "@/components/StatusMark.astro";
+import { t } from "@/i18n";
+import { path, type Lang } from "@/i18n/routes";
+import { pageDates } from "@/data/pageDates";
+import { product } from "@/data/links";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = t(lang).consoles;
+type Status = keyof typeof c.status;
+const here = path("consoles", lang);
+const dates = pageDates[here];
+
+const schema = [
+  {
+    "@type": "TechArticle",
+    headline: c.ogTitle,
+    description: c.description,
+    inLanguage: lang === "pt" ? "pt-PT" : "en",
+    url: new URL(here, Astro.site).href,
+    datePublished: dates.published,
+    dateModified: dates.modified,
+    author: { "@type": "Person", name: "kauredo", url: "https://github.com/kauredo" },
+    about: { "@type": "SoftwareApplication", name: "Hallstream", operatingSystem: "Windows" },
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: c.crumbHome, item: new URL(path("home", lang), Astro.site).href },
+      { "@type": "ListItem", position: 2, name: c.h1, item: new URL(here, Astro.site).href },
+    ],
+  },
+];
+---
+
+<BaseLayout lang={lang} route="consoles" title={c.title} description={c.description} og={`consoles-${lang}.png`} type="article" schema={schema}>
+  <article>
+    <section class="wrap page-top">
+      <nav aria-label="Breadcrumb">
+        <p class="crumbs"><a href={path("home", lang)}>{c.crumbHome}</a> <span aria-hidden="true">/</span> {c.crumbGuides}</p>
+      </nav>
+      <div class="tt"></div>
+      <h1 class="display page-h1">{c.h1}</h1>
+      <div class="lead-grid">
+        <div>
+          <p class="answer">{c.answer}</p>
+          <p class="checked muted">{c.checked}</p>
+        </div>
+        <Placeholder lang={lang} text={c.photoPlaceholder} label={c.photoPlaceholderLabel} ratio="3/2" class="mt28" />
+      </div>
+    </section>
+
+    <section class="wrap psec" aria-labelledby="consoles">
+      <RuleHead id="consoles">{c.tableH2}</RuleHead>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th scope="col" style="width:32%">{c.cols[0]}</th>
+            <th scope="col" style="width:18%">{c.cols[1]}</th>
+            <th scope="col" style="width:22%">{c.cols[2]}</th>
+            <th scope="col">{c.cols[3]}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            c.rows.map(([name, link, sports, status]) => (
+              <tr>
+                <th scope="row">{name}</th>
+                <td data-label={c.cols[1]}>{link}</td>
+                <td data-label={c.cols[2]} class:list={{ muted: status === "wanted" }}>{sports}</td>
+                <td data-label={c.cols[3]}>
+                  <StatusMark kind={status as Status} />
+                  {c.status[status as Status]}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+      <ul class="legend muted" aria-hidden="true">
+        {
+          (Object.keys(c.status) as Status[]).map((k) => (
+            <li>
+              <StatusMark kind={k} />
+              {c.status[k]}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="wrap psec" aria-labelledby="not-listed">
+      <RuleHead id="not-listed">{c.missingH2}</RuleHead>
+      <p class="prose">{c.missing}</p>
+      <ol class="lined">
+        <li>{c.stepsBefore} <a href={product.issues}>{c.stepsLink}</a> {c.stepsAfter}</li>
+        {c.steps.map((step) => <li>{step}</li>)}
+      </ol>
+    </section>
+
+    <section class="wrap psec psec--last" aria-labelledby="related">
+      <RuleHead id="related">{c.relatedH2}</RuleHead>
+      <ul class="lined" style="margin-top:18px">
+        <li><a href={`${path("home", lang)}#score-source`}>{c.relatedScore}</a></li>
+        <li class="muted">{t(lang).common.footer.cameras}</li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>

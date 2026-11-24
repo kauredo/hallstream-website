@@ -1,0 +1,20 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { t } from "@/i18n";
+import { path, type Lang } from "@/i18n/routes";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const n = t(lang).notFound;
+---
+
+<BaseLayout lang={lang} route="notFound" title={`${n.title} | Hallstream`} description={n.description} og={`home-${lang}.png`}>
+  <section class="wrap page-top psec--last">
+    <div class="tt"></div>
+    <h1 class="display page-h1">{n.h1}</h1>
+    <p class="answer">{n.body}</p>
+    <p class="mt24"><a href={path("home", lang)}>{n.home}</a></p>
+  </section>
+</BaseLayout>

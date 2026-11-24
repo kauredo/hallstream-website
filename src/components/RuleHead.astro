@@ -1,0 +1,13 @@
+---
+// A section head: the double rule for a major section, the single rule for a
+// minor one, then the heading.
+interface Props {
+  rule?: "double" | "single";
+  id?: string;
+  as?: "h1" | "h2";
+}
+const { rule = "single", id, as: Tag = "h2" } = Astro.props;
+---
+
+<div class={rule === "double" ? "tt" : "r1"}></div>
+<Tag class="h2" id={id}><slot /></Tag>

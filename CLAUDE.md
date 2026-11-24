@@ -1,0 +1,31 @@
+# Hallstream website
+
+Astro 5 static site for hallstream.com. The app is `../app` (its own repo, `kauredo/hallstream`); the brand package is `../marketing/brand/hallstream-brand/`. Never edit either from here.
+
+## Commands
+
+- `npm run build` must be clean. Then `npm test` (`node --experimental-strip-types --test`) and `npm run check:links`, which fails on any internal link or asset in `dist/` that does not resolve.
+- Bump a page's `modified` in `src/data/pageDates.ts` when its content changes. The sitemap's lastmod, the article meta tags and the TechArticle JSON-LD read it.
+- `npm run og` re-renders `public/og/*.png` after a title changes. `node scripts/crops.mjs` re-cuts the phone crops after a screenshot changes.
+- Every URL ends in a slash (`trailingSlash: "always"`). Internal links and JSON-LD URLs use the slash form.
+
+## Where the truth is
+
+- What the product does: `../app/README.md`, `../app/docs/ROADMAP.md` and `../app/docs/CONTRACT.md`. The site states only what ships. Other sports, macOS and Linux, more cameras, serial consoles, signed releases and the English interface are "coming".
+- Every string lives in `src/i18n/en.json` and `src/i18n/pt.json`. Both are written by hand; pt is European Portuguese, in the app's own words (consola, caixa, mesa de marcação, desconto de tempo). A test fails when the two files have different keys or a string has an em dash.
+- `src/i18n/routes.ts` is the one list of pages in both languages. The language switch, hreflang and canonical read it.
+- `src/data/links.ts` holds every outbound link; the footer's cross-links get the utm parameters there.
+- The design came from canvas boards (Main, Guide-Consoles, Vs, OG-Home, OG-Guide). Tokens are in `src/styles/global.css`: Soalho ground, Marcador ink, Lâmpada only on lit things (the colon, the focus ring), Lâmpada funda for accent text on Soalho, Soalho claro as the one raised band. Download buttons are Soalho or Marcador, never Lâmpada.
+
+## Copy rules
+
+- `~/.claude/writing-style.md` tier 2 on every string, both languages. No em dashes, no invented numbers.
+- Guides open with a direct-answer paragraph that stands alone when quoted.
+- A vs page needs a source and a checked date for every fact about the alternative (`docs/vs-pages.md`). No placeholder goes live, and the footer does not link a vs page until one exists.
+- EN pages show the Portuguese app UI with the caption "The app is in Portuguese for now; English is next." Recapture the screenshots in English once the app ships `en.json`.
+
+## Releases and deploys
+
+The build reads the latest release of `kauredo/hallstream` (`src/utils/github.ts`, `assets.ts`, `release.ts`). The app's `build.sh` uploads `Hallstream-<version>.zip`, which `parseAssets` reads as the Windows download. With no release, `fallback.ts` points the button at the releases page and the note says the first release is coming. A push to `main` deploys on Vercel; a deploy hook in the app's release workflow, so a release rebuilds the site, is still to add.
+
+Conventional commits. Stage files by name.

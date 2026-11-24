@@ -1,0 +1,36 @@
+---
+// Links to the same page in the other language. `long` spells the names
+// (the footer); the masthead uses PT and EN. PT comes first in both
+// languages, as the design shows.
+import { t } from "@/i18n";
+import { path, htmlLang, type Lang, type RouteId } from "@/i18n/routes";
+interface Props {
+  lang: Lang;
+  route: RouteId;
+  long?: boolean;
+}
+const { lang, route, long = false } = Astro.props;
+const s = t(lang).common.lang;
+const label = (code: Lang) => (code === lang ? (long ? s.name : s.short) : long ? s.otherName : s.otherShort);
+const order: Lang[] = ["pt", "en"];
+// A missing page has no twin, so its switch goes to the other home page.
+const target: RouteId = route === "notFound" ? "home" : route;
+---
+
+<ul class="lang" aria-label={s.label}>
+  {
+    order.map((code) =>
+      code === lang ? (
+        <li class="lang-on">
+          <span aria-current="page">{label(code)}</span>
+        </li>
+      ) : (
+        <li>
+          <a href={path(target, code)} lang={htmlLang[code]} hreflang={htmlLang[code]}>
+            {label(code)}
+          </a>
+        </li>
+      ),
+    )
+  }
+</ul>

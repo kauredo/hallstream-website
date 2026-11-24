@@ -1,0 +1,79 @@
+---
+// The ink footer. The home page passes its back cover (running order, the
+// 0:0 and the download) through the slot; every other page gets the short
+// download band.
+import Lockup from "./Lockup.astro";
+import LangSwitch from "./LangSwitch.astro";
+import DownloadButton from "./DownloadButton.astro";
+import { t } from "@/i18n";
+import { path, type Lang, type RouteId } from "@/i18n/routes";
+import { maker, product } from "@/data/links";
+import { getDownload } from "@/utils/release";
+interface Props {
+  lang: Lang;
+  route: RouteId;
+}
+const { lang, route } = Astro.props;
+const s = t(lang).common;
+const f = s.footer;
+const dl = await getDownload();
+const hasSlot = Astro.slots.has("default");
+---
+
+<footer class="dk">
+  <div class="wrap" style="padding-top:72px">
+    {
+      hasSlot ? (
+        <slot />
+      ) : (
+        <div class="dlband">
+          <p class="display cta">{s.cta}</p>
+          <div>
+            <DownloadButton lang={lang} note="short" />
+          </div>
+        </div>
+      )
+    }
+
+    <p class="contribute">{f.contribute} <a href={product.github}>{f.contributeLink}</a>.</p>
+
+    <div class="maker-block">
+      <p class="foot-h">{f.maker}</p>
+      <ul class="maker">
+        {
+          maker.map((m) => (
+            <li>
+              <a href={m.href}>{m.name}</a>{m.note && f[m.note]}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="foot">
+      <div>
+        <p class="foot-h">{f.product}</p>
+        <ul>
+          <li><a href={dl.url}>{f.downloadLink}</a></li>
+          <li><a href={product.github}>{f.github}</a></li>
+          <li><a href={product.issues}>{f.issues}</a></li>
+          <li><a href={product.releases}>{f.releases}</a></li>
+          <li><a href={path("privacy", lang)}>{f.privacy}</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">{f.guides}</p>
+        <ul>
+          <li><a href={path("consoles", lang)}>{f.consoles}</a></li>
+          <li class="soon">{f.cameras}</li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">{f.language}</p>
+        <LangSwitch lang={lang} route={route} long />
+      </div>
+      <Lockup lang={lang} class="foot-mark" />
+    </div>
+    <p class="licence">{f.licence}</p>
+  </div>
+</footer>

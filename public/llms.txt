@@ -1,0 +1,42 @@
+# Hallstream
+
+> A free, open-source Windows app that streams a basketball club's home games to YouTube, with broadcast graphics that take the score from the hall's scoreboard console or from a phone at the scorer's table.
+
+Hallstream is early. It works today for basketball, on Windows, with one camera. The app's interface is in European Portuguese; English is next. It has no published release yet: the first one will appear on GitHub Releases.
+
+## What it does today
+
+- Reads the score, clock, fouls and timeouts from a Stramatel scoreboard through the Stramatel Stream Box, over Bluetooth. Tested on real basketball games.
+- Lets someone keep the score on a phone held sideways at the scorer's table (the /marcar page) when the hall has no supported console, or when the console drops out mid-game.
+- Draws the graphics as an OBS browser source: score bug, player and commentator lower thirds, opener, time-out, half-time, final result, sponsors, next game and "we'll be right back", in the club's colours.
+- Five looks for the score bug: Clássico, Lombada, Cor do Clube, Placa Esmaltada and Chão do Pavilhão. Six positions, 85% to 125% size.
+- Sets up OBS Studio (31 or later) over obs-websocket: the scene, the overlay and the camera. OBS does the encoding.
+- Creates the YouTube live broadcast with its title and thumbnail, and makes the video unlisted after the game.
+- A control panel in the browser on the hall PC, or on a phone on the same wifi with a PIN.
+- Squads and fixtures typed in or imported from CSV. Portuguese basketball clubs can pull both from the federation (FPB).
+- Keeps working offline after the first load. A demo mode plays an invented game with no console.
+- No account. Free, under AGPL-3.0.
+
+## Not shipped yet
+
+- macOS and Linux builds
+- More than one camera
+- Futsal, handball, volleyball and soccer
+- More consoles over serial RS-232 (Daktronics AllSport, Fair-Play, Bodet)
+- Signed releases
+- An English interface
+
+## Pages
+
+- [Home](https://hallstream.com/): what Hallstream does, where the score comes from, the five on-air looks and a game-day running order.
+- [Supported consoles](https://hallstream.com/guides/supported-consoles/): which scoreboards Hallstream reads, console by console, with each one's status.
+- [Privacy](https://hallstream.com/privacy/): what the site and the app collect.
+- The same pages in European Portuguese: https://hallstream.com/pt/, https://hallstream.com/pt/guides/supported-consoles/, https://hallstream.com/pt/privacy/
+
+## Links
+
+- Website: https://hallstream.com
+- GitHub: https://github.com/kauredo/hallstream
+- Releases: https://github.com/kauredo/hallstream/releases
+- Issues: https://github.com/kauredo/hallstream/issues
+- Created by kauredo (https://github.com/kauredo)
