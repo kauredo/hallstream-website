@@ -18,10 +18,11 @@
     },
     "download": {
       "button": "Download for Windows",
+      "follow": "Follow the first release on GitHub",
       "released": "Free, open source. Version {version}, {size}, from GitHub Releases.",
       "releasedShort": "Free, open source. Version {version}, {size}.",
-      "none": "First release coming soon.",
-      "noneLink": "Follow it on GitHub",
+      "none": "Free and open source, for Windows. The first release isn't out yet.",
+      "smartScreen": "Windows may say the app is from an unknown publisher. Click More info, then Run anyway.",
       "notWindows": "Hallstream runs on Windows. macOS and Linux builds are coming."
     },
     "ptNote": "The app is in Portuguese for now; English is next.",
@@ -52,14 +53,28 @@
     "coverAlt": "Hallstream on air: the Clássico score bug and a player lower third over a basketball court",
     "coverCaption": "On air with the Clássico look: the score bug, and a lower third for the player who just scored.",
     "lede": "One person runs it on the hall's PC. It reads the score from your scoreboard console, draws the graphics in your club's colours, and sets up OBS and the YouTube broadcast. There's no account to make, and no tracking.",
+    "source": {
+      "h2": "Where the score comes from",
+      "intro": "Hallstream reads the score from the hall's console when there is one. A phone at the scorer's table covers every other case.",
+      "consoleH3": "From the hall's console",
+      "console": "A Stramatel Stream Box, paired over Bluetooth. Score, clock, fouls and timeouts arrive on their own.",
+      "consoleLink": "Supported consoles",
+      "phoneH3": "From a phone at the scorer's table",
+      "phone": "Held sideways, on the scoring page. It also takes over if the console drops out mid-game.",
+      "scorerAlt": "The phone scoring page held landscape, with points, clock, fouls and timeouts, and the clock running",
+      "scorerCaption": "The scoring page with the clock running. Points, fouls and timeouts are one tap each.",
+      "youthAlt": "A youth basketball game in a sports hall, a coach with the ball and parents on the benches"
+    },
     "does": {
       "h2": "What it does",
       "rows": [
         ["Score", "Reads the score, clock, fouls and timeouts from the hall's Stramatel Stream Box over Bluetooth. The score bug follows the scoreboard."],
         ["Graphics", "Score bug, player and commentator lower thirds, opener, time-out, half-time, final result, sponsors, next game and \"we'll be right back\", in your club's colours."],
-        ["Panel", "Switch screens from the browser on the hall PC, or from any phone on the same wifi with a PIN."],
-        ["OBS", "OBS Studio, the free streaming app, does the encoding. Install version 31 or later first. Hallstream sets it up over obs-websocket, with the scene, the overlay and the camera."],
         ["YouTube", "Creates the live broadcast with its title and thumbnail. After the game it makes the video unlisted, so it stays at its link and off your channel's front page."],
+        ["Panel", "Switch screens from the browser on the hall PC, or from any phone on the same wifi with a PIN."]
+      ],
+      "more": [
+        ["OBS", "OBS Studio, the free streaming app, does the encoding. Install version 31 or later first. Hallstream sets it up over obs-websocket, with the scene, the overlay and the camera."],
         ["Squads and fixtures", "Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation. The next fixture fills the \"next game\" screen."],
         ["Offline", "After the first load, the graphics, the panel and the scoring page keep working if the hall's internet goes."],
         ["Demo mode", "Plays an invented game with no console attached, so you can learn it at home before Saturday."],
@@ -68,40 +83,21 @@
       "licenceTerm": "Licence",
       "licence": "Free and open source under AGPL-3.0. The code is on",
       "licenceLink": "GitHub",
-      "laterH3": "Coming later",
-      "laterIntro": "Today Hallstream is a Windows app for basketball. These are on the way and not shipped yet:",
-      "later": [
-        "macOS and Linux builds",
-        "More than one camera",
-        "Futsal, handball, volleyball and soccer",
-        "More consoles, over serial",
-        "Signed releases"
-      ],
-      "panelAlt": "The control panel's on-air appearance settings, with a live preview of the overlay and the list of looks",
-      "panelCaption": "The control panel, on the \"Aparência no ar\" settings. The preview changes as you go.",
-      "phonePlaceholder": "Screenshot: the control panel on a phone, switching to half-time",
-      "phonePlaceholderLabel": "a screenshot of the control panel on a phone"
-    },
-    "source": {
-      "h2": "Where the score comes from",
-      "intro": "Hallstream reads the score from the hall's console when there is one. A phone at the scorer's table covers every other case.",
-      "consoleH3": "From the hall's console",
-      "console": "A Stramatel Stream Box, paired over Bluetooth. Score, clock, fouls and timeouts arrive on their own.",
-      "consoleLink": "Supported consoles",
-      "consolePlaceholder": "Photo: the hall's scoreboard console and the Stream Box",
-      "consolePlaceholderLabel": "a photo of the hall's scoreboard console and the Stream Box",
-      "phoneH3": "From a phone at the scorer's table",
-      "phone": "Held sideways, on the scoring page. It also takes over if the console drops out mid-game.",
-      "scorerAlt": "The phone scoring page held landscape, with points, clock, fouls and timeouts, and the clock running",
-      "scorerCaption": "The scoring page with the clock running. Points, fouls and timeouts are one tap each."
+      "panelAlt": "The control panel's list of on-air looks: Clássico, Lombada, Cor do Clube, Placa Esmaltada and Chão do Pavilhão, each with a one-line description",
+      "panelCaption": "The look picker in the control panel, under \"Aparência no ar\"."
     },
     "air": {
       "h2": "On air",
       "intro": "Five looks for the score bug. Pick one in the control panel.",
-      "bugAlt": "The {name} score bug over a court",
-      "options": "Put the bug in any of six places along the top or bottom of the picture, at 85% to 125% size, with your club's accent colours and a photo of your hall.",
-      "finalAlt": "The final result screen in the Cor do Clube look",
-      "final": "The final result in the Cor do Clube look, with the score by quarter and the sponsors along the bottom."
+      "looksLabel": "Score bug looks",
+      "looks": [
+        ["classico", "Clássico", "classic", "The Clássico score bug and a player lower third over a court", ""],
+        ["placa", "Placa Esmaltada", "enamel plate", "The Placa Esmaltada score bug over a court", ""],
+        ["lombada", "Lombada", "spine", "The Lombada score bug over a court", ""],
+        ["pavilhao", "Chão do Pavilhão", "hall floor", "The Chão do Pavilhão score bug over a court", ""],
+        ["cor-final", "Cor do Clube", "club colour", "The final result screen in the Cor do Clube look", "The final result in the Cor do Clube look, with the score by quarter and the sponsors along the bottom."]
+      ],
+      "options": "Put the bug in any of six places along the top or bottom of the picture, at 85% to 125% size, with your club's accent colours and a photo of your hall."
     },
     "order": {
       "h2": "Running order",
@@ -111,9 +107,20 @@
         ["18:15", "Connect OBS", "Turn on obs-websocket. Hallstream builds the scene, the overlay and the camera."],
         ["18:30", "Pick the game", "Choose tonight's fixture from your list, typed in, imported or pulled from the federation."],
         ["18:55", "Go live", "Hallstream creates the YouTube broadcast. Put the opener on screen while the teams warm up."]
-      ]
+      ],
+      "tip": ["19:00", "Tip-off"]
     },
-    "tipoff": "Before tip-off."
+    "later": {
+      "h2": "Coming later",
+      "intro": "Today Hallstream is a Windows app for basketball. These are on the way and not shipped yet:",
+      "items": [
+        "macOS and Linux builds",
+        "More than one camera",
+        "Futsal, handball, volleyball and soccer",
+        "More consoles, over serial",
+        "Signed releases, so Windows stops warning when you open it"
+      ]
+    }
   },
   "consoles": {
     "title": "Supported consoles: which scoreboards Hallstream reads",

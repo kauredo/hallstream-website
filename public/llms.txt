@@ -23,7 +23,7 @@ Hallstream is early. It works today for basketball, on Windows, with one camera.
 - More than one camera
 - Futsal, handball, volleyball and soccer
 - More consoles over serial RS-232 (Daktronics AllSport, Fair-Play, Bodet)
-- Signed releases
+- Signed releases, so Windows stops warning when you open it
 - An English interface
 
 ## Pages

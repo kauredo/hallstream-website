@@ -1,13 +1,14 @@
 ---
-// The home page, from the canvas board Main.dc.html: the cover, What it
-// does, Where the score comes from, On air, then the back cover (Running
-// order, the 0:0 and the download) inside the footer.
+// The home page, "Tuned in": a Marcador band with the ticking score, the h1
+// and the download, the real on-air frame uncovered under it, then Where the
+// score comes from (Soalho), What it does (calmed maple with a painted
+// court), On air and Running order (Marcador) and Coming later. The closing
+// download and the footer come from the layout.
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DownloadButton from "@/components/DownloadButton.astro";
 import Shot from "@/components/Shot.astro";
-import Placeholder from "@/components/Placeholder.astro";
-import RuleHead from "@/components/RuleHead.astro";
-import { t, fill } from "@/i18n";
+import Tick from "@/components/Tick.astro";
+import { t } from "@/i18n";
 import { path, type Lang } from "@/i18n/routes";
 import { product } from "@/data/links";
 import { getDownload } from "@/utils/release";
@@ -21,13 +22,14 @@ const h = s.home;
 const note = s.common.ptNote;
 const dl = await getDownload();
 
-const bugs = [
-  ["classico", "Clássico"],
-  ["lombada", "Lombada"],
-  ["cor", "Cor do Clube"],
-  ["placa", "Placa Esmaltada"],
-  ["pavilhao", "Chão do Pavilhão"],
-];
+// The large On air frame opens on a look other than the hero's.
+const firstLook = 1;
+const frame = (file: string) => ({
+  src: `/images/onair-${file}.jpg`,
+  srcset: `/images/onair-${file}-960.jpg 960w, /images/onair-${file}.jpg 1920w`,
+});
+const segments = Array.from({ length: 36 }, (_, i) => i);
+const isTime = (v: string) => /^\d\d:\d\d$/.test(v);
 
 const schema = [
   {
@@ -44,139 +46,220 @@ const schema = [
     downloadUrl: dl.url,
     ...(dl.version ? { softwareVersion: dl.version } : {}),
     codeRepository: product.github,
-    screenshot: new URL("/images/overlay-classico.jpg", Astro.site).href,
+    screenshot: new URL("/images/onair-classico.jpg", Astro.site).href,
     author: { "@type": "Person", name: "kauredo", url: "https://github.com/kauredo" },
   },
 ];
 ---
 
-<BaseLayout lang={lang} route="home" title={h.title} description={h.description} og={`home-${lang}.png`} schema={schema} cover>
-  <Fragment slot="cover">
-    <div class="tt" style="margin-top:28px"></div>
-    <h1 class="display cover-h1">{h.h1}</h1>
-    <div class="cover">
-      <figure>
-        <Shot src="/images/overlay-classico.jpg" phone="/images/overlay-classico-phone.jpg" alt={h.coverAlt} width={1600} height={900} ratio="16/9" frameClass="fr-cover" eager />
-        <figcaption class="cover-cap">
-          <svg viewBox="40 52 17 25" width="10" height="15" aria-hidden="true"><path d="M45.45315,52.98381h8.15383c1.35097,0 2.27269,1.09518 2.05872,2.44615l-2.48989,15.72058c-0.42795,2.70194 -2.96522,4.8923 -5.66716,4.8923h-3.26153c-2.70194,0 -4.54538,-2.19035 -4.11743,-4.8923l2.48989,-15.72058c0.21397,-1.35097 1.48261,-2.44615 2.83358,-2.44615z" fill="#E5482A"></path></svg>
-          <span>{h.coverCaption}</span>
-        </figcaption>
-      </figure>
-      <div class="cover-side">
-        <p class="lede">{h.lede}</p>
+<BaseLayout lang={lang} route="home" title={h.title} description={h.description} og={`home-${lang}.png`} schema={schema}>
+  <svg width="0" height="0" class="sprite" aria-hidden="true">
+    <symbol id="colon" viewBox="262 205 70 168">
+      <path fill-rule="evenodd" d="M314.88829,207.90555c8.39175,0 14.11716,6.80286 12.78803,15.19464l-6.70637,42.34237c-0.66456,4.19588 -4.60472,7.59732 -8.80062,7.59732h-25.3244c-4.19588,0 -7.05857,-3.40144 -6.39404,-7.59732l6.70637,-42.34237c1.32912,-8.39175 9.20947,-15.19464 17.60122,-15.19464zM308.15835,298.3643c4.19588,0 7.05857,3.40144 6.39404,7.59732l-7.73319,48.82543c-1.32912,8.39175 -9.20947,15.19464 -17.60122,15.19464h-10.12976c-8.39175,0 -14.11716,-6.80286 -12.78803,-15.19464l7.73319,-48.82543c0.66456,-4.19588 4.60472,-7.59732 8.80062,-7.59732z"></path>
+    </symbol>
+  </svg>
+
+  <section class="dk hero" aria-labelledby="h1">
+    <div class="band">
+      <div class="wrap band__row">
+        <Tick class="band__tick" />
+        <h1 id="h1" class="display">{h.h1}</h1>
         <DownloadButton lang={lang} />
       </div>
     </div>
-  </Fragment>
+    <picture>
+      <source media="(max-width: 600px)" srcset="/images/onair-classico-phone.jpg" width="864" height="1080" />
+      <img class="hero__frame" {...frame("classico")} sizes="(max-width: 1440px) 100vw, 1440px" alt={h.coverAlt} width="1920" height="1080" fetchpriority="high" decoding="async" />
+    </picture>
+  </section>
+  <div class="dk">
+    <div class="wrap hero__after">
+      <p class="lede">{h.lede}</p>
+      <p class="aircap"><svg aria-hidden="true"><use href="#colon"></use></svg>{h.coverCaption}</p>
+    </div>
+  </div>
 
-  <section class="wrap sec" aria-labelledby="what-it-does">
-    <RuleHead rule="double" id="what-it-does">{h.does.h2}</RuleHead>
-    <div class="does">
-      <dl class="rows">
-        {
-          h.does.rows.map(([term, text]) => (
-            <div class="row">
-              <dt>{term}</dt>
-              <dd>{text}</dd>
-            </div>
-          ))
-        }
-        <div class="row">
-          <dt>{h.does.licenceTerm}</dt>
-          <dd>{h.does.licence} <a href={product.github}>{h.does.licenceLink}</a>.</dd>
+  <section class="source" id="score-source" aria-labelledby="score-source-h">
+    <div class="wrap">
+      <div class="segrow" aria-hidden="true">
+        {segments.map((i) => <svg class="seg" style={`--i:${i}`}><use href="#colon"></use></svg>)}
+      </div>
+      <div class="source__open">
+        <h2 id="score-source-h" class="display h2">{h.source.h2}</h2>
+        <p class="intro">{h.source.intro}</p>
+      </div>
+      <div class="ways">
+        <div class="way">
+          <h3 class="h3">{h.source.consoleH3}</h3>
+          <p>{h.source.console}</p>
+          <p><a href={path("consoles", lang)}>{h.source.consoleLink}</a></p>
         </div>
-      </dl>
-
-      <div>
-        <h3 class="later-h3">{h.does.laterH3}</h3>
-        <p class="later-intro">{h.does.laterIntro}</p>
-        <ul class="later">
-          {h.does.later.map((item) => <li>{item}</li>)}
-        </ul>
-
-        <figure style="margin-top:40px">
-          <Shot src="/images/panel-aparencia.jpg" phone="/images/panel-aparencia-phone.jpg" alt={h.does.panelAlt} width={1600} height={1085} ratio="1600/1085" frameClass="fr-panel" ink />
-          <figcaption class="cap">{h.does.panelCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
-        </figure>
-        <Placeholder lang={lang} text={h.does.phonePlaceholder} label={h.does.phonePlaceholderLabel} ratio="16/5" class="mt24" />
+        <div class="way">
+          <h3 class="h3">{h.source.phoneH3}</h3>
+          <p>{h.source.phone}</p>
+        </div>
       </div>
+      <figure class="youth">
+        <div class="youth__stage">
+        <picture>
+          <source media="(max-width: 600px)" srcset="/images/youth-game-phone.jpg" width="1080" height="810" />
+          <img class="youth__photo" src="/images/youth-game.jpg" srcset="/images/youth-game-1440.jpg 1440w, /images/youth-game.jpg 2880w" sizes="(max-width: 1440px) 100vw, 1344px" alt={h.source.youthAlt} width="2880" height="1927" loading="lazy" decoding="async" />
+        </picture>
+        <div class="youth__scorer">
+          <Shot src="/images/marcar.jpg" phone="/images/marcar-phone.jpg" alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/739" frameClass="fr-scorer" ink />
+        </div>
+        </div>
+        <figcaption class="cap">{h.source.scorerCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="wrap" style="padding-bottom:72px" aria-labelledby="score-source">
-    <RuleHead id="score-source">{h.source.h2}</RuleHead>
-    <p class="intro">{h.source.intro}</p>
-    <div class="fix">
+  <section class="wood" id="what-it-does" aria-labelledby="what-it-does-h">
+    <svg class="court" viewBox="0 0 1440 1100" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <rect class="court__key" x="976" y="354" width="464" height="392"></rect>
+      <path class="court__line" d="M1440 22H1201A540 540 0 0 0 1201 1078H1440M1440 354H976V746H1440M976 406A144 144 0 0 0 976 694"></path>
+    </svg>
+    <div class="wrap does">
       <div>
-        <h3 class="h3">{h.source.consoleH3}</h3>
-        <p>{h.source.console} <a href={path("consoles", lang)}>{h.source.consoleLink}</a></p>
-        <Placeholder lang={lang} text={h.source.consolePlaceholder} label={h.source.consolePlaceholderLabel} ratio="1600/740" class="mt24" />
+        <h2 id="what-it-does-h" class="display h2">{h.does.h2}</h2>
+        <dl class="spec">
+          {
+            h.does.rows.map(([term, text]) => (
+              <div>
+                <dt>{term}</dt>
+                <dd>{text}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <div class="more">
+          {
+            h.does.more.map(([term, text]) => (
+              <p>
+                <b>{term}.</b> {text}
+              </p>
+            ))
+          }
+          <p><b>{h.does.licenceTerm}.</b> {h.does.licence} <a href={product.github}>{h.does.licenceLink}</a>.</p>
+        </div>
       </div>
-      <div>
-        <h3 class="h3">{h.source.phoneH3}</h3>
-        <p>{h.source.phone}</p>
-        <figure style="margin-top:24px">
-          <Shot src="/images/marcar.jpg" phone="/images/marcar-phone.jpg" alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/740" frameClass="fr-scorer" ink />
-          <figcaption class="cap">{h.source.scorerCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
-        </figure>
-      </div>
+      <figure class="styles">
+        <div class="crop">
+          <img src="/images/panel-aparencia.jpg" alt={h.does.panelAlt} width="1600" height="1085" loading="lazy" decoding="async" />
+        </div>
+        <figcaption class="cap">{h.does.panelCaption}</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="on-air" aria-labelledby="on-air">
-    <div class="wrap" style="padding-top:56px;padding-bottom:72px">
-      <RuleHead id="on-air">{h.air.h2}</RuleHead>
-      <p class="intro">{h.air.intro}</p>
-      <div class="bugs">
+  <section class="dk onair" id="on-air" aria-labelledby="on-air-h">
+    <div class="wrap">
+      <div class="onair__open">
+        <h2 id="on-air-h" class="display h2">{h.air.h2}</h2>
+        <p class="intro">{h.air.intro}</p>
+      </div>
+      <figure class="screen">
+        <img id="screen" {...frame(h.air.looks[firstLook][0])} sizes="(max-width: 1440px) 100vw, 1344px" alt={h.air.looks[firstLook][3]} width="1920" height="1080" loading="lazy" decoding="async" />
+        <figcaption id="screen-cap" aria-live="polite">{h.air.looks[firstLook][4]}</figcaption>
+      </figure>
+      <ul class="looks" aria-label={h.air.looksLabel}>
         {
-          bugs.map(([file, name]) => (
-            <figure>
-              <img src={`/images/bug-${file}.png`} alt={fill(h.air.bugAlt, { name })} width="760" height="200" loading="lazy" decoding="async" />
-              <figcaption>{name}</figcaption>
-            </figure>
-          ))
+          h.air.looks.map(([file, name, gloss, alt, cap], i) => {
+            const f = frame(file);
+            return (
+              <li>
+                <button class="look" type="button" aria-pressed={i === firstLook ? "true" : "false"} data-src={f.src} data-srcset={f.srcset} data-alt={alt} data-cap={cap}>
+                  <span class="bug">
+                    <img src={`/images/bug-${file.replace("-final", "")}.png`} alt="" width="760" height="200" loading="lazy" decoding="async" />
+                  </span>
+                  <span class="look__name">
+                    {name}
+                    {gloss && <small lang="en"> ({gloss})</small>}
+                  </span>
+                </button>
+              </li>
+            );
+          })
         }
-        <p>{h.air.options}</p>
-      </div>
-      <div class="air2">
-        <Shot src="/images/overlay-cor-final.jpg" phone="/images/overlay-cor-final-phone.jpg" alt={h.air.finalAlt} width={1600} height={900} ratio="16/9" frameClass="fr-cor" ink />
-        <p>{h.air.final}</p>
-      </div>
+      </ul>
+      <p class="options">{h.air.options}</p>
     </div>
   </section>
 
-  <Fragment slot="back">
-    <section aria-labelledby="running-order">
-      <div class="tt"></div>
-      <h2 class="h2" id="running-order">{h.order.h2}</h2>
-      <p class="intro" style="font-size:17px">{h.order.intro}</p>
-      <ol class="ro-list">
+  <section class="dk order" id="running-order" aria-labelledby="running-order-h">
+    <div class="wrap">
+      <div class="sheet__head">
+        <h2 id="running-order-h" class="display h2">{h.order.h2}</h2>
+        <p>{h.order.intro}</p>
+      </div>
+      <ol class="run">
         {
-          h.order.steps.map(([time, title, text]) => (
-            <li class="ro">
-              <span class="ro-time">{time}</span>
-              <span>
-                <strong>{title}</strong>
-                {text}
-              </span>
+          h.order.steps.map(([when, title, text]) => (
+            <li>
+              {isTime(when) ? <time datetime={when}>{when}</time> : <span class="run__when">{when}</span>}
+              <h3>{title}</h3>
+              <p>{text}</p>
             </li>
           ))
         }
+        <li class="run__tip">
+          <time datetime={h.order.tip[0]}>{h.order.tip[0]}</time>
+          <h3>{h.order.tip[1]}</h3>
+        </li>
       </ol>
-    </section>
-
-    <div class="tt" style="margin-top:80px"></div>
-    <div class="back">
-      <div>
-        <p class="display cta">{s.common.cta}</p>
-        <div class="cta-row">
-          <DownloadButton lang={lang} note="short" inline />
-        </div>
-      </div>
-      <figure>
-        <p class="zero">0<span>:</span>0</p>
-        <figcaption>{h.tipoff}</figcaption>
-      </figure>
     </div>
-  </Fragment>
+  </section>
+
+  <section class="later" aria-labelledby="later-h">
+    <div class="wrap later__row">
+      <div>
+        <h2 id="later-h" class="h3">{h.later.h2}</h2>
+        <p>{h.later.intro}</p>
+      </div>
+      <ul>
+        {h.later.items.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  const motion = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+
+  // The score in the band: 0:0, then 1:0 with the 1 lit, then 2:1. It
+  // renders at 2:1, so this only runs when motion is welcome.
+  const tick = document.querySelector<SVGElement>(".tick--live");
+  if (tick && motion) {
+    let s = 0;
+    tick.dataset.s = "0";
+    const step = () => {
+      s = (s + 1) % 3;
+      tick.dataset.s = String(s);
+      setTimeout(step, s === 2 ? 5200 : 1300);
+    };
+    setTimeout(step, 1600);
+  }
+
+  // On air: each look switches the large frame.
+  const screen = document.getElementById("screen") as HTMLImageElement | null;
+  const cap = document.getElementById("screen-cap");
+  const looks = document.querySelectorAll<HTMLButtonElement>(".look");
+  if (screen && cap) {
+    for (const b of looks) {
+      b.addEventListener("click", () => {
+        for (const o of looks) o.setAttribute("aria-pressed", String(o === b));
+        const swap = () => {
+          screen.srcset = b.dataset.srcset ?? "";
+          screen.src = b.dataset.src ?? "";
+          screen.alt = b.dataset.alt ?? "";
+          cap.textContent = b.dataset.cap ?? "";
+          screen.classList.remove("swap");
+        };
+        if (motion) {
+          screen.classList.add("swap");
+          setTimeout(swap, 180);
+        } else swap();
+      });
+    }
+  }
+</script>

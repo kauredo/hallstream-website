@@ -1,0 +1,23 @@
+---
+// The closing download on every page: Soalho, the still 0:0 beside the
+// heading and the Marcador button, then a band of the brand pattern.
+import DownloadButton from "./DownloadButton.astro";
+import Tick from "./Tick.astro";
+import { t } from "@/i18n";
+import type { Lang } from "@/i18n/routes";
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<section class="close" aria-labelledby="close-h">
+  <div class="wrap close__row">
+    <Tick still class="close__tick" />
+    <div>
+      <h2 id="close-h" class="display h2">{t(lang).common.cta}</h2>
+      <DownloadButton lang={lang} note="short" tone="dark" />
+    </div>
+  </div>
+  <div class="pattern-band" aria-hidden="true"></div>
+</section>

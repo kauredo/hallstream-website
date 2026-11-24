@@ -11,10 +11,12 @@ const n = t(lang).notFound;
 ---
 
 <BaseLayout lang={lang} route="notFound" title={`${n.title} | Hallstream`} description={n.description} og={`home-${lang}.png`}>
-  <section class="wrap page-top psec--last">
-    <div class="tt"></div>
-    <h1 class="display page-h1">{n.h1}</h1>
-    <p class="answer">{n.body}</p>
-    <p class="mt24"><a href={path("home", lang)}>{n.home}</a></p>
+  <section class="dk page-top">
+    <div class="wrap">
+      <div class="tt"></div>
+      <h1 class="display page-h1">{n.h1}</h1>
+      <p class="answer">{n.body}</p>
+      <p class="mt24"><a href={path("home", lang)}>{n.home}</a></p>
+    </div>
   </section>
 </BaseLayout>

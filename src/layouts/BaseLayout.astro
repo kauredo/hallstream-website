@@ -2,6 +2,7 @@
 import "@/styles/global.css";
 import Masthead from "@/components/Masthead.astro";
 import Footer from "@/components/Footer.astro";
+import Closing from "@/components/Closing.astro";
 import { t } from "@/i18n";
 import { routes, path, htmlLang, ogLocale, other, type Lang, type RouteId } from "@/i18n/routes";
 import { pageDates } from "@/data/pageDates";
@@ -16,10 +17,9 @@ interface Props {
   og: string;
   type?: "website" | "article";
   schema?: Record<string, unknown>[];
-  cover?: boolean;
 }
 
-const { lang, route, title, description, og, type = "website", schema = [], cover = false } = Astro.props;
+const { lang, route, title, description, og, type = "website", schema = [] } = Astro.props;
 const indexed = routes[route].indexed;
 const site = Astro.site!;
 const here = path(route, lang);
@@ -84,21 +84,12 @@ const graph = [
   </head>
   <body>
     <a class="skip" href="#main">{s.skip}</a>
-    <Masthead lang={lang} route={route} cover={cover}>
-      <slot name="cover" />
-    </Masthead>
-    <main id="main" class:list={{ page: !cover }}>
+    <Masthead lang={lang} route={route} />
+    <main id="main" class:list={{ page: route !== "home" }}>
       <slot />
+      <Closing lang={lang} />
     </main>
-    {
-      Astro.slots.has("back") ? (
-        <Footer lang={lang} route={route}>
-          <slot name="back" />
-        </Footer>
-      ) : (
-        <Footer lang={lang} route={route} />
-      )
-    }
+    <Footer lang={lang} route={route} />
     <script>
       import { inject } from "@vercel/analytics";
       inject();
