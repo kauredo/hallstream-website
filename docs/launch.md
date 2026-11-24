@@ -10,7 +10,7 @@
 
 - [x] DNS at Cloudflare; both domains verified.
 - [x] Lighthouse on the live domain, English and Portuguese, phone and desktop: accessibility, best practices and SEO all 100, no failing audit.
-- [x] Phone trace (Slow 4G, 4x CPU, no cache): CLS 0. LCP was 3.4 s, almost all of it the hero image sharing bandwidth with the maple texture, which the browser fetches early as a CSS background; the texture went from 270 KB to 137 KB.
+- [x] Phone trace (Slow 4G, 4x CPU, no cache): CLS 0, LCP 2.35 s. The LCP element is the hero frame; it was 3.4 s until the hero got WebP copies (phone crop 134 KB to 78 KB, `scripts/webp.mjs`). Halving the maple texture did not move it.
 - [ ] Baseline the five spot-check prompts in `marketing-aeo.md` once the site is indexed.
 - [ ] Submit `https://hallstream.com/sitemap-index.xml` in Google Search Console and Bing Webmaster Tools (needs the owner's accounts).
 
