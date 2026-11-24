@@ -7,7 +7,7 @@ Astro 5 static site for hallstream.com. The app is `../app` (its own repo, `kaur
 - `npm run build` must be clean. Then `npm test` (`node --experimental-strip-types --test`) and `npm run check:links`, which fails on any internal link or asset in `dist/` that does not resolve.
 - `npm run test:build` (`test/build.test.ts`, slow) builds the site twice into a temp dir, as it is and with `HALLSTREAM_RELEASE_FIXTURE=test/fixtures/release.json` standing in for a release, then checks both download states, the page invariants and the links. Run it after touching the download button, the home page or `release.ts`.
 - Bump a page's `modified` in `src/data/pageDates.ts` when its content changes. The sitemap's lastmod, the article meta tags and the TechArticle JSON-LD read it.
-- `npm run og` re-renders `public/og/*.png` after a title changes. `node scripts/crops.mjs` re-cuts the phone crops after a screenshot changes.
+- `npm run og` re-renders `public/og/*.png` after a title changes. `node scripts/crops.mjs` re-cuts the phone crops after a screenshot changes; then `node scripts/webp.mjs` rewrites the hero's WebP copies.
 - Every URL ends in a slash (`trailingSlash: "always"`). Internal links and JSON-LD URLs use the slash form.
 
 ## Where the truth is

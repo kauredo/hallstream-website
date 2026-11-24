@@ -66,7 +66,9 @@ const schema = [
       </div>
     </div>
     <picture>
+      <source media="(max-width: 600px)" type="image/webp" srcset="/images/onair-classico-phone.webp" width="864" height="1080" />
       <source media="(max-width: 600px)" srcset="/images/onair-classico-phone.jpg" width="864" height="1080" />
+      <source type="image/webp" srcset="/images/onair-classico-960.webp 960w, /images/onair-classico.webp 1920w" sizes="(max-width: 1440px) 100vw, 1440px" />
       <img class="hero__frame" {...frame("classico")} sizes="(max-width: 1440px) 100vw, 1440px" alt={h.coverAlt} width="1920" height="1080" fetchpriority="high" decoding="async" />
     </picture>
   </section>
