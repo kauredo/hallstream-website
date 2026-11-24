@@ -122,7 +122,7 @@
     "crumbHome": "Hallstream",
     "crumbGuides": "Guides",
     "h1": "Supported consoles",
-    "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer's table instead. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
+    "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer's table instead; that page is new and has not been used at a game yet. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
     "checked": "Last checked 24 November 2026.",
     "photoPlaceholder": "Photo: a Stramatel console and the Stream Box",
     "photoPlaceholderLabel": "a photo of a Stramatel console and the Stream Box",
@@ -134,11 +134,12 @@
       ["Daktronics AllSport", "Serial RS-232", "To be confirmed", "wanted"],
       ["Fair-Play", "Serial RS-232", "To be confirmed", "wanted"],
       ["Bodet", "Serial RS-232", "To be confirmed", "wanted"],
-      ["Any console, or none: a phone at the scorer's table, on the /marcar page", "The phone's browser", "Basketball. Other sports when they ship.", "tested"]
+      ["Any console, or none: a phone at the scorer's table, on the /marcar page", "The phone's browser", "Basketball. Other sports when they ship.", "new"]
     ],
     "status": {
       "tested": "Tested on a real game",
       "ready": "Decoder ready, needs a recorded game",
+      "new": "New, not used at a game yet",
       "wanted": "Wanted, not started"
     },
     "missingH2": "Your console isn't listed?",

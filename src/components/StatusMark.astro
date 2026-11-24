@@ -3,10 +3,10 @@
 // (10 by 15). Strokes are 1.8 units in a 17.5-unit box, so about 1px on
 // screen, in Marcador or Cinza: a Lâmpada hairline antialiases to pink.
 //   tested  solid Marcador
-//   ready   Tint fill, Marcador edge, a diagonal: half way
+//   ready   Tint fill, Marcador edge, a diagonal: half way (also new: built, not yet used at a game)
 //   wanted  Tint fill, Cinza edge
 interface Props {
-  kind: "tested" | "ready" | "wanted";
+  kind: "tested" | "ready" | "new" | "wanted";
 }
 const { kind } = Astro.props;
 const d =
@@ -15,7 +15,7 @@ const d =
 
 <svg class="mk" viewBox="39.5 52 17.5 25" width="10" height="15" aria-hidden="true">
   {kind === "tested" && <path d={d} fill="#1C1A17" />}
-  {kind === "ready" && (
+  {(kind === "ready" || kind === "new") && (
     <>
       <path d={d} fill="#F7C9B8" stroke="#1C1A17" stroke-width="1.8" stroke-linejoin="round" />
       <path d="M44,72 L56,56" stroke="#1C1A17" stroke-width="1.6" />
