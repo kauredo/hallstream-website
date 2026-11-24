@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Renders the share images (1200x630) into public/og/ from the two canvas
-// templates: OG-Home (dark, title left, the Clássico frame right) and
+// templates: OG-Home (dark, title left, the Clássico on-air frame right) and
 // OG-Guide (Soalho, kicker and title, an ink band with the lockup and the
 // domain). One image per page and language. Run it after changing a title.
 //   node scripts/og.mjs
@@ -27,25 +27,25 @@ const home = ({ title, price, platform, alt }) => `<!doctype html><html><head>${
 <div style="width:1200px;height:630px;overflow:hidden;display:grid;grid-template-columns:660px 540px;font-family:Archivo,sans-serif;background:#1C1A17;color:#F2E4C9">
   <div style="display:flex;flex-direction:column;justify-content:space-between;padding:56px 48px 48px 60px">
     <div class="lk" style="--h:56px;color:#F2E4C9">${lockup}</div>
-    <p style="margin:0;font-stretch:113%;font-weight:800;font-size:${title.length > 44 ? 56 : 66}px;line-height:0.98;letter-spacing:-0.02em">${title}</p>
+    <p style="margin:0;font-stretch:72%;font-weight:860;font-size:${title.length > 44 ? 68 : 78}px;line-height:0.94;letter-spacing:-0.01em">${title}</p>
     <div>
-      <div style="height:6px;border-top:4px solid #F2E4C9;border-bottom:1px solid #F2E4C9"></div>
+      <div style="border-top:3px solid #F2E4C9"></div>
       <div style="display:flex;justify-content:space-between;gap:24px;padding-top:14px;font-stretch:74%;font-weight:700;font-size:30px;line-height:1">
         <span>${price}</span><span>${platform}</span>
       </div>
     </div>
   </div>
   <div style="height:630px;overflow:hidden;background:#5C5346">
-    <img src="${file("public/images/overlay-classico.jpg")}" alt="${alt}" style="width:100%;height:100%;object-fit:cover;object-position:0% 50%;display:block">
+    <img src="${file("public/images/onair-classico.jpg")}" alt="${alt}" style="width:100%;height:100%;object-fit:cover;object-position:0% 50%;display:block">
   </div>
 </div></body></html>`;
 
 const guide = ({ kicker, title }) => `<!doctype html><html><head>${head}</head><body>
 <div style="width:1200px;height:630px;overflow:hidden;display:grid;grid-template-rows:minmax(0,1fr) 150px;font-family:Archivo,sans-serif;background:#F2E4C9;color:#1C1A17">
   <div style="padding:56px 60px 0;display:flex;flex-direction:column">
-    <div style="height:7px;border-top:4px solid #1C1A17;border-bottom:1px solid #1C1A17"></div>
+    <div style="border-top:3px solid #1C1A17"></div>
     <p style="margin:16px 0 0;font-stretch:74%;font-weight:700;font-size:32px;line-height:1;color:#5C5346">${kicker}</p>
-    <p style="margin:auto 0 44px;font-stretch:113%;font-weight:800;font-size:112px;line-height:0.95;letter-spacing:-0.025em;max-width:11ch">${title}</p>
+    <p style="margin:auto 0 44px;font-stretch:72%;font-weight:860;font-size:128px;line-height:0.94;letter-spacing:-0.01em;max-width:11ch">${title}</p>
   </div>
   <div style="background:#1C1A17;color:#F2E4C9;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 60px">
     <div class="lk" style="--h:52px">${lockup}</div>
