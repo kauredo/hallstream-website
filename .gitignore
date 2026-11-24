@@ -17,3 +17,6 @@ npm-debug.log*
 
 # lint and screenshot scratch
 .hallmark/
+
+# Vercel CLI project link
+.vercel/
