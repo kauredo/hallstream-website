@@ -22,9 +22,15 @@ function isGitHubFile(url: string): boolean {
 let cached: Promise<Download> | undefined;
 
 // Every page renders the download button, so the build asks GitHub once.
+// HALLSTREAM_RELEASE_FIXTURE names a ReleaseInfo JSON file to use instead,
+// so the tests can build the page with a release before one exists.
 export function getDownload(): Promise<Download> {
-  cached ??= import("./github.ts")
-    .then(({ getLatestRelease }) => getLatestRelease())
+  const fixture = process.env.HALLSTREAM_RELEASE_FIXTURE;
+  cached ??= (
+    fixture
+      ? import("node:fs/promises").then(({ readFile }) => readFile(fixture, "utf8")).then((s): ReleaseInfo => JSON.parse(s))
+      : import("./github.ts").then(({ getLatestRelease }) => getLatestRelease())
+  )
     .then(toDownload)
     .catch((error) => {
       console.error(error);

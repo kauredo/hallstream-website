@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "releaseDate": "2026-11-01T00:00:00.000Z",
+  "releaseNotes": "",
+  "platforms": [
+    {
+      "platform": "windows",
+      "architecture": "x64",
+      "fileType": "zip",
+      "url": "https://github.com/kauredo/hallstream/releases/download/v0.1.0/Hallstream-0.1.0.zip",
+      "size": 12582912,
+      "filename": "Hallstream-0.1.0.zip"
+    }
+  ],
+  "isPrerelease": false,
+  "downloadCount": 0
+}

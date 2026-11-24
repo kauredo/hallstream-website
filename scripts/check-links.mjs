@@ -2,11 +2,11 @@
 // Checks every internal link and asset in dist/ after `npm run build`:
 // href, src, srcset and the og/twitter image URLs on hallstream.com must
 // resolve to a built file, and every #fragment must name an id on its page.
-// Exit 1 on any miss.
+// Exit 1 on any miss. An argument names another build directory.
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
-const dist = "dist";
+const dist = resolve(process.argv[2] ?? "dist");
 const site = "https://hallstream.com";
 const pages = [];
 const walk = (dir) => {
