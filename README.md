@@ -33,4 +33,4 @@ The "Hallstream vs …" template (`src/views/Vs.astro`) is built but not routed.
 
 ## Licence
 
-The site's code is AGPL-3.0, like the app. Archivo is under the SIL Open Font License (`public/fonts/OFL.txt`).
+The site's code is MIT. The copy, the screenshots, the share images and the Hallstream brand are all rights reserved. Archivo is under the SIL Open Font License (`public/fonts/OFL.txt`), and the photos keep the Unsplash Licence (`docs/image-credits.md`). [`LICENSE`](LICENSE) says which files fall where. The app itself is AGPL-3.0-or-later.
