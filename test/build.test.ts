@@ -101,6 +101,7 @@ for (const [lang, file] of homes) {
       assert.ok(b.note.includes(formatFileSize(zipSize)), `note lacks the size: ${b.note}`);
     }
     assert.equal(count(html, esc(s.smartScreen)), found.length);
+    assert.equal(count(html, esc(s.notWindows)), found.length);
     assert.equal(count(html, esc(s.follow)), 0);
     const app = software(html);
     assert.equal(app.softwareVersion, release.version);
@@ -116,22 +117,30 @@ for (const [lang, file] of homes) {
     for (const b of found) {
       assert.equal(b.href, RELEASES_URL);
       assert.equal(b.label, esc(s.follow));
+      assert.equal(b.note, esc(s.none));
     }
     assert.equal(count(html, esc(s.smartScreen)), 0);
+    // One note under each button: the not-Windows line waits for a release.
+    assert.equal(count(html, esc(s.notWindows)), 0);
   });
 
   for (const build of ["plain", "release"] as const) {
-    test(`${build}: ${file} has five looks, one pressed, matching the screen`, opts, () => {
+    test(`${build}: ${file} has five looks in the panel's order, Cor do Clube pressed and on screen`, opts, () => {
       const html = read(out[build], file);
       assert.match(html, /<ul class="looks"[^>]*\shidden>/);
       const looks = [...html.matchAll(/<button class="look"[^>]*>/g)].map(([tag]) => tag);
       assert.equal(looks.length, 5);
+      const files = looks.map((tag) => tag.match(/data-src="\/images\/onair-([^".]+)\.jpg"/)?.[1]);
+      assert.deepEqual(files, ["classico", "lombada", "cor-final", "placa", "pavilhao"]);
       const pressed = looks.filter((tag) => tag.includes('aria-pressed="true"'));
       assert.equal(pressed.length, 1);
+      assert.ok(pressed[0].includes('data-src="/images/onair-cor-final.jpg"'), "Cor do Clube is not the default");
       const src = pressed[0].match(/data-src="([^"]+)"/)?.[1];
       const screen = html.match(/<img id="screen"[^>]*\ssrc="([^"]+)"/)?.[1];
       assert.ok(src, "pressed look has no data-src");
       assert.equal(screen, src);
+      const phone = pressed[0].match(/data-phone="([^"]+)"/)?.[1];
+      assert.equal(html.match(/<source id="screen-phone"[^>]*\ssrcset="([^"]+)"/)?.[1], phone);
     });
   }
 }

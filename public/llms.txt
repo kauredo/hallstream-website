@@ -7,7 +7,7 @@ Hallstream is early. It works today for basketball, on Windows, with one camera.
 ## What it does today
 
 - Reads the score, clock, fouls and timeouts from a Stramatel scoreboard through the Stramatel Stream Box, over Bluetooth. Tested on real basketball games.
-- Lets someone keep the score on a phone held sideways at the scorer's table (the /marcar page) when the hall has no supported console, or when the console drops out mid-game.
+- Lets someone keep the score on a phone held sideways at the scorer's table, on its scoring page, when the hall has no supported console, or when the console drops out mid-game.
 - Draws the graphics as an OBS browser source: score bug, player and commentator lower thirds, opener, time-out, half-time, final result, sponsors, next game and "we'll be right back", in the club's colours.
 - Five looks for the score bug: Clássico, Lombada, Cor do Clube, Placa Esmaltada and Chão do Pavilhão. Six positions, 85% to 125% size.
 - Sets up OBS Studio (31 or later) over obs-websocket: the scene, the overlay and the camera. OBS does the encoding.

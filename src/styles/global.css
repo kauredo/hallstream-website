@@ -373,7 +373,7 @@ button:focus-visible {
   margin-block-start: 6px;
 }
 
-/* Screenshots in a frame, and the plain labelled placeholders. */
+/* Screenshots in a frame. */
 .frame {
   border-radius: var(--radius);
   overflow: clip;
@@ -390,21 +390,6 @@ button:focus-visible {
 }
 .frame img {
   object-fit: cover;
-}
-.ph {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid var(--cinza);
-  border-radius: var(--radius);
-  padding: 16px;
-  font-size: 15px;
-  color: var(--cinza);
-}
-.dk .ph {
-  border-color: var(--quiet-on-dark);
-  color: var(--quiet-on-dark);
 }
 figure {
   margin: 0;
@@ -426,6 +411,22 @@ figure {
   height: 15px;
   vertical-align: -2px;
   margin-inline-end: 8px;
+}
+.mk__fill {
+  fill: var(--marcador);
+}
+.mk__half {
+  clip-path: inset(50% 0 0 0);
+}
+.mk__edge {
+  fill: none;
+  stroke: var(--marcador);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+.mk--wanted .mk__edge {
+  stroke: var(--cinza);
+  stroke-dasharray: 3 2.4;
 }
 
 /* The score from the mark. Renders at 2:1; Home's script ticks it. */
@@ -462,10 +463,16 @@ figure {
 .band h1 {
   font-size: var(--h1);
 }
+/* The frame's width, so the lede and caption under it can take its edges.
+   The percentages resolve against each element's own full-width parent. */
+.hero__frame,
+.hero__after {
+  --frame-w: min(100%, max(70%, calc((100svh - 290px) * 16 / 9)));
+}
 .hero__frame {
   display: block;
   margin-inline: auto;
-  width: min(100%, max(70%, calc((100svh - 290px) * 16 / 9)));
+  width: var(--frame-w);
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
@@ -474,6 +481,10 @@ figure {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap);
+  max-width: none;
+  width: var(--frame-w);
+  /* Edge to edge, the frame leaves no margin, so the text keeps the gutter. */
+  padding-inline: max(0px, var(--gutter) - (100% - var(--frame-w)) / 2);
   padding-block: 20px 56px;
 }
 .lede {
@@ -516,7 +527,7 @@ figure {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--gap);
-  align-items: end;
+  align-items: start;
   margin-block-start: 64px;
 }
 .source__open .intro {
@@ -585,16 +596,29 @@ figure {
   z-index: -2;
   background: var(--wood-calm);
 }
-.court {
+/* The court around the look-picker figure. The key is the figure's ::before,
+   so it frames the crop and caption with 28px to spare however many lines the
+   caption takes, and runs off the right edge to the baseline. The three-point
+   line centres on the key. The mask fades it out 24px short of the text column, so
+   no line runs under the copy: --clear is that column gap less 24px, worked
+   out from the .does grid (760px and 420px columns, spread apart). */
+.styles::before {
+  content: "";
   position: absolute;
-  inset: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
+  inset: -35px -100vw -35px -35px;
+  border: 7px solid color-mix(in oklch, var(--paint) 92%, transparent);
+  background: color-mix(in oklch, var(--lampada) 16%, transparent);
 }
-.court__key {
-  fill: var(--lampada);
-  opacity: 0.16;
+.court {
+  --clear: max(36px, max(var(--gap), min(100vw, 1440px) - 2 * var(--gutter) - 1180px) - 24px);
+  position: absolute;
+  inset-inline-start: -400px;
+  inset-block-start: calc(50% - 1200px);
+  z-index: -1;
+  width: 3000px;
+  height: 2400px;
+  mask-image: linear-gradient(to right, transparent calc(400px - var(--clear)), #000 calc(472px - var(--clear)));
 }
 .court__line {
   fill: none;
@@ -624,7 +648,7 @@ figure {
   border-block-start: 1.5px solid var(--marcador);
 }
 .spec div:last-child {
-  border-block-end: 1.5px solid var(--marcador);
+  border-block-end: 1px solid var(--marcador);
 }
 .spec dt {
   font-stretch: 88%;
@@ -639,25 +663,29 @@ figure {
   line-height: 1.52;
   font-weight: 460;
 }
-.more {
-  margin-block-start: 32px;
-  max-width: 56ch;
+/* The second group: the same columns, smaller type, hairline rules. */
+.spec .spec__minor {
+  padding-block: 11px 12px;
+  border-block-start-width: 1px;
 }
-.more p {
-  margin: 0 0 14px;
-  font-size: 16px;
-  line-height: 1.55;
-  font-weight: 460;
+.spec div:not(.spec__minor) + .spec__minor {
+  margin-block-start: 0;
+  border-block-start-width: 1.5px;
 }
-.more b {
+.spec__minor dt {
+  font-size: 17px;
   font-weight: 760;
+  line-height: 1.45;
 }
-.more a {
+.spec__minor dd {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.spec a {
   font-weight: 650;
 }
 .styles {
-  position: sticky;
-  inset-block-start: 32px;
+  position: relative;
   margin-block-start: 92px;
 }
 .crop {
@@ -790,16 +818,11 @@ figure {
   padding-block: 32px 120px;
 }
 .sheet__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px 32px;
   padding-block: 20px 28px;
   border-block-start: 3px solid var(--soalho);
-  flex-wrap: wrap;
 }
 .sheet__head p {
-  margin: 0;
+  margin: 12px 0 0;
   font-size: 17px;
   color: var(--quiet-on-dark);
 }
@@ -891,12 +914,14 @@ figure {
 }
 .close__row {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 16px 48px;
-  align-items: end;
+  align-items: center;
 }
 .close__tick {
-  height: 172px;
+  grid-column: 2;
+  grid-row: 1;
+  height: clamp(172px, 22vw, 300px);
   color: var(--marcador);
 }
 .close .h2 {
@@ -961,6 +986,14 @@ figure {
 .foot ul.lang {
   display: flex;
   gap: 4px;
+}
+/* The first name lines up with the "Language" label above it: a link loses
+   its start padding, the current language's fill hangs into the margin. */
+.foot .lang > li:first-child > a {
+  padding-inline-start: 0;
+}
+.foot .lang-on:first-child {
+  margin-inline-start: -10px;
 }
 .foot .soon {
   color: var(--quiet-on-dark);
@@ -1220,12 +1253,13 @@ ul.lined li {
   .youth .cap {
     max-width: none;
   }
-  /* The court keeps its shape and sits at the foot of the section, the
-     basket on the right edge. */
+  /* With the text above the figure, the three-point line would cross it, so the key alone
+     frames the figure, its left edge just inside the screen. */
   .court {
-    inset: auto 0 0 auto;
-    width: 170%;
-    height: auto;
+    display: none;
+  }
+  .styles::before {
+    inset-inline-start: calc(8px - var(--gutter));
   }
   .lead-grid {
     gap: 0;
@@ -1240,8 +1274,7 @@ ul.lined li {
     margin: -64px 0 0 auto;
   }
   .styles {
-    position: static;
-    margin-block-start: 0;
+    margin-block-start: 24px;
     max-width: 420px;
   }
   .run li {
@@ -1290,10 +1323,13 @@ ul.lined li {
   .band {
     padding-block: 24px;
   }
+  /* The tick takes its own row, so the h1 gets the full width. */
   .band__row {
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
   }
   .band__tick {
+    justify-self: start;
     height: 52px;
   }
   .hero__frame {
@@ -1313,10 +1349,15 @@ ul.lined li {
   .youth__photo {
     aspect-ratio: 4 / 3;
   }
+  /* The scoring page stacks under the photo, whole and full width. */
   .youth__scorer {
-    width: 94%;
-    margin-block-start: -40px;
+    width: 100%;
+    margin-block-start: 8px;
     border-width: 6px;
+  }
+  /* Each look's 4:5 phone crop keeps the score bug at a size that reads. */
+  .screen img {
+    aspect-ratio: 4 / 5;
   }
   .wood {
     background-size: 960px auto;
@@ -1358,6 +1399,7 @@ ul.lined li {
     grid-template-columns: minmax(0, 1fr);
   }
   .close__tick {
+    grid-column: 1;
     height: 88px;
   }
   .pattern-band {
@@ -1370,10 +1412,5 @@ ul.lined li {
   .maker {
     flex-direction: column;
     gap: 6px;
-  }
-  /* The phone crops: each <picture> swaps in a cut that keeps the part of
-     the frame that matters at 390 px, so the frame takes that cut's shape. */
-  .fr-scorer {
-    aspect-ratio: 1005 / 739 !important;
   }
 }

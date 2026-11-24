@@ -18,12 +18,14 @@ const h = s.home;
 const note = s.common.ptNote;
 const dl = await getDownload();
 
-// The large On air frame opens on a look other than the hero's.
-const firstLook = 1;
+// The large On air frame opens on Cor do Clube, the look the panel crop shows
+// selected. Below 600 px each look swaps in its 4:5 phone crop (scripts/crops.mjs).
+const firstLook = h.air.looks.findIndex(([file]) => file === "cor-final");
 const frame = (file: string) => ({
   src: `/images/onair-${file}.jpg`,
   srcset: `/images/onair-${file}-960.jpg 960w, /images/onair-${file}.jpg 1920w`,
 });
+const phoneFrame = (file: string) => `/images/onair-${file}-look-phone.jpg`;
 const segments = Array.from({ length: 36 }, (_, i) => i);
 const isTime = (v: string) => /^\d\d:\d\d$/.test(v);
 
@@ -102,7 +104,7 @@ const schema = [
           <img class="youth__photo" src="/images/youth-game.jpg" srcset="/images/youth-game-1440.jpg 1440w, /images/youth-game.jpg 2880w" sizes="(max-width: 1440px) 100vw, 1344px" alt={h.source.youthAlt} width="2880" height="1927" loading="lazy" decoding="async" />
         </picture>
         <div class="youth__scorer">
-          <Shot src="/images/marcar.jpg" phone="/images/marcar-phone.jpg" alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/739" frameClass="fr-scorer" ink />
+          <Shot src="/images/marcar.jpg" alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/739" ink />
         </div>
         </div>
         <figcaption class="cap">{h.source.scorerCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
@@ -111,10 +113,6 @@ const schema = [
   </section>
 
   <section class="wood" id="what-it-does" aria-labelledby="what-it-does-h">
-    <svg class="court" viewBox="0 0 1440 1100" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
-      <rect class="court__key" x="976" y="354" width="464" height="392"></rect>
-      <path class="court__line" d="M1440 22H1201A540 540 0 0 0 1201 1078H1440M1440 354H976V746H1440M976 406A144 144 0 0 0 976 694"></path>
-    </svg>
     <div class="wrap does">
       <div>
         <h2 id="what-it-does-h" class="display h2">{h.does.h2}</h2>
@@ -127,19 +125,27 @@ const schema = [
               </div>
             ))
           }
-        </dl>
-        <div class="more">
           {
             h.does.more.map(([term, text]) => (
-              <p>
-                <b>{term}.</b> {text}
-              </p>
+              <div class="spec__minor">
+                <dt>{term}</dt>
+                <dd>{text}</dd>
+              </div>
             ))
           }
-          <p><b>{h.does.licenceTerm}.</b> {h.does.licence} <a href={product.github}>{h.does.licenceLink}</a>.</p>
-        </div>
+          <div class="spec__minor">
+            <dt>{h.does.licenceTerm}</dt>
+            <dd>{h.does.licence} <a href={product.github}>{h.does.licenceLink}</a>.</dd>
+          </div>
+        </dl>
       </div>
       <figure class="styles">
+        <!-- The key is the figure's ::before. The three-point line is in px from the
+             figure's left edge and vertical middle, in a real court's
+             proportions for a 420px figure. -->
+        <svg class="court" viewBox="-400 -1200 3000 2400" aria-hidden="true">
+          <path class="court__line" d="M2500 -784H306A802 802 0 0 0 306 784H2500"></path>
+        </svg>
         <div class="crop">
           <img src="/images/panel-aparencia.jpg" alt={h.does.panelAlt} width="1600" height="1085" loading="lazy" decoding="async" />
         </div>
@@ -155,7 +161,10 @@ const schema = [
         <p class="intro">{h.air.intro}</p>
       </div>
       <figure class="screen">
-        <img id="screen" {...frame(h.air.looks[firstLook][0])} sizes="(max-width: 1440px) 100vw, 1344px" alt={h.air.looks[firstLook][3]} width="1920" height="1080" loading="lazy" decoding="async" />
+        <picture>
+          <source id="screen-phone" media="(max-width: 600px)" srcset={phoneFrame(h.air.looks[firstLook][0])} />
+          <img id="screen" {...frame(h.air.looks[firstLook][0])} sizes="(max-width: 1440px) 100vw, 1344px" alt={h.air.looks[firstLook][3]} width="1920" height="1080" loading="lazy" decoding="async" />
+        </picture>
         <figcaption id="screen-cap" aria-live="polite">{h.air.looks[firstLook][4]}</figcaption>
       </figure>
       <ul class="looks" aria-label={h.air.looksLabel} hidden>
@@ -164,7 +173,7 @@ const schema = [
             const f = frame(file);
             return (
               <li>
-                <button class="look" type="button" aria-pressed={i === firstLook ? "true" : "false"} data-src={f.src} data-srcset={f.srcset} data-alt={alt} data-cap={cap}>
+                <button class="look" type="button" aria-pressed={i === firstLook ? "true" : "false"} data-src={f.src} data-srcset={f.srcset} data-phone={phoneFrame(file)} data-alt={alt} data-cap={cap}>
                   <span class="bug">
                     <img src={`/images/bug-${file.replace("-final", "")}.png`} alt="" width="760" height="200" loading="lazy" decoding="async" />
                   </span>
@@ -262,15 +271,17 @@ const schema = [
   // On air: each look switches the large frame. The list stays hidden until
   // this runs, so without JavaScript the page shows the default frame alone.
   const screen = document.getElementById("screen") as HTMLImageElement | null;
+  const phone = document.getElementById("screen-phone") as HTMLSourceElement | null;
   const cap = document.getElementById("screen-cap");
   const list = document.querySelector<HTMLElement>(".looks");
   const looks = document.querySelectorAll<HTMLButtonElement>(".look");
-  if (screen && cap && list) {
+  if (screen && phone && cap && list) {
     list.hidden = false;
     for (const b of looks) {
       b.addEventListener("click", () => {
         for (const o of looks) o.setAttribute("aria-pressed", String(o === b));
         const swap = () => {
+          phone.srcset = b.dataset.phone ?? "";
           screen.srcset = b.dataset.srcset ?? "";
           screen.src = b.dataset.src ?? "";
           screen.alt = b.dataset.alt ?? "";

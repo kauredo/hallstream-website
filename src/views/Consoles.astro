@@ -2,7 +2,6 @@
 // The "Supported consoles" guide, from Guide-Consoles.dc.html. The opening
 // paragraph is the direct answer and has to stand alone when quoted.
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Placeholder from "@/components/Placeholder.astro";
 import RuleHead from "@/components/RuleHead.astro";
 import StatusMark from "@/components/StatusMark.astro";
 import { t } from "@/i18n";
@@ -50,13 +49,8 @@ const schema = [
         </nav>
         <div class="tt"></div>
         <h1 class="display page-h1">{c.h1}</h1>
-        <div class="lead-grid">
-          <div>
-            <p class="answer">{c.answer}</p>
-            <p class="checked">{c.checked}</p>
-          </div>
-          <Placeholder lang={lang} text={c.photoPlaceholder} label={c.photoPlaceholderLabel} ratio="3/2" class="mt28" />
-        </div>
+        <p class="answer">{c.answer}</p>
+        <p class="checked">{c.checked}</p>
       </div>
     </section>
 
