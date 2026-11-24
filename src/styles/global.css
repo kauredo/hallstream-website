@@ -214,6 +214,7 @@ button:focus-visible {
   max-width: 44ch;
   font-size: 21px;
   line-height: 1.45;
+  text-wrap: pretty;
 }
 
 /* Masthead */
@@ -987,13 +988,10 @@ figure {
   display: flex;
   gap: 4px;
 }
-/* The first name lines up with the "Language" label above it: a link loses
-   its start padding, the current language's fill hangs into the margin. */
+/* The first name lines up with the "Language" label above it. The current
+   language's fill starts at the label too, inside the page gutter. */
 .foot .lang > li:first-child > a {
   padding-inline-start: 0;
-}
-.foot .lang-on:first-child {
-  margin-inline-start: -10px;
 }
 .foot .soon {
   color: var(--quiet-on-dark);
@@ -1258,8 +1256,9 @@ ul.lined li {
   .court {
     display: none;
   }
+  /* Inside the page gutter, with room for the caption. */
   .styles::before {
-    inset-inline-start: calc(8px - var(--gutter));
+    inset: -20px -12px;
   }
   .lead-grid {
     gap: 0;

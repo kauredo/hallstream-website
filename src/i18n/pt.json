@@ -85,7 +85,7 @@
     },
     "air": {
       "h2": "No ar",
-      "intro": "Cinco estilos para o marcador. Escolha um no painel de controlo.",
+      "intro": "Cinco estilos para o grafismo, do marcador ao resultado final. Escolha um no painel de controlo.",
       "looksLabel": "Estilos do marcador",
       "looks": [
         ["classico", "Clássico", "", "O marcador Clássico e o rodapé de um jogador sobre um campo", ""],
@@ -141,7 +141,7 @@
     ],
     "status": {
       "tested": "Testado em jogos a sério",
-      "ready": "Códigos lidos, grafismo a caminho",
+      "ready": "Códigos lidos, falta um jogo gravado",
       "new": "Nova, ainda não usada num jogo",
       "wanted": "Pedido, ainda não começado"
     },
@@ -161,7 +161,7 @@
     "title": "Privacidade",
     "description": "O que o hallstream.com e a aplicação Hallstream recolhem: contagens de visitas sem cookies no site e, na aplicação, só aquilo a que a ligar.",
     "h1": "Privacidade",
-    "intro": "A aplicação que descarrega do GitHub não envia nada, nem para nós nem para ninguém. Este site não usa cookies. Atualizado a 24 de novembro de 2026.",
+    "intro": "O Hallstream não nos envia nada. Só fala com o YouTube, o calendário da federação e o OBS quando os configura. Este site não usa cookies. Atualizado a 24 de novembro de 2026.",
     "siteH2": "Neste site",
     "site": "O Vercel Web Analytics conta as visitas. Regista a página, o site de onde veio, o país, e o tipo de browser e de dispositivo. Reconhece uma visita por um hash do pedido que a Vercel apaga ao fim de 24 horas, e não usa cookies. Não há Google Analytics nem publicidade.",
     "siteLink": "Os detalhes da Vercel",
