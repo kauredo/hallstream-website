@@ -43,18 +43,20 @@ const schema = [
 
 <BaseLayout lang={lang} route="consoles" title={c.title} description={c.description} og={`consoles-${lang}.png`} type="article" schema={schema}>
   <article>
-    <section class="wrap page-top">
-      <nav aria-label="Breadcrumb">
-        <p class="crumbs"><a href={path("home", lang)}>{c.crumbHome}</a> <span aria-hidden="true">/</span> {c.crumbGuides}</p>
-      </nav>
-      <div class="tt"></div>
-      <h1 class="display page-h1">{c.h1}</h1>
-      <div class="lead-grid">
-        <div>
-          <p class="answer">{c.answer}</p>
-          <p class="checked muted">{c.checked}</p>
+    <section class="dk page-top">
+      <div class="wrap">
+        <nav aria-label="Breadcrumb">
+          <p class="crumbs"><a href={path("home", lang)}>{c.crumbHome}</a> <span aria-hidden="true">/</span> {c.crumbGuides}</p>
+        </nav>
+        <div class="tt"></div>
+        <h1 class="display page-h1">{c.h1}</h1>
+        <div class="lead-grid">
+          <div>
+            <p class="answer">{c.answer}</p>
+            <p class="checked">{c.checked}</p>
+          </div>
+          <Placeholder lang={lang} text={c.photoPlaceholder} label={c.photoPlaceholderLabel} ratio="3/2" class="mt28" />
         </div>
-        <Placeholder lang={lang} text={c.photoPlaceholder} label={c.photoPlaceholderLabel} ratio="3/2" class="mt28" />
       </div>
     </section>
 
@@ -106,7 +108,7 @@ const schema = [
       </ol>
     </section>
 
-    <section class="wrap psec psec--last" aria-labelledby="related">
+    <section class="wrap psec" aria-labelledby="related">
       <RuleHead id="related">{c.relatedH2}</RuleHead>
       <ul class="lined" style="margin-top:18px">
         <li><a href={`${path("home", lang)}#score-source`}>{c.relatedScore}</a></li>

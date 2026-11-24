@@ -12,27 +12,32 @@ const p = t(lang).privacy;
 ---
 
 <BaseLayout lang={lang} route="privacy" title={`${p.title} | Hallstream`} description={p.description} og={`home-${lang}.png`}>
-  <article class="wrap page-top psec--last">
-    <div class="tt"></div>
-    <h1 class="display page-h1">{p.h1}</h1>
-    <div class="doc">
-      <p class="answer">{p.intro}</p>
+  <article>
+    <header class="dk page-top">
+      <div class="wrap">
+        <div class="tt"></div>
+        <h1 class="display page-h1">{p.h1}</h1>
+        <p class="answer">{p.intro}</p>
+      </div>
+    </header>
+    <div class="wrap">
+      <div class="doc">
+        <h2>{p.siteH2}</h2>
+        <p>{p.site} <a href="https://vercel.com/docs/analytics/privacy-policy">{p.siteLink}</a>.</p>
+        <p>{p.hosting}</p>
 
-      <h2>{p.siteH2}</h2>
-      <p>{p.site} <a href="https://vercel.com/docs/analytics/privacy-policy">{p.siteLink}</a>.</p>
-      <p>{p.hosting}</p>
+        <h2>{p.appH2}</h2>
+        <p>{p.app}</p>
+        <p>{p.appSends}</p>
+        <ul>
+          {p.appList.map((item) => <li>{item}</li>)}
+        </ul>
+        <p>{p.logs}</p>
+        <p>{p.phone}</p>
 
-      <h2>{p.appH2}</h2>
-      <p>{p.app}</p>
-      <p>{p.appSends}</p>
-      <ul>
-        {p.appList.map((item) => <li>{item}</li>)}
-      </ul>
-      <p>{p.logs}</p>
-      <p>{p.phone}</p>
-
-      <h2>{p.questionsH2}</h2>
-      <p>{p.questions} <a href={product.issues}>{p.questionsLink}</a>.</p>
+        <h2>{p.questionsH2}</h2>
+        <p>{p.questions} <a href={product.issues}>{p.questionsLink}</a>.</p>
+      </div>
     </div>
   </article>
 </BaseLayout>

@@ -1,10 +1,8 @@
 ---
-// The ink footer. The home page passes its back cover (running order, the
-// 0:0 and the download) through the slot; every other page gets the short
-// download band.
+// The Marcador footer: the call for contributors, the maker's other
+// projects, the link columns and the licence.
 import Lockup from "./Lockup.astro";
 import LangSwitch from "./LangSwitch.astro";
-import DownloadButton from "./DownloadButton.astro";
 import { t } from "@/i18n";
 import { path, type Lang, type RouteId } from "@/i18n/routes";
 import { maker, product } from "@/data/links";
@@ -14,27 +12,12 @@ interface Props {
   route: RouteId;
 }
 const { lang, route } = Astro.props;
-const s = t(lang).common;
-const f = s.footer;
+const f = t(lang).common.footer;
 const dl = await getDownload();
-const hasSlot = Astro.slots.has("default");
 ---
 
-<footer class="dk">
-  <div class="wrap" style="padding-top:72px">
-    {
-      hasSlot ? (
-        <slot />
-      ) : (
-        <div class="dlband">
-          <p class="display cta">{s.cta}</p>
-          <div>
-            <DownloadButton lang={lang} note="short" />
-          </div>
-        </div>
-      )
-    }
-
+<footer class="dk footer">
+  <div class="wrap">
     <p class="contribute">{f.contribute} <a href={product.github}>{f.contributeLink}</a>.</p>
 
     <div class="maker-block">

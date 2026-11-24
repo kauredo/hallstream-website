@@ -18,7 +18,7 @@ npm run icons          # re-render the favicons from the brand app icon
 node scripts/crops.mjs # re-cut the phone crops after replacing a screenshot
 ```
 
-The build reads the latest release of `kauredo/hallstream` from the GitHub API. Set `GITHUB_TOKEN` for a higher rate limit. With no release, the download button links to the releases page and says the first release is coming.
+The build reads the latest release of `kauredo/hallstream` from the GitHub API. Set `GITHUB_TOKEN` for a higher rate limit. With no release, the download button reads "Follow the first release on GitHub" and links to the releases page.
 
 ## Pages
 

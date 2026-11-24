@@ -15,7 +15,7 @@ Astro 5 static site for hallstream.com. The app is `../app` (its own repo, `kaur
 - Every string lives in `src/i18n/en.json` and `src/i18n/pt.json`. Both are written by hand; pt is European Portuguese, in the app's own words (consola, caixa, mesa de marcação, desconto de tempo). A test fails when the two files have different keys or a string has an em dash.
 - `src/i18n/routes.ts` is the one list of pages in both languages. The language switch, hreflang and canonical read it.
 - `src/data/links.ts` holds every outbound link; the footer's cross-links get the utm parameters there.
-- The design came from canvas boards (Main, Guide-Consoles, Vs, OG-Home, OG-Guide). Tokens are in `src/styles/global.css`: Soalho ground, Marcador ink, Lâmpada only on lit things (the colon, the focus ring), Lâmpada funda for accent text on Soalho, Soalho claro as the one raised band. Download buttons are Soalho or Marcador, never Lâmpada.
+- The design is the "Tuned in" redesign (Nov 2026): a Marcador band with the ticking score over the real on-air frame, then Soalho, calmed maple (`hardwood.jpg` under a Soalho claro veil, with a painted court) and Marcador sections. Tokens are in `src/styles/global.css`: Soalho and Marcador share the ground, Lâmpada lights things (the colon, the focus ring, the tip-off) and may own a surface or a rule (the painted key, the Coming later rule), Lâmpada funda for accent text on Soalho. Download buttons are Soalho or Marcador, never Lâmpada. Archivo only, headings condensed (`--display`, 72%) and heavy. Photo sources are in `docs/image-credits.md`.
 
 ## Copy rules
 
@@ -26,6 +26,6 @@ Astro 5 static site for hallstream.com. The app is `../app` (its own repo, `kaur
 
 ## Releases and deploys
 
-The build reads the latest release of `kauredo/hallstream` (`src/utils/github.ts`, `assets.ts`, `release.ts`). The app's `build.sh` uploads `Hallstream-<version>.zip`, which `parseAssets` reads as the Windows download. With no release, `fallback.ts` points the button at the releases page and the note says the first release is coming. A push to `main` deploys on Vercel; a deploy hook in the app's release workflow, so a release rebuilds the site, is still to add.
+The build reads the latest release of `kauredo/hallstream` (`src/utils/github.ts`, `assets.ts`, `release.ts`). The app's `build.sh` uploads `Hallstream-<version>.zip`, which `parseAssets` reads as the Windows download. With no release, `fallback.ts` points the button at the releases page and the button says "Follow the first release on GitHub". With one, it reads "Download for Windows", the note names the version and size, and a second line explains the SmartScreen warning (`src/utils/downloadCopy.ts`, tested). A push to `main` deploys on Vercel; a deploy hook in the app's release workflow, so a release rebuilds the site, is still to add.
 
 Conventional commits. Stage files by name.

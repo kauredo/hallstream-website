@@ -18,10 +18,11 @@
     },
     "download": {
       "button": "Descarregar para Windows",
+      "follow": "Acompanhe a primeira versão no GitHub",
       "released": "Grátis e de código aberto. Versão {version}, {size}, no GitHub Releases.",
       "releasedShort": "Grátis e de código aberto. Versão {version}, {size}.",
-      "none": "A primeira versão sai em breve.",
-      "noneLink": "Acompanhe no GitHub",
+      "none": "Grátis e de código aberto, para Windows. A primeira versão ainda não saiu.",
+      "smartScreen": "O Windows pode avisar que a aplicação é de um editor desconhecido. Carregue em Mais informações e depois em Executar mesmo assim.",
       "notWindows": "O Hallstream funciona em Windows. As versões para macOS e Linux estão a caminho."
     },
     "ptNote": "",
@@ -52,14 +53,28 @@
     "coverAlt": "O Hallstream no ar: o marcador Clássico e o rodapé de um jogador sobre um campo de basquetebol",
     "coverCaption": "No ar com o estilo Clássico: o marcador e o rodapé do jogador que acabou de marcar.",
     "lede": "Uma pessoa trata de tudo no computador do pavilhão. O Hallstream lê o resultado da consola do marcador, desenha o grafismo com as cores do clube e prepara o OBS e o direto no YouTube. Não é preciso criar conta e não há rastreio.",
+    "source": {
+      "h2": "De onde vem o resultado",
+      "intro": "O Hallstream lê o resultado da consola do pavilhão, quando há uma. Um telemóvel na mesa de marcação resolve todos os outros casos.",
+      "consoleH3": "Da consola do pavilhão",
+      "console": "Uma caixa Stramatel Stream Box, emparelhada por Bluetooth. O resultado, o relógio, as faltas e os descontos chegam sozinhos.",
+      "consoleLink": "Consolas compatíveis",
+      "phoneH3": "De um telemóvel na mesa de marcação",
+      "phone": "Na horizontal, na página de marcação. Também assume o resultado se a consola falhar a meio do jogo.",
+      "scorerAlt": "A página de marcação no telemóvel, na horizontal, com pontos, relógio, faltas e descontos, e o relógio a correr",
+      "scorerCaption": "A página de marcação com o relógio a correr. Pontos, faltas e descontos levam um toque cada.",
+      "youthAlt": "Um jogo de basquetebol de formação num pavilhão, uma treinadora com a bola e os pais sentados ao fundo"
+    },
     "does": {
       "h2": "O que faz",
       "rows": [
         ["Resultado", "Lê o resultado, o relógio, as faltas e os descontos de tempo da caixa Stramatel do pavilhão, por Bluetooth. O marcador no ecrã acompanha o placard."],
         ["Grafismo", "Marcador, rodapés do jogador e do comentador, abertura, desconto de tempo, intervalo, resultado final, patrocinadores, próximo jogo e \"voltamos já\", com as cores do clube."],
-        ["Painel", "Mude de ecrã no browser do computador do pavilhão, ou em qualquer telemóvel na mesma rede wifi, com um PIN."],
-        ["OBS", "O OBS Studio, a aplicação de transmissão grátis, faz a codificação. Instale primeiro a versão 31 ou mais recente. O Hallstream configura-o por obs-websocket, com a cena, o grafismo e a câmara."],
         ["YouTube", "Cria o direto com título e miniatura. No fim do jogo deixa o vídeo não listado, para ficar no link e fora da página inicial do canal."],
+        ["Painel", "Mude de ecrã no browser do computador do pavilhão, ou em qualquer telemóvel na mesma rede wifi, com um PIN."]
+      ],
+      "more": [
+        ["OBS", "O OBS Studio, a aplicação de transmissão grátis, faz a codificação. Instale primeiro a versão 31 ou mais recente. O Hallstream configura-o por obs-websocket, com a cena, o grafismo e a câmara."],
         ["Plantéis e jogos", "Escreva-os à mão ou importe um CSV. Os clubes portugueses de basquetebol podem trazer os dois da federação. O próximo jogo aparece no ecrã \"próximo jogo\"."],
         ["Sem internet", "Depois do primeiro arranque, o grafismo, o painel e a página de marcação continuam a funcionar se a internet do pavilhão falhar."],
         ["Modo demonstração", "Joga um jogo a fingir sem consola ligada, para aprender em casa antes de sábado."],
@@ -68,40 +83,21 @@
       "licenceTerm": "Licença",
       "licence": "Grátis e de código aberto, com licença AGPL-3.0. O código está no",
       "licenceLink": "GitHub",
-      "laterH3": "Mais tarde",
-      "laterIntro": "Hoje o Hallstream é uma aplicação para Windows, para basquetebol. Estas estão a caminho e ainda não saíram:",
-      "later": [
-        "Versões para macOS e Linux",
-        "Mais do que uma câmara",
-        "Futsal, andebol, voleibol e futebol",
-        "Mais consolas, por porta série",
-        "Versões assinadas"
-      ],
-      "panelAlt": "As definições de aparência no ar do painel de controlo, com a pré-visualização do grafismo e a lista de estilos",
-      "panelCaption": "O painel de controlo, em \"Aparência no ar\". A pré-visualização muda à medida que escolhe.",
-      "phonePlaceholder": "Captura de ecrã: o painel de controlo num telemóvel, a mudar para o intervalo",
-      "phonePlaceholderLabel": "uma captura de ecrã do painel de controlo num telemóvel"
-    },
-    "source": {
-      "h2": "De onde vem o resultado",
-      "intro": "O Hallstream lê o resultado da consola do pavilhão, quando há uma. Um telemóvel na mesa de marcação resolve todos os outros casos.",
-      "consoleH3": "Da consola do pavilhão",
-      "console": "Uma caixa Stramatel Stream Box, emparelhada por Bluetooth. O resultado, o relógio, as faltas e os descontos chegam sozinhos.",
-      "consoleLink": "Consolas compatíveis",
-      "consolePlaceholder": "Fotografia: a consola do marcador do pavilhão e a Stream Box",
-      "consolePlaceholderLabel": "uma fotografia da consola do marcador do pavilhão e da Stream Box",
-      "phoneH3": "De um telemóvel na mesa de marcação",
-      "phone": "Na horizontal, na página de marcação. Também assume o resultado se a consola falhar a meio do jogo.",
-      "scorerAlt": "A página de marcação no telemóvel, na horizontal, com pontos, relógio, faltas e descontos, e o relógio a correr",
-      "scorerCaption": "A página de marcação com o relógio a correr. Pontos, faltas e descontos levam um toque cada."
+      "panelAlt": "A lista de estilos no ar do painel de controlo: Clássico, Lombada, Cor do Clube, Placa Esmaltada e Chão do Pavilhão, cada um com uma linha de descrição",
+      "panelCaption": "A escolha do estilo no painel de controlo, em \"Aparência no ar\"."
     },
     "air": {
       "h2": "No ar",
       "intro": "Cinco estilos para o marcador. Escolha um no painel de controlo.",
-      "bugAlt": "O marcador {name} sobre um campo",
-      "options": "Ponha o marcador num de seis lugares, em cima ou em baixo na imagem, entre 85% e 125% do tamanho, com as cores de destaque do clube e uma fotografia do seu pavilhão.",
-      "finalAlt": "O ecrã do resultado final no estilo Cor do Clube",
-      "final": "O resultado final no estilo Cor do Clube, com os parciais por período e os patrocinadores em baixo."
+      "looksLabel": "Estilos do marcador",
+      "looks": [
+        ["classico", "Clássico", "", "O marcador Clássico e o rodapé de um jogador sobre um campo", ""],
+        ["placa", "Placa Esmaltada", "", "O marcador Placa Esmaltada sobre um campo", ""],
+        ["lombada", "Lombada", "", "O marcador Lombada sobre um campo", ""],
+        ["pavilhao", "Chão do Pavilhão", "", "O marcador Chão do Pavilhão sobre um campo", ""],
+        ["cor-final", "Cor do Clube", "", "O ecrã do resultado final no estilo Cor do Clube", "O resultado final no estilo Cor do Clube, com os parciais por período e os patrocinadores em baixo."]
+      ],
+      "options": "Ponha o marcador num de seis lugares, em cima ou em baixo na imagem, entre 85% e 125% do tamanho, com as cores de destaque do clube e uma fotografia do seu pavilhão."
     },
     "order": {
       "h2": "Alinhamento",
@@ -111,9 +107,20 @@
         ["18:15", "Ligar o OBS", "Ligue o obs-websocket. O Hallstream monta a cena, o grafismo e a câmara."],
         ["18:30", "Escolher o jogo", "Escolha o jogo de hoje na sua lista, escrito à mão, importado ou trazido da federação."],
         ["18:55", "Entrar em direto", "O Hallstream cria o direto no YouTube. Ponha a abertura no ecrã enquanto as equipas aquecem."]
-      ]
+      ],
+      "tip": ["19:00", "Salto inicial"]
     },
-    "tipoff": "Antes do salto inicial."
+    "later": {
+      "h2": "Mais tarde",
+      "intro": "Hoje o Hallstream é uma aplicação para Windows, para basquetebol. Estas estão a caminho e ainda não saíram:",
+      "items": [
+        "Versões para macOS e Linux",
+        "Mais do que uma câmara",
+        "Futsal, andebol, voleibol e futebol",
+        "Mais consolas, por porta série",
+        "Versões assinadas, para o Windows deixar de avisar quando a abre"
+      ]
+    }
   },
   "consoles": {
     "title": "Consolas compatíveis: que placards o Hallstream lê",
