@@ -21,7 +21,7 @@
       "follow": "Follow the first release on GitHub",
       "released": "Free, open source. Version {version}, {size}, from GitHub Releases.",
       "releasedShort": "Free, open source. Version {version}, {size}.",
-      "none": "Free and open source, for Windows. The first release isn't out yet.",
+      "none": "Free and open source, for Windows. The first release isn’t out yet.",
       "smartScreen": "Windows may say the app is from an unknown publisher. Click More info, then Run anyway.",
       "notWindows": "Hallstream runs on Windows. macOS and Linux builds are coming."
     },
@@ -47,19 +47,19 @@
     "placeholder": "Placeholder for {what}"
   },
   "home": {
-    "title": "Hallstream: stream your club's home games to YouTube",
-    "description": "A free, open-source Windows app for basketball clubs. It reads the score from the hall's Stramatel console or a phone, puts it on the stream in your club's colours, and sets up OBS and YouTube.",
-    "h1": "Your club's home games, live on YouTube.",
+    "title": "Hallstream: stream your club’s home games to YouTube",
+    "description": "A free, open-source Windows app for basketball clubs. It reads the score from the hall’s Stramatel console or a phone, puts it on the stream in your club’s colours, and sets up OBS and YouTube.",
+    "h1": "Your club’s home games, live on YouTube.",
     "coverAlt": "Hallstream on air: the Clássico score bug and a player lower third over a basketball court",
     "coverCaption": "On air with the Clássico look: the score bug, and a lower third for the player who just scored.",
-    "lede": "One person runs it on the hall's PC. It reads the score from your scoreboard console, draws the graphics in your club's colours, and sets up OBS and the YouTube broadcast. There's no account to make, and no tracking.",
+    "lede": "One person runs it on the hall’s PC. It reads the score from your scoreboard console, draws the graphics in your club’s colours, and sets up OBS and the YouTube broadcast. There’s no account to make, and no tracking.",
     "source": {
       "h2": "Where the score comes from",
-      "intro": "Hallstream reads the score from the hall's console when there is one. A phone at the scorer's table covers every other case.",
-      "consoleH3": "From the hall's console",
+      "intro": "Hallstream reads the score from the hall’s console when there is one. A phone at the scorer’s table covers every other case.",
+      "consoleH3": "From the hall’s console",
       "console": "A Stramatel Stream Box, paired over Bluetooth. Score, clock, fouls and timeouts arrive on their own.",
       "consoleLink": "Supported consoles",
-      "phoneH3": "From a phone at the scorer's table",
+      "phoneH3": "From a phone at the scorer’s table",
       "phone": "Held sideways, on the scoring page. It also takes over if the console drops out mid-game.",
       "scorerAlt": "The phone scoring page held landscape, with points, clock, fouls and timeouts, and the clock running",
       "scorerCaption": "The scoring page with the clock running. Points, fouls and timeouts are one tap each.",
@@ -68,23 +68,23 @@
     "does": {
       "h2": "What it does",
       "rows": [
-        ["Score", "Reads the score, clock, fouls and timeouts from the hall's Stramatel Stream Box over Bluetooth. The score bug follows the scoreboard."],
-        ["Graphics", "Score bug, player and commentator lower thirds, opener, time-out, half-time, final result, sponsors, next game and \"we'll be right back\", in your club's colours."],
-        ["YouTube", "Creates the live broadcast with its title and thumbnail. After the game it makes the video unlisted, so it stays at its link and off your channel's front page."],
+        ["Score", "Reads the score, clock, fouls and timeouts from the hall’s Stramatel Stream Box over Bluetooth. The score bug follows the scoreboard."],
+        ["Graphics", "Score bug, player and commentator lower thirds, opener, time-out, half-time, final result, sponsors, next game and “we’ll be right back”, in your club’s colours."],
+        ["YouTube", "Creates the live broadcast with its title and thumbnail. After the game it makes the video unlisted, so it stays at its link and off your channel’s front page."],
         ["Panel", "Switch screens from the browser on the hall PC, or from any phone on the same wifi with a PIN."]
       ],
       "more": [
         ["OBS", "OBS Studio, the free streaming app, does the encoding. Install version 31 or later first. Hallstream sets it up over obs-websocket, with the scene, the overlay and the camera."],
-        ["Squads and fixtures", "Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation. The next fixture fills the \"next game\" screen."],
-        ["Offline", "After the first load, the graphics, the panel and the scoring page keep working if the hall's internet goes."],
+        ["Squads and fixtures", "Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation. The next fixture fills the “next game” screen."],
+        ["Offline", "After the first load, the graphics, the panel and the scoring page keep working if the hall’s internet goes."],
         ["Demo mode", "Plays an invented game with no console attached, so you can learn it at home before Saturday."],
         ["Languages", "The app is in European Portuguese today. English is next, and other languages can follow as community translations."]
       ],
       "licenceTerm": "Licence",
       "licence": "Free and open source under AGPL-3.0. The code is on",
       "licenceLink": "GitHub",
-      "panelAlt": "The control panel's list of on-air looks: Clássico, Lombada, Cor do Clube, Placa Esmaltada and Chão do Pavilhão, each with a one-line description",
-      "panelCaption": "The look picker in the control panel, under \"Aparência no ar\"."
+      "panelAlt": "The control panel’s list of on-air looks: Clássico, Lombada, Cor do Clube, Placa Esmaltada and Chão do Pavilhão, each with a one-line description",
+      "panelCaption": "The look picker in the control panel, under “Aparência no ar”."
     },
     "air": {
       "h2": "On air",
@@ -97,15 +97,15 @@
         ["pavilhao", "Chão do Pavilhão", "hall floor", "The Chão do Pavilhão score bug over a court", ""],
         ["cor-final", "Cor do Clube", "club colour", "The final result screen in the Cor do Clube look", "The final result in the Cor do Clube look, with the score by quarter and the sponsors along the bottom."]
       ],
-      "options": "Put the bug in any of six places along the top or bottom of the picture, at 85% to 125% size, with your club's accent colours and a photo of your hall."
+      "options": "Put the bug in any of six places along the top or bottom of the picture, at 85% to 125% size, with your club’s accent colours and a photo of your hall."
     },
     "order": {
       "h2": "Running order",
-      "intro": "A home game with a 19:00 tip-off, as one volunteer runs it from the hall's PC.",
+      "intro": "A home game with a 19:00 tip-off, as one volunteer runs it from the hall’s PC.",
       "steps": [
         ["The week before", "Install", "Download Hallstream onto the PC in the hall and open it. Try demo mode once, so the panel is familiar on the night."],
         ["18:15", "Connect OBS", "Turn on obs-websocket. Hallstream builds the scene, the overlay and the camera."],
-        ["18:30", "Pick the game", "Choose tonight's fixture from your list, typed in, imported or pulled from the federation."],
+        ["18:30", "Pick the game", "Choose tonight’s fixture from your list, typed in, imported or pulled from the federation."],
         ["18:55", "Go live", "Hallstream creates the YouTube broadcast. Put the opener on screen while the teams warm up."]
       ],
       "tip": ["19:00", "Tip-off"]
@@ -129,7 +129,7 @@
     "crumbHome": "Hallstream",
     "crumbGuides": "Guides",
     "h1": "Supported consoles",
-    "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer's table instead; that page is new and has not been used at a game yet. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
+    "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer’s table instead; that page is new and has not been used at a game yet. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
     "checked": "Last checked 24 November 2026.",
     "photoPlaceholder": "Photo: a Stramatel console and the Stream Box",
     "photoPlaceholderLabel": "a photo of a Stramatel console and the Stream Box",
@@ -141,7 +141,7 @@
       ["Daktronics AllSport", "Serial RS-232", "To be confirmed", "wanted"],
       ["Fair-Play", "Serial RS-232", "To be confirmed", "wanted"],
       ["Bodet", "Serial RS-232", "To be confirmed", "wanted"],
-      ["Any console, or none: a phone at the scorer's table, on the /marcar page", "The phone's browser", "Basketball. Other sports when they ship.", "new"]
+      ["Any console, or none: a phone at the scorer’s table, on the /marcar page", "The phone’s browser", "Basketball. Other sports when they ship.", "new"]
     ],
     "status": {
       "tested": "Tested on a real game",
@@ -149,11 +149,11 @@
       "new": "New, not used at a game yet",
       "wanted": "Wanted, not started"
     },
-    "missingH2": "Your console isn't listed?",
+    "missingH2": "Your console isn’t listed?",
     "missing": "Hallstream learns a console by reading what it sends during a game. To add one, a contributor needs to know the make, the model and how it connects, and later a recording of a real session to test the decoder against. The roadmap has a capture mode that records a session straight from the console. Until it ships, open an issue with the details below. The Stream Box handball, volleyball and hockey modes each need one recorded game before they count as tested.",
     "stepsBefore": "Open an issue on",
     "stepsLink": "GitHub",
-    "stepsAfter": "with the console's make and model.",
+    "stepsAfter": "with the console’s make and model.",
     "steps": [
       "Say how it connects (Bluetooth, serial, or a box in between) and which sports your hall runs on it.",
       "Later, once capture mode ships, record one game and attach the file to the issue."
@@ -168,27 +168,27 @@
     "intro": "This site sets no cookies and stores nothing in your browser. Updated 24 November 2026.",
     "siteH2": "On this website",
     "site": "Vercel Web Analytics counts visits. It records the page, the referring site, your country, and your browser and device type. It recognises a visit by a hash of the request that Vercel deletes after 24 hours, and it sets no cookies. There is no Google Analytics and no advertising.",
-    "siteLink": "Vercel's details",
+    "siteLink": "Vercel’s details",
     "hosting": "The site is hosted on Vercel, which keeps the usual server logs (IP address, time, page) to run and protect the service.",
     "appH2": "In the app",
-    "app": "The app has no account. It runs on the hall's PC and keeps the club's settings, squads, games and logs in its own folder, beside the program.",
+    "app": "The app has no account. It runs on the hall’s PC and keeps the club’s settings, squads, games and logs in its own folder, beside the program.",
     "appSends": "It connects to other services only when you set them up:",
     "appList": [
       "YouTube, when you sign in to create broadcasts.",
-      "The Portuguese basketball federation's data, through calendariofpb.pt, when a Portuguese club chooses to pull squads and fixtures from it.",
+      "The Portuguese basketball federation’s data, through calendariofpb.pt, when a Portuguese club chooses to pull squads and fixtures from it.",
       "OBS, on the same PC or network, over obs-websocket."
     ],
-    "logs": "The releases on GitHub send nothing to us or to anyone else. The source code can also send each game's logs to a server after the stream, but only when it is built with an upload key, and the public releases are built without one. A program built without the key writes that in its own log.",
-    "phone": "The control panel and the scoring page can be opened from a phone on the hall's wifi. That traffic stays on the local network and needs the PIN.",
+    "logs": "The releases on GitHub send nothing to us or to anyone else. The source code can also send each game’s logs to a server after the stream, but only when it is built with an upload key, and the public releases are built without one. A program built without the key writes that in its own log.",
+    "phone": "The control panel and the scoring page can be opened from a phone on the hall’s wifi. That traffic stays on the local network and needs the PIN.",
     "questionsH2": "Questions",
     "questions": "Open an issue on",
     "questionsLink": "GitHub"
   },
   "notFound": {
     "title": "Page not found",
-    "description": "This page isn't on hallstream.com.",
+    "description": "This page isn’t on hallstream.com.",
     "h1": "Page not found",
-    "body": "This page isn't here. The link may be old, or have a typo in it.",
+    "body": "This page isn’t here. The link may be old, or have a typo in it.",
     "home": "Go to the home page"
   }
 }

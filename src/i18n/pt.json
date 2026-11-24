@@ -69,13 +69,13 @@
       "h2": "O que faz",
       "rows": [
         ["Resultado", "Lê o resultado, o relógio, as faltas e os descontos de tempo da caixa Stramatel do pavilhão, por Bluetooth. O marcador no ecrã acompanha o placard."],
-        ["Grafismo", "Marcador, rodapés do jogador e do comentador, abertura, desconto de tempo, intervalo, resultado final, patrocinadores, próximo jogo e \"voltamos já\", com as cores do clube."],
+        ["Grafismo", "Marcador, rodapés do jogador e do comentador, abertura, desconto de tempo, intervalo, resultado final, patrocinadores, próximo jogo e «voltamos já», com as cores do clube."],
         ["YouTube", "Cria o direto com título e miniatura. No fim do jogo deixa o vídeo não listado, para ficar no link e fora da página inicial do canal."],
         ["Painel", "Mude de ecrã no browser do computador do pavilhão, ou em qualquer telemóvel na mesma rede wifi, com um PIN."]
       ],
       "more": [
         ["OBS", "O OBS Studio, a aplicação de transmissão grátis, faz a codificação. Instale primeiro a versão 31 ou mais recente. O Hallstream configura-o por obs-websocket, com a cena, o grafismo e a câmara."],
-        ["Plantéis e jogos", "Escreva-os à mão ou importe um CSV. Os clubes portugueses de basquetebol podem trazer os dois da federação. O próximo jogo aparece no ecrã \"próximo jogo\"."],
+        ["Plantéis e jogos", "Escreva-os à mão ou importe um CSV. Os clubes portugueses de basquetebol podem trazer os dois da federação. O próximo jogo aparece no ecrã «próximo jogo»."],
         ["Sem internet", "Depois do primeiro arranque, o grafismo, o painel e a página de marcação continuam a funcionar se a internet do pavilhão falhar."],
         ["Modo demonstração", "Joga um jogo a fingir sem consola ligada, para aprender em casa antes de sábado."],
         ["Línguas", "A aplicação está em português europeu. O inglês vem a seguir, e outras línguas podem chegar com traduções da comunidade."]
@@ -84,7 +84,7 @@
       "licence": "Grátis e de código aberto, com licença AGPL-3.0. O código está no",
       "licenceLink": "GitHub",
       "panelAlt": "A lista de estilos no ar do painel de controlo: Clássico, Lombada, Cor do Clube, Placa Esmaltada e Chão do Pavilhão, cada um com uma linha de descrição",
-      "panelCaption": "A escolha do estilo no painel de controlo, em \"Aparência no ar\"."
+      "panelCaption": "A escolha do estilo no painel de controlo, em «Aparência no ar»."
     },
     "air": {
       "h2": "No ar",

@@ -54,3 +54,14 @@ test("no string has an em dash", () => {
     assert.ok(!JSON.stringify(load(lang)).includes("—"), `${lang}.json has an em dash`);
   }
 });
+
+const strings = (o: any): string[] =>
+  typeof o === "string" ? [o] : Object.values(o).flatMap(strings);
+
+test("no string has a straight quote or apostrophe", () => {
+  for (const lang of ["en", "pt"]) {
+    for (const s of strings(load(lang))) {
+      assert.ok(!/['"]/.test(s), `${lang}.json: ${s}`);
+    }
+  }
+});
