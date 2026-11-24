@@ -17,7 +17,6 @@
 - [ ] A Vercel deploy hook in the app's release workflow (`kauredo/hallstream`), so a release rebuilds the site and the button switches to "Download for Windows". The hook URL goes in as a GitHub secret.
 - [ ] A Portuguese 404 for missing `/pt/` URLs. Vercel serves the root `404.html` for every path; a rewrite would answer 200, so check Vercel's docs for a status-keeping option first.
 - [ ] Recapture the app screenshots in English for the EN pages once the app ships `en.json`.
-- [ ] Replace `hardwood.jpg` (generated) with a real maple photo.
 - [ ] Optional: blur the third-party sponsor names in the arena photo behind `onair-*.jpg` (see `docs/image-credits.md`).
 - [ ] Upgrade Astro to 7 as a normal upgrade. The npm audit's Astro advisories need a server runtime this static build does not have. Bump `sharp` (build-time only) at the same time.
 - [ ] The first vs page, with a source and a checked date for every fact (`docs/vs-pages.md`).

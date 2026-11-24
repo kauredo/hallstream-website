@@ -587,7 +587,7 @@ figure {
   position: relative;
   isolation: isolate;
   padding-block: var(--section) calc(var(--section) + 8px);
-  background: var(--soalho) url("/images/hardwood.jpg") 50% 0 / 1440px auto;
+  background: var(--soalho) url("/images/hardwood.jpg") 50% 0 / 1920px auto;
   overflow: clip;
 }
 .wood::before {
