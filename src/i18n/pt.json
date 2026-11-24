@@ -51,7 +51,7 @@
     "h1": "Os jogos em casa do seu clube, em direto no YouTube.",
     "coverAlt": "O Hallstream no ar: o marcador Clássico e o rodapé de um jogador sobre um campo de basquetebol",
     "coverCaption": "No ar com o estilo Clássico: o marcador e o rodapé do jogador que acabou de marcar.",
-    "lede": "Uma pessoa trata de tudo no computador do pavilhão. O Hallstream lê o resultado da consola do marcador, desenha o grafismo com as cores do clube e prepara o OBS e o direto no YouTube. Não é preciso criar conta.",
+    "lede": "Uma pessoa trata de tudo no computador do pavilhão. O Hallstream lê o resultado da consola do marcador, desenha o grafismo com as cores do clube e prepara o OBS e o direto no YouTube. Não é preciso criar conta e não há rastreio.",
     "does": {
       "h2": "O que faz",
       "rows": [
@@ -171,7 +171,7 @@
       "Os dados da Federação Portuguesa de Basquetebol, através do calendariofpb.pt, quando um clube português escolhe trazer daí os plantéis e os jogos.",
       "O OBS, no mesmo computador ou na mesma rede, por obs-websocket."
     ],
-    "logs": "Uma versão compilada com um token de envio também manda os registos de cada jogo para o calendariofpb.pt quando a transmissão termina: o que a consola enviou, o resultado ao longo do jogo, o registo do próprio programa e os dispositivos Bluetooth que ouviu durante a procura. Uma versão sem o token não envia nada e escreve isso no registo.",
+    "logs": "As versões publicadas no GitHub não enviam nada, nem para nós nem para ninguém. O código-fonte também consegue enviar os registos de cada jogo para um servidor depois da transmissão, mas só quando é compilado com uma chave de envio, e as versões públicas são compiladas sem ela. Um programa sem a chave escreve isso no seu próprio registo.",
     "phone": "O painel de controlo e a página de marcação abrem num telemóvel na rede wifi do pavilhão. Esse tráfego fica na rede local e pede o PIN.",
     "questionsH2": "Dúvidas",
     "questions": "Abra um pedido no",
