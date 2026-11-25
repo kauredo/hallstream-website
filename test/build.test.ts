@@ -158,6 +158,11 @@ for (const build of ["plain", "release"] as const) {
     }
   });
 
+  test(`${build}: the root 404 shows the Portuguese one under /pt/`, opts, () => {
+    assert.match(read(out[build], "404.html"), /fetch\("\/pt\/404\/"\)/);
+    assert.match(read(out[build], "pt/404/index.html"), /<html lang="pt-PT"/);
+  });
+
   test(`${build}: internal links resolve`, opts, () => {
     try {
       execFileSync(process.execPath, [join(root, "scripts/check-links.mjs"), out[build]], { cwd: root, stdio: "pipe" });
