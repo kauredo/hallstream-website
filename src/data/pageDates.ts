@@ -9,4 +9,5 @@ export const pageDates: Record<string, { published: string; modified: string }> 
   "/pt/guides/supported-consoles/": { published: "2026-11-24", modified: "2026-11-24" },
   "/privacy/": { published: "2026-11-24", modified: "2026-11-24" },
   "/pt/privacy/": { published: "2026-11-24", modified: "2026-11-24" },
+  "/vs/sl-live-stream/": { published: "2026-11-25", modified: "2026-11-25" },
 };

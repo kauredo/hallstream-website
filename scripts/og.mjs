@@ -58,6 +58,7 @@ const images = [
   ["home-pt.png", home({ title: pt.home.h1, price: "Preço: grátis", platform: "Para Windows", alt: pt.home.coverAlt })],
   ["consoles-en.png", guide({ kicker: en.consoles.crumbGuides.replace(/s$/, ""), title: en.consoles.ogTitle })],
   ["consoles-pt.png", guide({ kicker: "Guia", title: pt.consoles.ogTitle })],
+  ["vs-sl-live-stream-en.png", guide({ kicker: en.consoles.crumbGuides.replace(/s$/, ""), title: "Hallstream vs SL Live Stream" })],
 ];
 
 const dir = mkdtempSync(join(tmpdir(), "hs-og-"));

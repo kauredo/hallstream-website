@@ -8,6 +8,7 @@ import RuleHead from "@/components/RuleHead.astro";
 import type { RouteId } from "@/i18n/routes";
 import { product } from "@/data/links";
 import { alwaysStrengths, hallstream, questions, type VsAlternative } from "@/data/vs";
+import { t } from "@/i18n";
 
 interface Props {
   alt: VsAlternative;
@@ -15,6 +16,7 @@ interface Props {
 }
 const { alt, route } = Astro.props;
 const lang = "en";
+const generic = (alt.generic ?? (Object.keys(alwaysStrengths) as (keyof typeof alwaysStrengths)[])).map((k) => alwaysStrengths[k]);
 const checked = [alt.summary, ...Object.values(alt.facts), ...alt.strengths, alt.samePc]
   .map((f) => f.checked)
   .sort()
@@ -57,8 +59,8 @@ const schema = [
           <div>
             <p class="answer">
               Hallstream is a free, open-source Windows app that streams a club's home games to YouTube, with scoreboard graphics that take the
-              score from the hall's console or from a phone at the scorer's table. {alt.summary.text} Hallstream suits a basketball club that
-              streams one camera from a Windows PC and wants the score on screen without anyone typing it.
+              score from the hall's console or from a phone at the scorer's table. {alt.summary.text}
+              {alt.fit ?? "Hallstream suits a basketball club that streams one camera from a Windows PC and wants the score on screen without anyone typing it."}
             </p>
             {
               checked && (
@@ -70,7 +72,7 @@ const schema = [
           </div>
           <figure class="mt28">
             <Shot src="/images/onair-classico.jpg" alt="Hallstream on air: the Clássico score bug and a player lower third over a basketball court" width={1920} height={1080} ratio="16/9" ink />
-            <figcaption class="cap">Hallstream on air, in the Clássico look.</figcaption>
+            <figcaption class="cap">Hallstream on air, in the Clássico look. {t(lang).common.ptNote}</figcaption>
           </figure>
         </div>
       </div>
@@ -113,7 +115,7 @@ const schema = [
       <RuleHead id="better">When {alt.name} is the better choice</RuleHead>
       <p class="intro" style="margin-top:16px">Some clubs will be better off with {alt.name}. Pick it if one of these is true for you.</p>
       <ul class="lined">
-        {alwaysStrengths.map((s) => <li>{s}</li>)}
+        {generic.map((s) => <li>{s}</li>)}
         {alt.strengths.map((s) => <li>{s.text} <a href={s.source}>Source</a></li>)}
       </ul>
     </section>

@@ -21,4 +21,4 @@
 - [ ] Recapture the app screenshots in English for the EN pages once the app ships `en.json`.
 - [ ] Optional: blur the third-party sponsor names in the arena photo behind `onair-*.jpg` (see `docs/image-credits.md`).
 - [x] Upgrade Astro to 7 (7.4.13) and `sharp` to 0.35.5. Nothing in the v6 or v7 upgrade guides touches this site while `compressHTML: true` stays explicit (v7 changed its default). The built HTML differs only in whitespace and minifier output. `npm audit --omit=dev` is clean.
-- [ ] The first vs page, with a source and a checked date for every fact (`docs/vs-pages.md`).
+- [x] The first vs page, `/vs/sl-live-stream/`: Stramatel's own Android app, the one other tool that reads a Stramatel console. Every fact is from Stramatel's data sheet, advert, product page or Play listing, checked 2026-11-25. Stramatel publishes no price for the Stream Box or Premium, so the page states none.

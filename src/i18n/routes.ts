@@ -6,6 +6,8 @@ export const routes = {
   home: { en: "/", pt: "/pt/", indexed: true },
   consoles: { en: "/guides/supported-consoles/", pt: "/pt/guides/supported-consoles/", indexed: true },
   privacy: { en: "/privacy/", pt: "/pt/privacy/", indexed: true },
+  // English only: pt has the same path until a Portuguese version exists.
+  vsSlLiveStream: { en: "/vs/sl-live-stream/", pt: "/vs/sl-live-stream/", indexed: true },
   notFound: { en: "/404/", pt: "/pt/404/", indexed: false },
 } as const;
 
