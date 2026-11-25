@@ -20,5 +20,5 @@
 - [x] A Portuguese 404 for missing `/pt/` URLs. Vercel serves the root `404.html`, with its 404 status, for every missing path. Under `/pt/` an inline script in that page fetches `/pt/404/` and writes it in, so the status stays 404. A `vercel.json` `routes` entry was tried on a preview and dropped: without `handle: filesystem` it turned every `/pt/` page into a 404, and with it the deployment lost every header from `headers` except HSTS.
 - [ ] Recapture the app screenshots in English for the EN pages once the app ships `en.json`.
 - [ ] Optional: blur the third-party sponsor names in the arena photo behind `onair-*.jpg` (see `docs/image-credits.md`).
-- [ ] Upgrade Astro to 7 as a normal upgrade. The npm audit's Astro advisories need a server runtime this static build does not have. Bump `sharp` (build-time only) at the same time.
+- [x] Upgrade Astro to 7 (7.4.13) and `sharp` to 0.35.5. Nothing in the v6 or v7 upgrade guides touches this site while `compressHTML: true` stays explicit (v7 changed its default). The built HTML differs only in whitespace and minifier output. `npm audit --omit=dev` is clean.
 - [ ] The first vs page, with a source and a checked date for every fact (`docs/vs-pages.md`).

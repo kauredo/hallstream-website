@@ -1,6 +1,6 @@
 # Hallstream website
 
-Astro 5 static site for hallstream.com. The app is `../app` (its own repo, `kauredo/hallstream`); the brand package is `../marketing/brand/hallstream-brand/`. Never edit either from here.
+Astro 7 static site for hallstream.com. The app is `../app` (its own repo, `kauredo/hallstream`); the brand package is `../marketing/brand/hallstream-brand/`. Never edit either from here.
 
 ## Commands
 
