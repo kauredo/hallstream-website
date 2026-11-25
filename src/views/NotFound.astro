@@ -11,6 +11,21 @@ const n = t(lang).notFound;
 ---
 
 <BaseLayout lang={lang} route="notFound" title={`${n.title} | Hallstream`} description={n.description} og={`home-${lang}.png`}>
+  {
+    lang === "en" && (
+      // Vercel answers every missing URL with this page and its 404 status. Under /pt/ it
+      // swaps in the Portuguese page, so the reader gets their language and the status stays.
+      <script is:inline>
+        if (location.pathname.indexOf("/pt/") === 0) {
+          document.documentElement.style.visibility = "hidden";
+          fetch("/pt/404/")
+            .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+            .then(function (html) { document.open(); document.write(html); document.close(); })
+            .catch(function () { document.documentElement.style.visibility = ""; });
+        }
+      </script>
+    )
+  }
   <section class="dk page-top">
     <div class="wrap">
       <div class="tt"></div>
