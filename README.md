@@ -1,6 +1,6 @@
 # hallstream.com
 
-The website for [Hallstream](https://github.com/kauredo/hallstream), a free, open-source Windows app that streams a basketball club's home games to YouTube with the score on screen.
+The website for [Hallstream](https://github.com/kauredo/hallstream), a free, open-source Windows app that streams a club's home games (basketball, futsal, handball, volleyball or soccer) to YouTube with the score on screen.
 
 It is a static Astro 5 site, in English at `/` and European Portuguese at `/pt/`, deployed on Vercel.
 

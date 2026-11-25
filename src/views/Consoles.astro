@@ -93,6 +93,31 @@ const schema = [
       </ul>
     </section>
 
+    <section class="wrap psec" aria-labelledby="sports">
+      <RuleHead id="sports">{c.sportsH2}</RuleHead>
+      <p class="prose">{c.sportsIntro}</p>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th scope="col" style="width:22%">{c.sportsCols[0]}</th>
+            <th scope="col" style="width:22%">{c.sportsCols[1]}</th>
+            <th scope="col">{c.sportsCols[2]}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            c.sportsRows.map(([sport, phone, console]) => (
+              <tr>
+                <th scope="row">{sport}</th>
+                <td data-label={c.sportsCols[1]}>{phone}</td>
+                <td data-label={c.sportsCols[2]}>{console}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </section>
+
     <section class="wrap psec" aria-labelledby="not-listed">
       <RuleHead id="not-listed">{c.missingH2}</RuleHead>
       <p class="prose">{c.missing}</p>
