@@ -173,7 +173,8 @@
       "O YouTube, quando inicia sessão para criar os diretos.",
       "Os dados da Federação Portuguesa de Basquetebol, através do calendariofpb.pt, quando um clube português escolhe trazer daí os plantéis e os jogos.",
       "O OBS, no mesmo computador ou na mesma rede, por obs‑websocket.",
-      "O GitHub, uma vez por dia, para ver se há uma versão nova, só se ligar «Avisar quando houver uma versão nova» nas Definições. Envia o número da versão e nada sobre o clube."
+      "O GitHub, uma vez por dia, para ver se há uma versão nova, só se ligar «Avisar quando houver uma versão nova» nas Definições. Envia o número da versão e nada sobre o clube.",
+      "O serviço de mensagens do Hallstream, só quando envia uma mensagem na Ajuda. Abre um pedido público no GitHub com a sua mensagem, a versão, o sistema, a marcação e o desporto, por isso não escreva nada pessoal."
     ],
     "logs": "O código-fonte consegue enviar os registos de cada jogo para um servidor depois da transmissão, mas só quando é compilado com uma chave de envio, e as versões públicas são compiladas sem ela. Um programa sem a chave escreve isso no seu próprio registo.",
     "phone": "O painel de controlo e a página de marcação abrem num telemóvel na rede wifi do pavilhão. Esse tráfego fica na rede local e pede o PIN.",
