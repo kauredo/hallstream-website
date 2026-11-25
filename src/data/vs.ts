@@ -16,6 +16,12 @@ export interface VsAlternative {
   summary: Sourced;
   /** One per row of the head-to-head table, in the order of `questions`. */
   facts: Record<VsQuestion, Sourced>;
+  /** The closing sentence of the opening answer: which club each one suits.
+   *  Without it, the page says Hallstream suits a club that wants the score
+   *  on screen without anyone typing it. */
+  fit?: string;
+  /** Which of `alwaysStrengths` hold for this alternative; all of them when absent. */
+  generic?: (keyof typeof alwaysStrengths)[];
   /** Things the alternative does better, in plain sentences. */
   strengths: Sourced[];
   /** Anything to export or cancel in the alternative before switching. */
@@ -43,9 +49,10 @@ export const hallstream: Record<VsQuestion, { label: string; text: string; soon?
   licence: { label: "Licence", text: "Open source, AGPL-3.0." },
 };
 
-// The reasons a club might pick the alternative that hold for any of them.
-export const alwaysStrengths = [
-  "You stream from a Mac or a Linux machine. Hallstream runs on Windows only for now.",
-  "You need more than one camera in the same broadcast today.",
-  "Your club plays a sport other than basketball.",
-];
+// Reasons a club might pick the alternative that hold for most of them. A page
+// lists the ones its alternative's `generic` names, or all of them.
+export const alwaysStrengths = {
+  mac: "You stream from a Mac or a Linux machine. Hallstream runs on Windows only for now.",
+  cameras: "You need more than one camera in the same broadcast today.",
+  sports: "Your club plays a sport other than basketball.",
+};

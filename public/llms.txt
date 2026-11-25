@@ -31,6 +31,7 @@ Hallstream is early. It works today for basketball, on Windows, with one camera.
 - [Home](https://hallstream.com/): what Hallstream does, where the score comes from, the five on-air looks and a game-day running order.
 - [Supported consoles](https://hallstream.com/guides/supported-consoles/): which scoreboards Hallstream reads, console by console, with each one's status.
 - [Privacy](https://hallstream.com/privacy/): what the site and the app collect.
+- [Hallstream vs SL Live Stream](https://hallstream.com/vs/sl-live-stream/): Hallstream next to Stramatel's own Android streaming app, fact by fact, with sources.
 - The same pages in European Portuguese: https://hallstream.com/pt/, https://hallstream.com/pt/guides/supported-consoles/, https://hallstream.com/pt/privacy/
 
 ## Links

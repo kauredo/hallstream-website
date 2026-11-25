@@ -1,6 +1,6 @@
 # Adding a "Hallstream vs …" page
 
-The template is built and not routed. `src/views/Vs.astro` renders a page from a `VsAlternative` object (`src/data/vs.ts`). No vs page ships until every fact about the alternative has been researched, so the footer has no vs link yet.
+The first page is `/vs/sl-live-stream/` (`src/data/vs/sl-live-stream.ts`). The template is `src/views/Vs.astro`, rendering a `VsAlternative` object (`src/data/vs.ts`). No vs page ships until every fact about the alternative has been researched.
 
 ## 1. Research the alternative
 
@@ -19,6 +19,8 @@ The page needs these facts:
 - `strengths`: what it does better than Hallstream. Write at least one, and be fair.
 - `samePc`: whether it can run on the same PC as Hallstream
 - `switchStep` (optional): anything to export or cancel before switching
+- `fit` (optional): the opening answer's last sentence, on which club each one suits. Without it the page says Hallstream suits a club that wants the score on screen without anyone typing it, which is wrong for an alternative that also reads the console.
+- `generic` (optional): which of the shared reasons in `alwaysStrengths` (`mac`, `cameras`, `sports`) hold for this alternative. All of them when absent. Write each strength as a condition ("You want…"), since the list opens with "Pick it if one of these is true for you".
 
 The page prints the oldest `checked` date as "details checked on …" and links every fact to its source. When you cannot find a source for a fact, leave the page unbuilt. A guess does not go on it.
 
