@@ -29,7 +29,7 @@ const homes = [
 const out = { plain: "", release: "" };
 
 function build(dir: string, env: NodeJS.ProcessEnv) {
-  execFileSync(process.execPath, [join(root, "node_modules/astro/astro.js"), "build", "--outDir", dir], {
+  execFileSync(process.execPath, [join(root, "node_modules/astro/bin/astro.mjs"), "build", "--outDir", dir], {
     cwd: root,
     env,
     stdio: ["ignore", "pipe", "pipe"],
