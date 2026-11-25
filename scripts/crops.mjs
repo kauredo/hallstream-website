@@ -7,8 +7,12 @@
 //                            with its own blue and white to make 4:5
 //   youth-game               4:3 from the centre
 // `width` resizes the crop; `extend` adds solid edges after the cut.
-// Run it after replacing a picture in public/images/.
+// Run it after replacing a picture in public/images/; `node scripts/crops.mjs
+// public/images/en` cuts the English on-air frames (youth-game is skipped there).
+import { existsSync } from "node:fs";
 import sharp from "sharp";
+
+const dir = process.argv[2] ?? "public/images";
 
 const bug = { left: 0, top: 0, width: 760, height: 950 };
 const crops = [
@@ -28,8 +32,9 @@ const crops = [
 ];
 
 for (const { name, out, box, extend = [], width } of crops) {
-  const file = `public/images/${out}.jpg`;
-  let buf = await sharp(`public/images/${name}.jpg`).extract(box).toBuffer();
+  if (!existsSync(`${dir}/${name}.jpg`)) continue;
+  const file = `${dir}/${out}.jpg`;
+  let buf = await sharp(`${dir}/${name}.jpg`).extract(box).toBuffer();
   for (const edge of extend) buf = await sharp(buf).extend(edge).toBuffer();
   let img = sharp(buf);
   if (width) img = img.resize({ width });

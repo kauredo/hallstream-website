@@ -23,7 +23,7 @@ Re-run cadence: quarterly after the first run.
 
 ## Actions
 
-1. When the first release ships, check that `npm run build` picks it up (the version and size appear under the download button) and that `llms.txt` drops "no published release yet".
+1. Done 2026-11-25: 0.1.0 shipped, the download button names it, and `llms.txt` no longer says there is no release.
 2. Submit the sitemap in Google Search Console and Bing Webmaster Tools, and ping IndexNow with the key file in `public/`.
 3. Answer the Stramatel and OBS questions that already exist on Reddit (r/obs, r/livestream, r/basketball coaching subs) and the OBS forums, linking the console guide where it answers the question.
 4. The first vs page is up: `/vs/sl-live-stream/` (2026-11-25). Searches for prompts 1 and 3 named KeepTheScore, OBS scoreboard plugins, Overlays.uno, Swish Live and SportCam, all of them typed by hand; SL Live Stream is the one other tool that reads a Stramatel console. The next vs page comes from what the spot-check prompts name once the site is indexed.

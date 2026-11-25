@@ -15,17 +15,18 @@ interface Props {
 const { lang } = Astro.props;
 const s = t(lang);
 const h = s.home;
-const note = s.common.ptNote;
+// The app's own screenshots, in the page's language (scripts/app-shots.mjs).
+const shots = lang === "en" ? "/images/en" : "/images";
 const dl = await getDownload();
 
-// The large On air frame opens on Cor do Clube, the look the panel crop shows
+// The large On air frame opens on Cor do Clube (Club Colour), the look the panel crop shows
 // selected. Below 600 px each look swaps in its 4:5 phone crop (scripts/crops.mjs).
 const firstLook = h.air.looks.findIndex(([file]) => file === "cor-final");
 const frame = (file: string) => ({
-  src: `/images/onair-${file}.jpg`,
-  srcset: `/images/onair-${file}-960.jpg 960w, /images/onair-${file}.jpg 1920w`,
+  src: `${shots}/onair-${file}.jpg`,
+  srcset: `${shots}/onair-${file}-960.jpg 960w, ${shots}/onair-${file}.jpg 1920w`,
 });
-const phoneFrame = (file: string) => `/images/onair-${file}-look-phone.jpg`;
+const phoneFrame = (file: string) => `${shots}/onair-${file}-look-phone.jpg`;
 const segments = Array.from({ length: 36 }, (_, i) => i);
 const isTime = (v: string) => /^\d\d:\d\d$/.test(v);
 
@@ -44,7 +45,7 @@ const schema = [
     downloadUrl: dl.url,
     ...(dl.version ? { softwareVersion: dl.version } : {}),
     codeRepository: product.github,
-    screenshot: new URL("/images/onair-classico.jpg", Astro.site).href,
+    screenshot: new URL(`${shots}/onair-classico.jpg`, Astro.site).href,
     author: { "@type": "Person", name: "kauredo", url: "https://github.com/kauredo" },
   },
 ];
@@ -66,9 +67,9 @@ const schema = [
       </div>
     </div>
     <picture>
-      <source media="(max-width: 600px)" type="image/webp" srcset="/images/onair-classico-phone.webp" width="864" height="1080" />
-      <source media="(max-width: 600px)" srcset="/images/onair-classico-phone.jpg" width="864" height="1080" />
-      <source type="image/webp" srcset="/images/onair-classico-960.webp 960w, /images/onair-classico.webp 1920w" sizes="(max-width: 1440px) 100vw, 1440px" />
+      <source media="(max-width: 600px)" type="image/webp" srcset={`${shots}/onair-classico-phone.webp`} width="864" height="1080" />
+      <source media="(max-width: 600px)" srcset={`${shots}/onair-classico-phone.jpg`} width="864" height="1080" />
+      <source type="image/webp" srcset={`${shots}/onair-classico-960.webp 960w, ${shots}/onair-classico.webp 1920w`} sizes="(max-width: 1440px) 100vw, 1440px" />
       <img class="hero__frame" {...frame("classico")} sizes="(max-width: 1440px) 100vw, 1440px" alt={h.coverAlt} width="1920" height="1080" fetchpriority="high" decoding="async" />
     </picture>
   </section>
@@ -106,10 +107,10 @@ const schema = [
           <img class="youth__photo" src="/images/youth-game.jpg" srcset="/images/youth-game-1440.jpg 1440w, /images/youth-game.jpg 2880w" sizes="(max-width: 1440px) 100vw, 1344px" alt={h.source.youthAlt} width="2880" height="1927" loading="lazy" decoding="async" />
         </picture>
         <div class="youth__scorer">
-          <Shot src="/images/marcar.jpg" alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/739" ink />
+          <Shot src={`${shots}/marcar.jpg`} alt={h.source.scorerAlt} width={1600} height={739} ratio="1600/739" ink />
         </div>
         </div>
-        <figcaption class="cap">{h.source.scorerCaption}{note && <span class="cap-note">{note}</span>}</figcaption>
+        <figcaption class="cap">{h.source.scorerCaption}</figcaption>
       </figure>
     </div>
   </section>
@@ -149,7 +150,7 @@ const schema = [
           <path class="court__line" d="M2500 -784H306A802 802 0 0 0 306 784H2500"></path>
         </svg>
         <div class="crop">
-          <img src="/images/panel-aparencia.jpg" alt={h.does.panelAlt} width="1600" height="1085" loading="lazy" decoding="async" />
+          <img src={`${shots}/panel-aparencia.jpg`} alt={h.does.panelAlt} width="1600" height="1085" loading="lazy" decoding="async" />
         </div>
         <figcaption class="cap">{h.does.panelCaption}</figcaption>
       </figure>
@@ -177,7 +178,7 @@ const schema = [
               <li>
                 <button class="look" type="button" aria-pressed={i === firstLook ? "true" : "false"} data-src={f.src} data-srcset={f.srcset} data-phone={phoneFrame(file)} data-alt={alt} data-cap={cap}>
                   <span class="bug">
-                    <img src={`/images/bug-${file.replace("-final", "")}.png`} alt="" width="760" height="200" loading="lazy" decoding="async" />
+                    <img src={`${shots}/bug-${file.replace("-final", "")}.png`} alt="" width="760" height="200" loading="lazy" decoding="async" />
                   </span>
                   <span class="look__name">
                     {name}

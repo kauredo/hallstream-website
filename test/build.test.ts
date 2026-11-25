@@ -127,14 +127,16 @@ for (const [lang, file] of homes) {
   for (const build of ["plain", "release"] as const) {
     test(`${build}: ${file} has five looks in the panel's order, Cor do Clube pressed and on screen`, opts, () => {
       const html = read(out[build], file);
+      // The English page shows the app in English (public/images/en/).
+      const dir = file.startsWith("pt/") ? "/images" : "/images/en";
       assert.match(html, /<ul class="looks"[^>]*\shidden>/);
       const looks = [...html.matchAll(/<button class="look"[^>]*>/g)].map(([tag]) => tag);
       assert.equal(looks.length, 5);
-      const files = looks.map((tag) => tag.match(/data-src="\/images\/onair-([^".]+)\.jpg"/)?.[1]);
+      const files = looks.map((tag) => tag.match(new RegExp(`data-src="${dir}/onair-([^".]+)\\.jpg"`))?.[1]);
       assert.deepEqual(files, ["classico", "lombada", "cor-final", "placa", "pavilhao"]);
       const pressed = looks.filter((tag) => tag.includes('aria-pressed="true"'));
       assert.equal(pressed.length, 1);
-      assert.ok(pressed[0].includes('data-src="/images/onair-cor-final.jpg"'), "Cor do Clube is not the default");
+      assert.ok(pressed[0].includes(`data-src="${dir}/onair-cor-final.jpg"`), "Cor do Clube is not the default");
       const src = pressed[0].match(/data-src="([^"]+)"/)?.[1];
       const screen = html.match(/<img id="screen"[^>]*\ssrc="([^"]+)"/)?.[1];
       assert.ok(src, "pressed look has no data-src");

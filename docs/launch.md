@@ -18,7 +18,7 @@
 
 - [x] A release rebuilds the site: the Vercel deploy hook `app-release` (branch `main`) is the app repo secret `VERCEL_DEPLOY_HOOK`, called by the app's `release.yml` after it publishes, and by `site.yml` for a release published by hand.
 - [x] A Portuguese 404 for missing `/pt/` URLs. Vercel serves the root `404.html`, with its 404 status, for every missing path. Under `/pt/` an inline script in that page fetches `/pt/404/` and writes it in, so the status stays 404. A `vercel.json` `routes` entry was tried on a preview and dropped: without `handle: filesystem` it turned every `/pt/` page into a 404, and with it the deployment lost every header from `headers` except HSTS.
-- [ ] Recapture the app screenshots in English for the EN pages once the app ships `en.json`.
+- [x] The app screenshots in English for the EN pages, `public/images/en/`, rendered from 0.1.0 by `scripts/app-shots.mjs`. The "app is in Portuguese for now" caption is gone.
 - [ ] Optional: blur the third-party sponsor names in the arena photo behind `onair-*.jpg` (see `docs/image-credits.md`).
 - [x] Upgrade Astro to 7 (7.4.13) and `sharp` to 0.35.5. Nothing in the v6 or v7 upgrade guides touches this site while `compressHTML: true` stays explicit (v7 changed its default). The built HTML differs only in whitespace and minifier output. `npm audit --omit=dev` is clean.
 - [x] The first vs page, `/vs/sl-live-stream/`: Stramatel's own Android app, the one other tool that reads a Stramatel console. Every fact is from Stramatel's data sheet, advert, product page or Play listing, checked 2026-11-25. Stramatel publishes no price for the Stream Box or Premium, so the page states none.
