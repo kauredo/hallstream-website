@@ -173,7 +173,8 @@
       "YouTube, when you sign in to create broadcasts.",
       "The Portuguese basketball federation’s data, through calendariofpb.pt, when a Portuguese club chooses to pull squads and fixtures from it.",
       "OBS, on the same PC or network, over obs-websocket.",
-      "GitHub, once a day, to see whether a newer version is out, only if you turn on “Tell me when a new version is out” in Settings. It sends its version number and nothing about the club."
+      "GitHub, once a day, to see whether a newer version is out, only if you turn on “Tell me when a new version is out” in Settings. It sends its version number and nothing about the club.",
+      "Hallstream’s feedback service, only when you send a message from Help. It files a public GitHub issue with your message, the version, the system, the scoring input and the sport, so write nothing personal in it."
     ],
     "logs": "The source code can send each game’s logs to a server after the stream, but only when it is built with an upload key, and the public releases are built without one. A program built without the key writes that in its own log.",
     "phone": "The control panel and the scoring page can be opened from a phone on the hall’s wifi. That traffic stays on the local network and needs the PIN.",
