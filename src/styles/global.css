@@ -400,9 +400,6 @@ figure {
   font-size: 15px;
   color: var(--cinza);
 }
-.cap-note {
-  display: block;
-}
 
 /* Status marks: the mark's colon segment, drawn at its final size. */
 .mk {
