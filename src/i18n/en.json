@@ -38,7 +38,7 @@
       "guides": "Guides",
       "consoles": "Supported consoles",
       "vsSl": "Hallstream vs SL Live Stream",
-      "cameras": "Streaming with two cameras (soon)",
+      "cameras": "Streaming with two or three cameras",
       "language": "Language",
       "licence": "Hallstream is free and open source, under AGPL-3.0."
     }
@@ -72,7 +72,8 @@
       ],
       "more": [
         ["Sports", "Basketball, futsal, handball, volleyball and soccer, each with its own rules for periods, sets, fouls, suspensions and cards. The phone scorer covers all five. The console is tested on basketball only."],
-        ["OBS", "OBS Studio, the free streaming app, does the encoding. Install version 31 or later first. Hallstream sets it up over obs-websocket, with the scene, the overlay and the camera."],
+        ["OBS", "OBS Studio, the free streaming app, does the encoding. Install version 31 or later first. Hallstream sets it up over obs-websocket, with a scene for each camera and the overlay on top."],
+        ["Cameras", "Up to three. Each one can be DroidCam, a webcam or capture device, a source already in OBS, or a phone’s browser through VDO.Ninja, opened from a QR code in the panel with no app to install. VDO.Ninja needs internet. The panel switches the camera on air and tells you when a picture is missing or frozen. During a time-out, a camera on the bench can fill the window in the time-out screen."],
         ["Squads and fixtures", "Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation. The next fixture fills the “next game” screen."],
         ["Offline", "After the first load, the graphics, the panel and the scoring page keep working if the hall’s internet goes."],
         ["Demo mode", "Plays an invented game with no console attached, so you can learn it at home before Saturday."],
@@ -102,7 +103,7 @@
       "intro": "A home game with a 19:00 tip-off, as one volunteer runs it from the hall’s PC.",
       "steps": [
         ["The week before", "Install", "Download Hallstream onto the PC in the hall and open it. Try demo mode once, so the panel is familiar on the night."],
-        ["18:15", "Connect OBS", "Turn on obs-websocket. Hallstream builds the scene, the overlay and the camera."],
+        ["18:15", "Connect OBS", "Turn on obs-websocket. Hallstream builds a scene for each camera, with the overlay on top."],
         ["18:30", "Pick the game", "Choose tonight’s fixture from your list, typed in, imported or pulled from the federation."],
         ["18:55", "Go live", "Hallstream creates the YouTube broadcast. Put the opener on screen while the teams warm up."]
       ],
@@ -113,7 +114,6 @@
       "intro": "These are on the way:",
       "items": [
         "macOS and Linux builds",
-        "More than one camera",
         "More consoles, over serial",
         "Signed releases, so Windows stops warning when you open it"
       ]

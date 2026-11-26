@@ -11,6 +11,12 @@ export const product = {
   license: `${REPO}/blob/main/LICENSE`,
 } as const;
 
+// The app's guide to two and three cameras, one file per language.
+export const camerasGuide = {
+  pt: `${REPO}/blob/main/docs/cameras/GUIDE.md`,
+  en: `${REPO}/blob/main/docs/cameras/GUIDE.en.md`,
+} as const;
+
 // The maker's other projects, cross-linked from every footer.
 export const maker: { name: string; href: string }[] = [
   { name: "Basketball Video Analyzer", href: withUtm("https://basketballvideoanalyzer.com") },

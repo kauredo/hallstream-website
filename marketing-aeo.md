@@ -19,7 +19,7 @@ Re-run cadence: quarterly after the first run.
 - **The buyer is a volunteer, not a broadcaster.** People ask "how do I stream my kid's basketball game with the score" or "como transmitir um jogo do clube no YouTube", not "sports graphics software". The prompts below use their words.
 - **Two languages from day one.** The first users are Portuguese clubs and the app's interface is European Portuguese. The Portuguese pages (`/pt/`) are the ones most likely to be cited first, since fewer pages compete for the Portuguese queries.
 - **The console guide is the one page nobody else has.** "Does my Stramatel scoreboard work with OBS" has few good answers. `/guides/supported-consoles/` answers it in its first paragraph.
-- **Early and narrow.** Five sports from a phone, basketball only on the console, Windows, one camera, one console family. The pages say so, and an engine that repeats it is repeating the truth. Do not widen the claims to win a prompt.
+- **Early and narrow.** Five sports from a phone, basketball only on the console, Windows, up to three cameras, one console family. The pages say so, and an engine that repeats it is repeating the truth. Do not widen the claims to win a prompt.
 
 ## Actions
 
@@ -34,7 +34,7 @@ Re-run cadence: quarterly after the first run.
 
 - **No paid AEO tracker.** Per the hub's method, not until a quarterly re-run says the content is working.
 - **No vs page with a placeholder.** A comparison an engine quotes with a wrong price is worse than no page.
-- **No claims ahead of the app.** macOS, more cameras and serial consoles stay "coming" until they ship, even if a prompt asks for them.
+- **No claims ahead of the app.** macOS and serial consoles stay "coming" until they ship, even if a prompt asks for them.
 - **No machine-translated pages.** A third language waits until someone writes it by hand.
 
 ## Manual spot-check

@@ -7,7 +7,7 @@ import StatusMark from "@/components/StatusMark.astro";
 import { t } from "@/i18n";
 import { path, type Lang } from "@/i18n/routes";
 import { pageDates } from "@/data/pageDates";
-import { product } from "@/data/links";
+import { camerasGuide, product } from "@/data/links";
 
 interface Props {
   lang: Lang;
@@ -132,7 +132,7 @@ const schema = [
       <ul class="lined" style="margin-top:18px">
         <li><a href={`${path("home", lang)}#score-source`}>{c.relatedScore}</a></li>
         <li><a href={path("vsSlLiveStream", lang)} hreflang="en">{t(lang).common.footer.vsSl}</a></li>
-        <li class="muted">{t(lang).common.footer.cameras}</li>
+        <li><a href={camerasGuide[lang]}>{t(lang).common.footer.cameras}</a></li>
       </ul>
     </section>
   </article>

@@ -60,7 +60,7 @@ const schema = [
             <p class="answer">
               Hallstream is a free, open-source Windows app that streams a club's home games to YouTube, with scoreboard graphics that take the
               score from the hall's console or from a phone at the scorer's table. {alt.summary.text}
-              {alt.fit ?? "Hallstream suits a club that streams one camera from a Windows PC and wants the score on screen without anyone typing it."}
+              {alt.fit ?? "Hallstream suits a club that streams from a Windows PC and wants the score on screen without anyone typing it."}
             </p>
             {
               checked && (
@@ -124,7 +124,7 @@ const schema = [
       <RuleHead id="switch">How to switch</RuleHead>
       <ol class="lined">
         <li>Download Hallstream onto the PC in the hall.</li>
-        <li>Install OBS Studio, the free streaming app, and turn on obs-websocket. Hallstream sets up the scene, the overlay and the camera.</li>
+        <li>Install OBS Studio, the free streaming app, and turn on obs-websocket. Hallstream sets up a scene for each camera, with the overlay on top.</li>
         <li>Bring your squads and fixtures over. Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation.</li>
         <li>Pick a look and set your club's colours in the control panel.</li>
         {alt.switchStep && <li>{alt.switchStep.text} <a href={alt.switchStep.source}>Source</a></li>}

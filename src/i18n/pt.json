@@ -38,7 +38,7 @@
       "guides": "Guias",
       "consoles": "Consolas compatíveis",
       "vsSl": "Hallstream vs SL Live Stream (em inglês)",
-      "cameras": "Transmitir com duas câmaras (em breve)",
+      "cameras": "Transmitir com duas ou três câmaras",
       "language": "Língua",
       "licence": "O Hallstream é grátis e de código aberto, com licença AGPL-3.0."
     }
@@ -72,7 +72,8 @@
       ],
       "more": [
         ["Modalidades", "Basquetebol, futsal, andebol, voleibol e futebol, cada um com as suas regras de períodos, sets, faltas, exclusões e cartões. A marcação pelo telemóvel serve as cinco. A consola só está testada em basquetebol."],
-        ["OBS", "O OBS Studio, a aplicação de transmissão grátis, faz a codificação. Instale primeiro a versão 31 ou mais recente. O Hallstream configura-o por obs‑websocket, com a cena, o grafismo e a câmara."],
+        ["OBS", "O OBS Studio, a aplicação de transmissão grátis, faz a codificação. Instale primeiro a versão 31 ou mais recente. O Hallstream configura-o por obs‑websocket, com uma cena por câmara e o grafismo por cima."],
+        ["Câmaras", "Até três. Cada uma pode ser o DroidCam, uma webcam ou placa de captura, uma fonte que já esteja no OBS, ou o browser de um telemóvel pelo VDO.Ninja, aberto a partir de um código QR no painel, sem instalar nada. O VDO.Ninja precisa de internet. O painel muda a câmara no ar e avisa quando uma câmara fica sem imagem ou com a imagem parada. No desconto de tempo, uma câmara virada para o banco pode encher a janela do grafismo."],
         ["Plantéis e jogos", "Escreva-os à mão ou importe um CSV. Os clubes portugueses de basquetebol podem trazer os dois da federação. O próximo jogo aparece no ecrã «próximo jogo»."],
         ["Sem internet", "Depois do primeiro arranque, o grafismo, o painel e a página de marcação continuam a funcionar se a internet do pavilhão falhar."],
         ["Modo demonstração", "Joga um jogo a fingir sem consola ligada, para aprender em casa antes de sábado."],
@@ -102,7 +103,7 @@
       "intro": "Um jogo em casa com início às 19:00, como um voluntário o faz no computador do pavilhão.",
       "steps": [
         ["Na semana anterior", "Instalar", "Descarregue o Hallstream para o computador do pavilhão e abra-o. Experimente o modo demonstração uma vez, para conhecer o painel antes do dia."],
-        ["18:15", "Ligar o OBS", "Ligue o obs‑websocket. O Hallstream monta a cena, o grafismo e a câmara."],
+        ["18:15", "Ligar o OBS", "Ligue o obs‑websocket. O Hallstream monta uma cena por câmara, com o grafismo por cima."],
         ["18:30", "Escolher o jogo", "Escolha o jogo de hoje na sua lista, escrito à mão, importado ou trazido da federação."],
         ["18:55", "Entrar em direto", "O Hallstream cria o direto no YouTube. Ponha a abertura no ecrã enquanto as equipas aquecem."]
       ],
@@ -113,7 +114,6 @@
       "intro": "Estas estão a caminho:",
       "items": [
         "Versões para macOS e Linux",
-        "Mais do que uma câmara",
         "Mais consolas, por porta série",
         "Versões assinadas, para o Windows deixar de avisar ao abrir a aplicação"
       ]
