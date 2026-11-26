@@ -87,7 +87,7 @@ for (const look of ["classico", "lombada", "cor", "placa", "pavilhao"]) {
 const live = (await (await fetch(`${BASE}/api/state`)).json()).live || {};
 const fresh = !live.home && !live.away;
 if (!fresh) console.log("  skipped marcar.jpg: the game is not at 0-0 (start a new game on the scoring page first)");
-await page.setViewport({ width: 800, height: 370, deviceScaleFactor: 2 });
+await page.setViewport({ width: 844, height: 390, deviceScaleFactor: 2 });
 if (fresh) await page.goto(`${BASE}/marcar`, { waitUntil: "load" });
 await settle(800);
 if (fresh) await page.evaluate(async () => {

@@ -19,7 +19,7 @@ export const alt: VsAlternative = {
     source: sheet,
     checked,
   },
-  fit: "Hallstream suits a basketball club that streams from a Windows PC with OBS and wants every graphic in its own colours. SL Live Stream suits a club that wants to stream from one Android phone.",
+  fit: "Hallstream suits a club that plays basketball, futsal, handball, volleyball or soccer and streams from a Windows PC with OBS and wants every graphic in its own colours. SL Live Stream suits a club that wants to stream from one Android phone.",
   generic: [],
   facts: {
     cost: {
@@ -54,7 +54,7 @@ export const alt: VsAlternative = {
   strengths: [
     { text: "You want to film and stream from one Android phone, with no PC or OBS to set up.", source: sheet, checked },
     {
-      text: "Your club plays a sport other than basketball. SL Live Stream covers eleven across Stramatel's consoles.",
+      text: "Your club plays a sport Hallstream does not score yet. SL Live Stream covers eleven across Stramatel's consoles.",
       source: product,
       checked,
     },

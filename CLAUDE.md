@@ -12,7 +12,7 @@ Astro 7 static site for hallstream.com. The app is `../app` (its own repo, `kaur
 
 ## Where the truth is
 
-- What the product does: `../app/README.md`, `../app/docs/ROADMAP.md` and `../app/docs/CONTRACT.md`. The site states only what ships. Other sports, macOS and Linux, more cameras, serial consoles and signed releases are "coming". The app has shipped in Portuguese and English since 0.1.0.
+- What the product does: `../app/README.md`, `../app/docs/ROADMAP.md` and `../app/docs/CONTRACT.md`. The site states only what ships. macOS and Linux, more cameras, serial consoles and signed releases are "coming". Five sports ship (basketball, futsal, handball, volleyball, soccer), and the Stramatel console is tested on basketball only; the pages say so. The app has shipped in Portuguese and English since 0.1.0.
 - Every string lives in `src/i18n/en.json` and `src/i18n/pt.json`. Both are written by hand; pt is European Portuguese, in the app's own words (consola, caixa, mesa de marcação, desconto de tempo). A test fails when the two files have different keys or a string has an em dash.
 - `src/i18n/routes.ts` is the one list of pages in both languages. The language switch, hreflang and canonical read it.
 - `src/data/links.ts` holds every outbound link; the footer's cross-links get the utm parameters there.
