@@ -44,7 +44,7 @@ export const hallstream: Record<VsQuestion, { label: string; text: string; soon?
   },
   graphics: { label: "Graphics in club colours", text: "Yes. Five looks, your accent colours and a photo of your hall." },
   cameras: { label: "Multi-camera", text: "Up to three cameras, switched from the control panel." },
-  sports: { label: "Sports", text: "Basketball today.", soon: "futsal, handball, volleyball and soccer." },
+  sports: { label: "Sports", text: "Basketball, futsal, handball, volleyball and soccer." },
   accounts: { label: "Accounts", text: "No account to make." },
   licence: { label: "Licence", text: "Open source, AGPL-3.0." },
 };
@@ -53,5 +53,4 @@ export const hallstream: Record<VsQuestion, { label: string; text: string; soon?
 // lists the ones its alternative's `generic` names, or all of them.
 export const alwaysStrengths = {
   mac: "You stream from a Mac or a Linux machine. Hallstream runs on Windows only for now.",
-  sports: "Your club plays a sport other than basketball.",
 };
