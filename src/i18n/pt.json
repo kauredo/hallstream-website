@@ -23,7 +23,20 @@
       "releasedShort": "Grátis e de código aberto. Versão {version}, {size}.",
       "none": "Grátis e de código aberto, para Windows. Ainda não há versão; as versões para macOS e Linux vêm a caminho.",
       "smartScreen": "O Windows pode avisar que a aplicação é de um editor desconhecido. Carregue em Mais informações e depois em Executar mesmo assim.",
-      "notWindows": "O Hallstream funciona em Windows. As versões para macOS e Linux estão a caminho."
+      "notWindows": "O Hallstream funciona em Windows. As versões para macOS e Linux estão a caminho.",
+      "windows": "Windows",
+      "other": "Também para",
+      "later": "No Mac e no Linux, as câmaras USB e as placas de captura chegam mais tarde. O DroidCam e os telemóveis pelo VDO.Ninja funcionam. A Stramatel Stream Box por Bluetooth foi testada no Windows; no macOS e no Linux ainda não.",
+      "macos": {
+        "button": "Descarregar para Mac",
+        "label": "Mac (Intel e Apple)",
+        "needs": "Uma só aplicação para Macs Apple Silicon e Intel, com macOS 13 ou mais recente. Arraste-a para Aplicações. No primeiro arranque pede acesso ao Bluetooth."
+      },
+      "linux": {
+        "button": "Descarregar para Linux",
+        "label": "Linux (64 bits)",
+        "needs": "Para PCs de 64 bits. Extraia o arquivo e abra o Hallstream. Precisa de um ambiente de trabalho com área de notificação e do zenity para as janelas de diálogo."
+      }
     },
     "cta": "Transmita o próximo jogo em casa.",
     "footer": {

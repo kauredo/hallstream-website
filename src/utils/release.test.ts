@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { PlatformAsset, ReleaseInfo } from "../types/github.ts";
 import { fallbackDownload } from "./fallback.ts";
-import { toDownload } from "./release.ts";
+import { operatingSystem, toDownload } from "./release.ts";
 
 const asset = (platform: PlatformAsset["platform"], url: string): PlatformAsset => ({
   platform,
@@ -33,7 +33,38 @@ test("a release with no Windows file falls back", () => {
 });
 
 test("a release with a Windows file links it with its version and size", () => {
-  assert.deepEqual(toDownload(release(asset("windows", fileUrl))), { url: fileUrl, version: "0.1.0", size: 12_582_912 });
+  assert.deepEqual(toDownload(release(asset("windows", fileUrl))), {
+    url: fileUrl,
+    version: "0.1.0",
+    size: 12_582_912,
+    others: [],
+  });
+});
+
+const dmgUrl = "https://github.com/kauredo/hallstream/releases/download/v0.2.0/Hallstream-0.2.0-macos.dmg";
+const tarUrl = "https://github.com/kauredo/hallstream/releases/download/v0.2.0/Hallstream-0.2.0-linux-x64.tar.gz";
+
+test("macOS and Linux files join the Windows one, macOS first", () => {
+  const dl = toDownload(release(asset("linux", tarUrl), asset("windows", fileUrl), asset("macos", dmgUrl)));
+  assert.equal(dl.url, fileUrl);
+  assert.deepEqual(dl.others, [
+    { os: "macos", url: dmgUrl, size: 12_582_912 },
+    { os: "linux", url: tarUrl, size: 12_582_912 },
+  ]);
+});
+
+test("a macOS or Linux file off GitHub is left out", () => {
+  const dl = toDownload(release(asset("windows", fileUrl), asset("macos", "https://example.com/Hallstream.dmg")));
+  assert.deepEqual(dl.others, []);
+});
+
+test("operatingSystem names only the systems with a file", () => {
+  assert.equal(operatingSystem(toDownload(null)), "Windows");
+  assert.equal(operatingSystem(toDownload(release(asset("windows", fileUrl)))), "Windows");
+  assert.equal(
+    operatingSystem(toDownload(release(asset("windows", fileUrl), asset("macos", dmgUrl), asset("linux", tarUrl)))),
+    "Windows, macOS, Linux",
+  );
 });
 
 test("a GitHub user-content host is accepted", () => {

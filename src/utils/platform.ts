@@ -33,8 +33,10 @@ export function getRecommendedDownload(
   userPlatform: Platform,
 ): PlatformAsset | null {
   // Every Mac browser reports "Intel Mac OS X", Apple Silicon included, so
-  // a Mac is offered the Apple Silicon build.
-  const userArch = userPlatform === "macos" ? "arm64" : getArchitecture();
+  // a Mac is offered the universal build, then the Apple Silicon one. The
+  // build runs with no browser, so elsewhere x64 comes after the visitor's
+  // own architecture.
+  const prefs = userPlatform === "macos" ? ["universal", "arm64"] : [getArchitecture(), "x64"];
 
   const forUser = platformAssets.filter((asset) => asset.platform === userPlatform);
   const installers = forUser.filter((asset) => asset.fileType === "dmg");
@@ -42,6 +44,9 @@ export function getRecommendedDownload(
     (a, b) => Number(a.fileType === "zip") - Number(b.fileType === "zip"),
   );
 
-  if (options.length === 0) return null;
-  return options.find((asset) => asset.architecture === userArch) ?? options[0];
+  for (const arch of prefs) {
+    const match = options.find((asset) => asset.architecture === arch);
+    if (match) return match;
+  }
+  return options[0] ?? null;
 }

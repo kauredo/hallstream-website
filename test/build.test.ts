@@ -1,6 +1,8 @@
-// Builds the site twice, once as it is today (no release of kauredo/hallstream)
-// and once with test/fixtures/release.json standing in for the first release,
-// then checks the HTML. Slow, so it runs only under `npm run test:build`.
+// Builds the site three times: as it is (the latest release of
+// kauredo/hallstream, or none), with test/fixtures/release.json standing in
+// for a Windows-only release, and with test/fixtures/release-mac-linux.json
+// standing in for one that also carries the macOS and Linux files. Then it
+// checks the HTML. Slow, so it runs only under `npm run test:build`.
 import { after, before, test } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
@@ -17,6 +19,9 @@ const fixture = join(root, "test/fixtures/release.json");
 const release = JSON.parse(readFileSync(fixture, "utf8"));
 const zipUrl: string = release.platforms[0].url;
 const zipSize: number = release.platforms[0].size;
+const allFixture = join(root, "test/fixtures/release-mac-linux.json");
+const all = JSON.parse(readFileSync(allFixture, "utf8"));
+const allUrl = (platform: string): string => all.platforms.find((p: { platform: string }) => p.platform === platform).url;
 const strings = {
   en: JSON.parse(readFileSync(join(root, "src/i18n/en.json"), "utf8")),
   pt: JSON.parse(readFileSync(join(root, "src/i18n/pt.json"), "utf8")),
@@ -26,7 +31,7 @@ const homes = [
   ["pt", "pt/index.html"],
 ] as const;
 
-const out = { plain: "", release: "" };
+const out = { plain: "", release: "", all: "" };
 
 function build(dir: string, env: NodeJS.ProcessEnv) {
   execFileSync(process.execPath, [join(root, "node_modules/astro/bin/astro.mjs"), "build", "--outDir", dir], {
@@ -47,9 +52,11 @@ before(() => {
   tmp = mkdtempSync(join(tmpdir(), "hallstream-build-"));
   out.plain = join(tmp, "plain");
   out.release = join(tmp, "release");
+  out.all = join(tmp, "all");
   const { HALLSTREAM_RELEASE_FIXTURE: _, ...plainEnv } = process.env;
   build(out.plain, plainEnv);
   build(out.release, { ...process.env, HALLSTREAM_RELEASE_FIXTURE: fixture });
+  build(out.all, { ...process.env, HALLSTREAM_RELEASE_FIXTURE: allFixture });
 });
 
 // Astro escapes text and attribute values the same way.
@@ -103,9 +110,44 @@ for (const [lang, file] of homes) {
     assert.equal(count(html, esc(s.smartScreen)), found.length);
     assert.equal(count(html, esc(s.notWindows)), found.length);
     assert.equal(count(html, esc(s.follow)), 0);
+    // A Windows-only release offers no other system.
+    assert.equal(count(html, "data-os-link=\""), 0);
+    assert.equal(count(html, esc(s.later)), 0);
+    assert.equal(count(html, esc(s.macos.button)), 0);
     const app = software(html);
     assert.equal(app.softwareVersion, release.version);
     assert.equal(app.downloadUrl, zipUrl);
+    assert.equal(app.operatingSystem, "Windows");
+  });
+
+  test(`mac and linux: ${file} has a button per system, Windows shown first`, opts, () => {
+    const html = read(out.all, file);
+    const found = buttons(html);
+    const gets = found.length / 3;
+    assert.ok(gets >= 1 && Number.isInteger(gets), `expected three buttons per download, got ${found.length}`);
+    for (let i = 0; i < gets; i++) {
+      const [win, mac, linux] = found.slice(i * 3, i * 3 + 3);
+      assert.deepEqual([win.href, mac.href, linux.href], [allUrl("windows"), allUrl("macos"), allUrl("linux")]);
+      assert.deepEqual([win.label, mac.label, linux.label], [esc(s.button), esc(s.macos.button), esc(s.linux.button)]);
+      assert.ok(mac.note.includes(formatFileSize(all.platforms[1].size)), `Mac note lacks its size: ${mac.note}`);
+      assert.ok(linux.note.includes(formatFileSize(all.platforms[2].size)), `Linux note lacks its size: ${linux.note}`);
+    }
+    // The macOS and Linux blocks wait for the script; Windows shows without it.
+    assert.equal(count(html, '<div data-os="windows">'), gets);
+    assert.equal(count(html, '<div data-os="macos" hidden>'), gets);
+    assert.equal(count(html, '<div data-os="linux" hidden>'), gets);
+    assert.equal(count(html, esc(s.macos.needs)), gets);
+    assert.equal(count(html, esc(s.linux.needs)), gets);
+    assert.equal(count(html, esc(s.later)), gets * 2);
+    assert.equal(count(html, esc(s.notWindows)), 0);
+    for (const os of ["macos", "linux"]) {
+      assert.equal(count(html, `href="${allUrl(os)}" data-os-link="${os}">`), gets, `${os} link under "Also for"`);
+    }
+    assert.equal(count(html, `href="${allUrl("windows")}" data-os-link="windows" hidden>`), gets);
+    const app = software(html);
+    assert.equal(app.softwareVersion, all.version);
+    assert.equal(app.downloadUrl, allUrl("windows"));
+    assert.equal(app.operatingSystem, "Windows, macOS, Linux");
   });
 
   test(`no release: ${file} follows the releases page`, opts, (t) => {
@@ -147,7 +189,7 @@ for (const [lang, file] of homes) {
   }
 }
 
-for (const build of ["plain", "release"] as const) {
+for (const build of ["plain", "release", "all"] as const) {
   test(`${build}: every page has one h1, one main#main and unique ids`, opts, () => {
     for (const file of pages(out[build])) {
       const html = readFileSync(file, "utf8");

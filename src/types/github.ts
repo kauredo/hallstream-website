@@ -10,7 +10,7 @@ export interface GitHubAsset {
 export interface PlatformAsset {
   platform: "windows" | "macos" | "linux";
   architecture: "x64" | "arm64" | "universal";
-  fileType: "exe" | "dmg" | "deb" | "rpm" | "zip";
+  fileType: "exe" | "dmg" | "deb" | "rpm" | "zip" | "tar.gz";
   url: string;
   size: number;
   filename: string;

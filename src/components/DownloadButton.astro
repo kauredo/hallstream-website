@@ -2,7 +2,10 @@
 // The one action. The build reads the latest GitHub release. With none, the
 // button says it follows the first release and links to the releases page;
 // with one, it downloads the Windows file and the note names the version and
-// size, then explains the SmartScreen warning an unsigned app gets.
+// size, then explains the SmartScreen warning an unsigned app gets. When the
+// release also carries macOS and Linux files, each gets its own button,
+// hidden behind the Windows one until the visitor's system or a click on
+// "Also for" picks it. Without the script, those links download the file.
 import { t } from "@/i18n";
 import type { Lang } from "@/i18n/routes";
 import { getDownload } from "@/utils/release";
@@ -21,25 +24,73 @@ const c = downloadCopy(dl, s, note);
 ---
 
 <div class="get">
-  <a class:list={["btn", `btn--${tone}`]} href={dl.url}>
-    {
-      c.file && (
-        <svg viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" fill="none" stroke="currentColor" stroke-width="2.2" />
-        </svg>
-      )
-    }
-    {c.label}
-  </a>
-  <p class="dl-note">{c.note}</p>
-  {c.warning && <p class="dl-note">{c.warning}</p>}
-  {c.notWindows && <p class="dl-note" data-not-windows hidden>{c.notWindows}</p>}
+  <div data-os="windows">
+    <a class:list={["btn", `btn--${tone}`]} href={dl.url}>
+      {
+        c.file && (
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" fill="none" stroke="currentColor" stroke-width="2.2" />
+          </svg>
+        )
+      }
+      {c.label}
+    </a>
+    <p class="dl-note">{c.note}</p>
+    {c.warning && <p class="dl-note">{c.warning}</p>}
+    {c.notWindows && <p class="dl-note" data-not-windows hidden>{c.notWindows}</p>}
+  </div>
+  {
+    c.others.map((o) => (
+      <div data-os={o.os} hidden>
+        <a class:list={["btn", `btn--${tone}`]} href={o.url}>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10 2v11m0 0-4.5-4.5M10 13l4.5-4.5M3 17h14" fill="none" stroke="currentColor" stroke-width="2.2" />
+          </svg>
+          {o.button}
+        </a>
+        <p class="dl-note">{o.note}</p>
+        <p class="dl-note">{o.needs}</p>
+        {c.later && <p class="dl-note">{c.later}</p>}
+      </div>
+    ))
+  }
+  {
+    c.others.length > 0 && (
+      <p class="dl-note dl-other">
+        <span>{c.other}</span>
+        <a href={dl.url} data-os-link="windows" hidden>
+          {c.windows}
+        </a>
+        {c.others.map((o) => (
+          <a href={o.url} data-os-link={o.os}>
+            {o.label}
+          </a>
+        ))}
+      </p>
+    )
+  }
 </div>
 
 <script>
   import { detectPlatform } from "@/utils/platform";
   const os = detectPlatform();
-  if (os === "macos" || os === "linux") {
-    for (const el of document.querySelectorAll<HTMLElement>("[data-not-windows]")) el.hidden = false;
+  for (const get of document.querySelectorAll<HTMLElement>(".get")) {
+    // Shows one system's button and lists the others under "Also for".
+    const show = (want: string) => {
+      for (const el of get.querySelectorAll<HTMLElement>("[data-os]")) el.hidden = el.dataset.os !== want;
+      for (const el of get.querySelectorAll<HTMLElement>("[data-os-link]")) el.hidden = el.dataset.osLink === want;
+    };
+    if (os === "macos" || os === "linux") {
+      if (get.querySelector(`[data-os="${os}"]`)) show(os);
+      else for (const el of get.querySelectorAll<HTMLElement>("[data-not-windows]")) el.hidden = false;
+    }
+    for (const link of get.querySelectorAll<HTMLAnchorElement>("[data-os-link]")) {
+      link.addEventListener("click", (event) => {
+        const want = link.dataset.osLink ?? "";
+        event.preventDefault();
+        show(want);
+        get.querySelector<HTMLElement>(`[data-os="${want}"] .btn`)?.focus();
+      });
+    }
   }
 </script>

@@ -38,7 +38,7 @@ test("Windows gets an exe over a zip when both ship", () => {
   assert.equal(getRecommendedDownload(both, "windows")?.fileType, "exe");
 });
 
-test("a Mac gets the Apple Silicon DMG", () => {
+test("a Mac gets the universal DMG", () => {
   const mac = release(["Hallstream-0.2.0-x64.dmg", "Hallstream-0.2.0.dmg", "Hallstream-0.2.0-macos-arm64.zip"]);
   assert.equal(getRecommendedDownload(mac, "macos")?.filename, "Hallstream-0.2.0.dmg");
 });
@@ -62,8 +62,15 @@ test("Linux picks the package for its own architecture", () => {
   );
 });
 
+test("each system gets its own file from the real release names", () => {
+  const all = release(["Hallstream-0.2.0.zip", "Hallstream-0.2.0-macos.dmg", "Hallstream-0.2.0-linux-x64.tar.gz", "SHA256SUMS"]);
+  assert.equal(getRecommendedDownload(all, "windows")?.filename, "Hallstream-0.2.0.zip");
+  assert.equal(getRecommendedDownload(all, "macos")?.filename, "Hallstream-0.2.0-macos.dmg");
+  assert.equal(getRecommendedDownload(all, "linux")?.filename, "Hallstream-0.2.0-linux-x64.tar.gz");
+});
+
 test("no release falls back to the releases page with no version or size", () => {
-  assert.deepEqual(toDownload(null), { url: RELEASES_URL, version: null, size: null });
+  assert.deepEqual(toDownload(null), { url: RELEASES_URL, version: null, size: null, others: [] });
 });
 
 test("a release with no Windows file falls back too", () => {
@@ -75,6 +82,7 @@ test("a release with the zip names its version, size and file", () => {
     url: "https://github.com/kauredo/hallstream/releases/download/v0.1.0/Hallstream-0.1.0.zip",
     version: "0.1.0",
     size: 12_582_912,
+    others: [],
   });
   assert.equal(formatFileSize(12_582_912), "12.0 MB");
 });
