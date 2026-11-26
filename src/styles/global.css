@@ -990,9 +990,6 @@ figure {
 .foot .lang > li:first-child > a {
   padding-inline-start: 0;
 }
-.foot .soon {
-  color: var(--quiet-on-dark);
-}
 .foot-mark {
   align-self: start;
 }

@@ -43,7 +43,7 @@ export const hallstream: Record<VsQuestion, { label: string; text: string; soon?
     text: "A Stramatel console through the Stream Box, over Bluetooth, or a phone at the scorer's table.",
   },
   graphics: { label: "Graphics in club colours", text: "Yes. Five looks, your accent colours and a photo of your hall." },
-  cameras: { label: "Multi-camera", text: "One camera today.", soon: "more than one camera." },
+  cameras: { label: "Multi-camera", text: "Up to three cameras, switched from the control panel." },
   sports: { label: "Sports", text: "Basketball today.", soon: "futsal, handball, volleyball and soccer." },
   accounts: { label: "Accounts", text: "No account to make." },
   licence: { label: "Licence", text: "Open source, AGPL-3.0." },
@@ -53,6 +53,5 @@ export const hallstream: Record<VsQuestion, { label: string; text: string; soon?
 // lists the ones its alternative's `generic` names, or all of them.
 export const alwaysStrengths = {
   mac: "You stream from a Mac or a Linux machine. Hallstream runs on Windows only for now.",
-  cameras: "You need more than one camera in the same broadcast today.",
   sports: "Your club plays a sport other than basketball.",
 };
