@@ -780,15 +780,15 @@ figure {
   display: block;
   position: relative;
   overflow: clip;
-  aspect-ratio: 630 / 136;
+  aspect-ratio: 644 / 136;
 }
 /* Shows the score bug of each 760 by 200 bug-*.png at 1:1, about x 30 to
-   660 and y 34 to 170, trimming the court around it. A re-shoot moves these. */
+   674 and y 34 to 170, trimming the court around it. A re-shoot moves these. */
 .bug img {
   position: absolute;
   max-width: none;
-  width: 120.63%;
-  inset-inline-start: -4.76%;
+  width: 118.01%;
+  inset-inline-start: -4.66%;
   height: auto;
   inset-block-start: -25%;
 }
