@@ -2,7 +2,8 @@
 // Cuts the phone crops the <picture> elements swap in below 600 px. Each crop
 // keeps the part of the frame that still reads at 390 px wide:
 //   onair-classico-phone     4:5 from the left (the hero: the score bug and the lower third)
-//   onair-*-look-phone       4:5 from the top left, tight on the score bug (On air)
+//   onair-*-look-phone       4:5 from the top left, tight on the score bug (On air);
+//                            Classic takes the full height, since its frame has a lower third
 //   onair-cor-final-look-phone  the final result from the centre, topped up
 //                            with its own blue and white to make 4:5
 //   youth-game               4:3 from the centre
@@ -17,7 +18,8 @@ const dir = process.argv[2] ?? "public/images";
 const bug = { left: 0, top: 0, width: 760, height: 950 };
 const crops = [
   { name: "onair-classico", out: "onair-classico-phone", box: { left: 0, top: 0, width: 864, height: 1080 } },
-  ...["classico", "lombada", "placa", "pavilhao"].map((look) => ({ name: `onair-${look}`, out: `onair-${look}-look-phone`, box: bug })),
+  { name: "onair-classico", out: "onair-classico-look-phone", box: { left: 0, top: 0, width: 864, height: 1080 }, width: 760 },
+  ...["lombada", "placa", "pavilhao"].map((look) => ({ name: `onair-${look}`, out: `onair-${look}-look-phone`, box: bug })),
   {
     name: "onair-cor-final",
     out: "onair-cor-final-look-phone",
