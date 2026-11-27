@@ -30,8 +30,9 @@ for (const lang of ["en", "pt"]) {
     assert.equal(c.notWindows, null);
   });
 
-  test(`${lang}: the no-release note says macOS and Linux are coming`, () => {
-    assert.match(s.none, /macOS/);
+  test(`${lang}: the no-release note names the three systems`, () => {
+    assert.match(s.none, /Windows/);
+    assert.match(s.none, /Mac/);
     assert.match(s.none, /Linux/);
   });
 

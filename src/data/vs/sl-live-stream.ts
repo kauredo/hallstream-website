@@ -19,7 +19,7 @@ export const alt: VsAlternative = {
     source: sheet,
     checked,
   },
-  fit: "Hallstream suits a club that plays basketball, futsal, handball, volleyball or soccer and streams from a Windows PC with OBS and wants every graphic in its own colours. SL Live Stream suits a club that wants to stream from one Android phone.",
+  fit: "Hallstream suits a club that plays basketball, futsal, handball, volleyball or soccer and streams from a computer with OBS and wants every graphic in its own colours. SL Live Stream suits a club that wants to stream from one Android phone.",
   generic: [],
   facts: {
     cost: {

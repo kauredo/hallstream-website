@@ -37,13 +37,13 @@ export type VsQuestion = (typeof questions)[number];
 // `soon`. Sources: app/README.md and app/docs/ROADMAP.md.
 export const hallstream: Record<VsQuestion, { label: string; text: string; soon?: string }> = {
   cost: { label: "What it costs", text: "Free. No subscription and no paid tier." },
-  platform: { label: "Platform", text: "Windows.", soon: "macOS and Linux." },
+  platform: { label: "Platform", text: "Windows, macOS 13 or later (Intel and Apple chips) and 64-bit Linux." },
   score: {
     label: "Where the score comes from",
     text: "A Stramatel console through the Stream Box, over Bluetooth, or a phone at the scorer's table.",
   },
   graphics: { label: "Graphics in club colours", text: "Yes. Five looks, your accent colours and a photo of your hall." },
-  cameras: { label: "Multi-camera", text: "Up to three cameras, switched from the control panel." },
+  cameras: { label: "Multi-camera", text: "Up to four cameras, switched from the control panel." },
   sports: { label: "Sports", text: "Basketball, futsal, handball, volleyball and soccer." },
   accounts: { label: "Accounts", text: "No account to make." },
   licence: { label: "Licence", text: "Open source, AGPL-3.0." },
@@ -51,6 +51,4 @@ export const hallstream: Record<VsQuestion, { label: string; text: string; soon?
 
 // Reasons a club might pick the alternative that hold for most of them. A page
 // lists the ones its alternative's `generic` names, or all of them.
-export const alwaysStrengths = {
-  mac: "You stream from a Mac or a Linux machine. Hallstream runs on Windows only for now.",
-};
+export const alwaysStrengths: Record<string, string> = {};

@@ -1,8 +1,8 @@
 # Hallstream
 
-> A free, open-source Windows app that streams a basketball club's home games to YouTube, with broadcast graphics that take the score from the hall's scoreboard console or from a phone at the scorer's table.
+> A free, open-source app for Windows, Mac and Linux that streams a sports club's home games to YouTube, with broadcast graphics that take the score from the hall's scoreboard console or from a phone at the scorer's table.
 
-Hallstream is early. It works today for basketball, on Windows, with one camera. The app's interface is in European Portuguese and British English. The first release, 0.1.0, came out on 25 November 2026 on GitHub Releases.
+Hallstream is early. It scores basketball, futsal, handball, volleyball and soccer, runs on Windows, macOS 13 or later and 64-bit Linux, and switches between up to four cameras. The app's interface is in European Portuguese and British English. The first release, 0.1.0, came out on 25 November 2026 on GitHub Releases.
 
 ## What it does today
 
@@ -10,10 +10,10 @@ Hallstream is early. It works today for basketball, on Windows, with one camera.
 - Lets someone keep the score on a phone held sideways at the scorer's table, on its scoring page, when the hall has no supported console, or when the console drops out mid-game.
 - Draws the graphics as an OBS browser source: score bug, player and commentator lower thirds, opener, time-out, half-time, final result, sponsors, next game and "we'll be right back", in the club's colours.
 - Five looks for the score bug: Classic, Spine, Club Colour, Enamel Plate and Hall Floor (in Portuguese: Clássico, Lombada, Cor do Clube, Placa Esmaltada and Chão do Pavilhão). Six positions, 85% to 125% size.
-- Sets up OBS Studio (31 or later) over obs-websocket: the scene, the overlay and the camera. OBS does the encoding.
+- Sets up OBS Studio (31 or later) over obs-websocket: one scene per camera, up to four, with the overlay on top. Cameras come from DroidCam, a webcam or capture device (Windows only for now), or a phone's browser through VDO.Ninja. OBS does the encoding.
 - Creates the YouTube live broadcast with its title and thumbnail, and makes the video unlisted after the game. It can send to any other RTMP server and key instead.
 - A first-time setup in seven steps: language, club, scoring, OBS, where the stream goes, the YouTube channel and a rehearsal.
-- An optional check for new versions, once a day against GitHub Releases. It never downloads anything by itself.
+- An optional check for new versions, once a day against GitHub Releases, asked once on a new install. When you click Update now, off air, it downloads the new version, checks it against the release's SHA256SUMS, installs it and restarts without closing OBS.
 - A control panel in the browser on the hall PC, or on a phone on the same wifi with a PIN.
 - Squads and fixtures typed in or imported from CSV. Portuguese basketball clubs can pull both from the federation (FPB).
 - Keeps working offline after the first load. A demo mode plays an invented game with no console.
@@ -21,9 +21,6 @@ Hallstream is early. It works today for basketball, on Windows, with one camera.
 
 ## Not shipped yet
 
-- macOS and Linux builds
-- More than one camera
-- Futsal, handball, volleyball and soccer
 - More consoles over serial RS-232 (Daktronics AllSport, Fair-Play, Bodet)
 - Signed releases, so Windows stops warning when you open it
 
