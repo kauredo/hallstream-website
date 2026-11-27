@@ -126,7 +126,7 @@
       "h2": "Coming later",
       "intro": "These are on the way:",
       "items": [
-        "More consoles, over serial",
+        "Fair-Play and more consoles on a cable",
         "Signed releases, so Windows stops warning when you open it"
       ]
     }
@@ -148,7 +148,7 @@
       ["Stramatel Stream Box, handball, volleyball and hockey modes", "Bluetooth", "Handball, volleyball, hockey", "ready"],
       ["Daktronics All Sport 5000", "Serial RS-232, through a USB adapter", "Basketball, volleyball", "ready"],
       ["Fair-Play", "Serial RS-232", "To be confirmed", "wanted"],
-      ["Bodet Scorepad", "Serial RS-232, through a box that shows it as a serial port", "Basketball, handball", "ready"],
+      ["Bodet Scorepad", "Serial RS-232, through an RJ45-to-RS232 interface", "Basketball, handball", "ready"],
       ["Any console, or none: a phone at the scorer’s table, on the scoring page", "The phone’s browser", "Basketball, futsal, handball, volleyball, soccer", "new"]
     ],
     "status": {

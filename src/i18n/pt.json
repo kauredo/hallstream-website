@@ -126,7 +126,7 @@
       "h2": "Mais tarde",
       "intro": "Estas estão a caminho:",
       "items": [
-        "Mais consolas, por porta série",
+        "A Fair-Play e mais consolas por cabo",
         "Versões assinadas, para o Windows deixar de avisar ao abrir a aplicação"
       ]
     }
@@ -148,7 +148,7 @@
       ["Stramatel Stream Box, modos de andebol, voleibol e hóquei", "Bluetooth", "Andebol, voleibol, hóquei", "ready"],
       ["Daktronics All Sport 5000", "Porta série RS-232, por um adaptador USB", "Basquetebol, voleibol", "ready"],
       ["Fair-Play", "Porta série RS-232", "Por confirmar", "wanted"],
-      ["Bodet Scorepad", "Porta série RS-232, por uma caixa que a mostre como porta série", "Basquetebol, andebol", "ready"],
+      ["Bodet Scorepad", "Porta série RS-232, por uma interface RJ45-RS232", "Basquetebol, andebol", "ready"],
       ["Qualquer consola, ou nenhuma: um telemóvel na mesa de marcação, na página de marcação", "O browser do telemóvel", "Basquetebol, futsal, andebol, voleibol, futebol", "new"]
     ],
     "status": {
