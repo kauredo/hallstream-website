@@ -21,9 +21,22 @@
       "follow": "Follow the first release on GitHub",
       "released": "Free, open source. Version {version}, {size}, from GitHub Releases.",
       "releasedShort": "Free, open source. Version {version}, {size}.",
-      "none": "Free and open source, for Windows. No release yet; macOS and Linux builds are coming.",
+      "none": "Free and open source, for Windows, Mac and Linux. No release yet.",
       "smartScreen": "Windows may say the app is from an unknown publisher. Click More info, then Run anyway.",
-      "notWindows": "Hallstream runs on Windows. macOS and Linux builds are coming."
+      "notWindows": "Hallstream runs on Windows. macOS and Linux builds are coming.",
+      "windows": "Windows",
+      "other": "Also for",
+      "later": "On a Mac or Linux, USB and capture-card cameras come later. DroidCam and phones through VDO.Ninja work. The Stramatel Stream Box over Bluetooth is tested on Windows; macOS and Linux are untested.",
+      "macos": {
+        "button": "Download for Mac",
+        "label": "Mac (Intel and Apple)",
+        "needs": "One app for Apple Silicon and Intel Macs, on macOS 13 or later. Drag it to Applications. The first start asks for Bluetooth access."
+      },
+      "linux": {
+        "button": "Download for Linux",
+        "label": "Linux (64-bit)",
+        "needs": "For 64-bit PCs. Extract it and run Hallstream. It needs a desktop with a tray and zenity for its dialogs."
+      }
     },
     "cta": "Stream the next home game.",
     "footer": {
@@ -45,7 +58,7 @@
   },
   "home": {
     "title": "Hallstream: stream your club’s home games to YouTube",
-    "description": "A free, open-source Windows app for basketball, futsal, handball, volleyball and soccer clubs. It reads the score from the hall’s Stramatel console or a phone, puts it on the stream in your club’s colours, and sets up OBS and YouTube.",
+    "description": "A free, open-source app for Windows, Mac and Linux, for basketball, futsal, handball, volleyball and soccer clubs. It reads the score from the hall’s Stramatel console or a phone, puts it on the stream in your club’s colours, and sets up OBS and YouTube.",
     "h1": "Your club’s home games, live on YouTube.",
     "coverAlt": "Hallstream on air: the Classic score bug and a player lower third over a basketball court",
     "coverCaption": "On air with the Classic look: the score bug, and a lower third for the player who just scored.",
@@ -113,7 +126,6 @@
       "h2": "Coming later",
       "intro": "These are on the way:",
       "items": [
-        "macOS and Linux builds",
         "More consoles, over serial",
         "Signed releases, so Windows stops warning when you open it"
       ]

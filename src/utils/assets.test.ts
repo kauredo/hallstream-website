@@ -22,6 +22,10 @@ const names = [
   "Hallstream-0.2.0-linux-arm64.zip",
   "SHA256SUMS.txt",
   "Hallstream-0.1.0.zip.sig",
+  // What the release after 0.1.4 adds (the app's plan 014, Decision 8).
+  "Hallstream-0.2.0-macos.dmg",
+  "Hallstream-0.2.0-linux-x64.tar.gz",
+  "SHA256SUMS",
 ];
 
 const parsed = parseAssets(names.map(asset));
@@ -38,9 +42,16 @@ test("a zip that names macOS or Linux keeps that platform", () => {
   assert.equal(byName("Hallstream-0.2.0-linux-arm64.zip")?.platform, "linux");
 });
 
-test("the macOS DMG is an Apple Silicon build", () => {
-  const dmg = byName("Hallstream-0.2.0.dmg");
-  assert.deepEqual([dmg?.platform, dmg?.fileType, dmg?.architecture], ["macos", "dmg", "arm64"]);
+test("a macOS DMG with no architecture in its name is universal", () => {
+  for (const n of ["Hallstream-0.2.0.dmg", "Hallstream-0.2.0-macos.dmg"]) {
+    const dmg = byName(n);
+    assert.deepEqual([dmg?.platform, dmg?.fileType, dmg?.architecture], ["macos", "dmg", "universal"]);
+  }
+});
+
+test("the Linux tarball is a Linux x64 download", () => {
+  const tar = byName("Hallstream-0.2.0-linux-x64.tar.gz");
+  assert.deepEqual([tar?.platform, tar?.fileType, tar?.architecture], ["linux", "tar.gz", "x64"]);
 });
 
 test("Linux packages keep x64", () => {
@@ -54,5 +65,5 @@ test("Linux packages keep x64", () => {
 });
 
 test("checksums and signatures are skipped", () => {
-  assert.equal(parsed.length, 6);
+  assert.equal(parsed.length, 8);
 });

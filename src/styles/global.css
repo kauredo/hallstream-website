@@ -373,6 +373,12 @@ button:focus-visible {
 .dl-note + .dl-note {
   margin-block-start: 6px;
 }
+/* "Also for" and the other systems' links, one line when it fits. */
+.dl-other {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
 
 /* Screenshots in a frame. */
 .frame {

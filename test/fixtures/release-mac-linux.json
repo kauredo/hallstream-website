@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "releaseDate": "2026-12-01T00:00:00.000Z",
+  "releaseNotes": "",
+  "platforms": [
+    {
+      "platform": "windows",
+      "architecture": "x64",
+      "fileType": "zip",
+      "url": "https://github.com/kauredo/hallstream/releases/download/v0.2.0/Hallstream-0.2.0.zip",
+      "size": 12582912,
+      "filename": "Hallstream-0.2.0.zip"
+    },
+    {
+      "platform": "macos",
+      "architecture": "universal",
+      "fileType": "dmg",
+      "url": "https://github.com/kauredo/hallstream/releases/download/v0.2.0/Hallstream-0.2.0-macos.dmg",
+      "size": 15728640,
+      "filename": "Hallstream-0.2.0-macos.dmg"
+    },
+    {
+      "platform": "linux",
+      "architecture": "x64",
+      "fileType": "tar.gz",
+      "url": "https://github.com/kauredo/hallstream/releases/download/v0.2.0/Hallstream-0.2.0-linux-x64.tar.gz",
+      "size": 10485760,
+      "filename": "Hallstream-0.2.0-linux-x64.tar.gz"
+    }
+  ],
+  "isPrerelease": false,
+  "downloadCount": 0
+}

@@ -7,7 +7,7 @@ import Tick from "@/components/Tick.astro";
 import { t } from "@/i18n";
 import { path, type Lang } from "@/i18n/routes";
 import { product } from "@/data/links";
-import { getDownload } from "@/utils/release";
+import { getDownload, operatingSystem } from "@/utils/release";
 
 interface Props {
   lang: Lang;
@@ -37,7 +37,7 @@ const schema = [
     url: new URL(path("home", lang), Astro.site).href,
     description: h.description,
     applicationCategory: "MultimediaApplication",
-    operatingSystem: "Windows",
+    operatingSystem: operatingSystem(dl),
     inLanguage: "pt-PT",
     isAccessibleForFree: true,
     license: "https://www.gnu.org/licenses/agpl-3.0.html",

@@ -1,16 +1,23 @@
 import type { ReleaseInfo } from "../types/github.ts";
-import { fallbackDownload, type Download } from "./fallback.ts";
+import { fallbackDownload, type Download, type OtherDownload } from "./fallback.ts";
 import { getRecommendedDownload } from "./platform.ts";
 
-// Hallstream ships for Windows only, so the site offers the Windows file.
-// A release with no Windows file (or no release at all) falls back to the
-// releases page with no version or size, so the page never names a file
-// that does not exist. The button only ever links a file GitHub serves.
+// The Windows file leads, since every release has it. A release with no
+// Windows file (or no release at all) falls back to the releases page with
+// no version or size, so the page never names a file that does not exist.
+// The macOS and Linux files join it only when the release carries them, so
+// a Windows-only release offers Windows alone. Every link is a file GitHub
+// serves.
 export function toDownload(release: ReleaseInfo | null): Download {
   if (!release) return fallbackDownload;
   const asset = getRecommendedDownload(release.platforms, "windows");
   if (!asset || !isGitHubFile(asset.url)) return fallbackDownload;
-  return { url: asset.url, version: release.version, size: asset.size };
+  const others: OtherDownload[] = [];
+  for (const os of ["macos", "linux"] as const) {
+    const other = getRecommendedDownload(release.platforms, os);
+    if (other && isGitHubFile(other.url)) others.push({ os, url: other.url, size: other.size });
+  }
+  return { url: asset.url, version: release.version, size: asset.size, others };
 }
 
 function isGitHubFile(url: string): boolean {
@@ -37,4 +44,11 @@ export function getDownload(): Promise<Download> {
       return fallbackDownload;
     });
   return cached;
+}
+
+const osNames = { macos: "macOS", linux: "Linux" } as const;
+
+/** The JSON-LD operatingSystem: Windows, plus the systems the release has files for. */
+export function operatingSystem(dl: Download): string {
+  return ["Windows", ...dl.others.map((o) => osNames[o.os])].join(", ");
 }

@@ -26,7 +26,7 @@ const day = (iso: string) =>
 
 const faq = [
   ["Is Hallstream free?", "Yes. Hallstream is free and open source under AGPL-3.0, with no account to make."],
-  ["Does Hallstream run on a Mac?", "Not yet. Hallstream is a Windows app today. macOS and Linux builds are on the way."],
+  ["Does Hallstream run on a Mac?", "Yes. Hallstream runs on macOS 13 or later, on Intel and Apple chips, as well as on Windows and 64-bit Linux."],
   [
     "Do I need a scoreboard console?",
     "No. If the hall has no Stramatel console, someone keeps the score on a phone held sideways at the scorer's table.",
@@ -58,9 +58,9 @@ const schema = [
         <div class="lead-grid">
           <div>
             <p class="answer">
-              Hallstream is a free, open-source Windows app that streams a club's home games to YouTube, with scoreboard graphics that take the
+              Hallstream is a free, open-source app for Windows, Mac and Linux that streams a club's home games to YouTube, with scoreboard graphics that take the
               score from the hall's console or from a phone at the scorer's table. {alt.summary.text}
-              {alt.fit ?? "Hallstream suits a club that streams from a Windows PC and wants the score on screen without anyone typing it."}
+              {alt.fit ?? "Hallstream suits a club that streams from a computer with OBS and wants the score on screen without anyone typing it."}
             </p>
             {
               checked && (

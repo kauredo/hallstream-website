@@ -1,7 +1,7 @@
 {
   "name": "Hallstream",
   "short_name": "Hallstream",
-  "description": "A free, open-source Windows app that streams a basketball club's home games to YouTube, with the score read from the hall's console or a phone.",
+  "description": "A free, open-source app for Windows, Mac and Linux that streams a sports club's home games to YouTube, with the score read from the hall's console or a phone.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#F2E4C9",
