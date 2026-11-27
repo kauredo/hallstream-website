@@ -58,7 +58,7 @@
   },
   "home": {
     "title": "Hallstream: stream your club’s home games to YouTube",
-    "description": "A free, open-source app for Windows, Mac and Linux, for basketball, futsal, handball, volleyball and soccer clubs. It reads the score from the hall’s Stramatel console or a phone, puts it on the stream in your club’s colours, and sets up OBS and YouTube.",
+    "description": "A free, open-source app for Windows, Mac and Linux, for basketball, futsal, handball, volleyball and soccer clubs. It reads the score from the hall’s Stramatel, Daktronics or Bodet console or from a phone, puts it on the stream in your club’s colours, and sets up OBS and YouTube.",
     "h1": "Your club’s home games, live on YouTube.",
     "coverAlt": "Hallstream on air: the Classic score bug and a player lower third over a basketball court",
     "coverCaption": "On air with the Classic look: the score bug, and a lower third for the player who just scored.",
@@ -67,7 +67,7 @@
       "h2": "Where the score comes from",
       "intro": "Hallstream reads the score from the hall’s console when there is one. A phone at the scorer’s table covers every other case.",
       "consoleH3": "From the hall’s console",
-      "console": "A Stramatel Stream Box, paired over Bluetooth. Score, clock, fouls and timeouts arrive on their own.",
+      "console": "A Stramatel Stream Box, paired over Bluetooth. Score, clock, fouls and timeouts arrive on their own. Daktronics and Bodet consoles connect by a serial cable, untested so far.",
       "consoleLink": "Supported consoles",
       "phoneH3": "From a phone at the scorer’s table",
       "phone": "Held sideways, on the scoring page, for basketball, futsal, handball, volleyball or soccer. It also takes over if the console drops out mid-game.",
@@ -126,29 +126,28 @@
       "h2": "Coming later",
       "intro": "These are on the way:",
       "items": [
-        "More consoles, over serial",
-        "Signed releases, so Windows stops warning when you open it"
+        "Fair-Play and more consoles on a cable"
       ]
     }
   },
   "consoles": {
     "title": "Supported consoles: which scoreboards Hallstream reads",
     "ogTitle": "Supported consoles",
-    "description": "Hallstream reads Stramatel scoreboards through the Stramatel Stream Box over Bluetooth, tested on real basketball games only. Any hall can keep the score of all five sports on a phone instead.",
+    "description": "Hallstream reads Stramatel scoreboards through the Stramatel Stream Box over Bluetooth, tested on real basketball games only, and Daktronics and Bodet consoles over a serial cable, untested. Any hall can keep the score of all five sports on a phone instead.",
     "crumbHome": "Hallstream",
     "crumbGuides": "Guides",
     "crumbLabel": "Breadcrumb",
     "h1": "Supported consoles",
-    "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer’s table instead; that page is new and has not been used at a game yet. It covers basketball, futsal, handball, volleyball and soccer. On the console, only basketball is tested. Futsal, handball, volleyball and soccer stay untested until someone records a real game. Daktronics AllSport, Fair-Play and Bodet consoles, over serial RS-232, are on the roadmap.",
-    "checked": "Last checked 24 November 2026.",
+    "answer": "Hallstream reads the score, clock, fouls and timeouts from Stramatel scoreboards through the Stramatel Stream Box, over Bluetooth, and that is tested on real basketball games. A hall without a supported console can keep the score on a phone at the scorer’s table instead; that page is new and has not been used at a game yet. It covers basketball, futsal, handball, volleyball and soccer. On the console, only basketball is tested. Futsal, handball, volleyball and soccer stay untested until someone records a real game. Hallstream also reads a Daktronics All Sport 5000 (basketball, volleyball) and a Bodet Scorepad (basketball, handball) on a serial RS-232 cable; those codes come from the manuals and no real console has been read yet. Fair-Play is wanted.",
+    "checked": "Last checked 27 November 2026.",
     "tableH2": "Console by console",
     "cols": ["Console", "Connection", "Sports", "Status"],
     "rows": [
       ["Stramatel scoreboards, through the Stramatel Stream Box", "Bluetooth", "Basketball", "tested"],
       ["Stramatel Stream Box, handball, volleyball and hockey modes", "Bluetooth", "Handball, volleyball, hockey", "ready"],
-      ["Daktronics AllSport", "Serial RS-232", "To be confirmed", "wanted"],
+      ["Daktronics All Sport 5000", "Serial RS-232, through a USB adapter", "Basketball, volleyball", "ready"],
       ["Fair-Play", "Serial RS-232", "To be confirmed", "wanted"],
-      ["Bodet", "Serial RS-232", "To be confirmed", "wanted"],
+      ["Bodet Scorepad", "Serial RS-232, through an RJ45-to-RS232 interface", "Basketball, handball", "ready"],
       ["Any console, or none: a phone at the scorer’s table, on the scoring page", "The phone’s browser", "Basketball, futsal, handball, volleyball, soccer", "new"]
     ],
     "status": {
@@ -159,16 +158,16 @@
     },
     "sportsH2": "Sport by sport",
     "sportsIntro": "The phone scorer works for all five sports. Only basketball has been tested on a console. Help wanted: record a game for any other sport and open an issue.",
-    "sportsCols": ["Sport", "Phone scorer", "Stramatel console"],
+    "sportsCols": ["Sport", "Phone scorer", "Stramatel console", "Cable console"],
     "sportsRows": [
-      ["Basketball", "Yes", "Tested on real games"],
-      ["Futsal", "Yes", "Untested. Help wanted: record a game."],
-      ["Handball", "Yes", "Codes read, untested. Help wanted: record a game."],
-      ["Volleyball", "Yes", "Codes read, untested. Help wanted: record a game."],
-      ["Soccer", "Yes", "Untested. Help wanted: record a game."]
+      ["Basketball", "Yes", "Tested on real games", "Daktronics, Bodet: codes read, untested"],
+      ["Futsal", "Yes", "Untested. Help wanted: record a game.", "No layout yet"],
+      ["Handball", "Yes", "Codes read, untested. Help wanted: record a game.", "Bodet: codes read, untested"],
+      ["Volleyball", "Yes", "Codes read, untested. Help wanted: record a game.", "Daktronics: codes read, untested"],
+      ["Soccer", "Yes", "Untested. Help wanted: record a game.", "Phone only"]
     ],
     "missingH2": "Your console isn’t listed?",
-    "missing": "Hallstream learns a console by reading what it sends during a game. To add one, a contributor needs to know the make, the model and how it connects, and later a recording of a real session to test the decoder against. The roadmap has a capture mode that records a session straight from the console. Until it ships, open an issue with the details below. Futsal, handball, volleyball and soccer on the console each need one recorded game before they count as tested.",
+    "missing": "Hallstream learns a console by reading what it sends during a game. To add one, a contributor needs to know the make, the model and how it connects, and later a recording of a real session to test the decoder against. “Record the console”, on the app’s Scoring tab, saves a session from the Stream Box or the cable; attach the file to an issue with the details below. Futsal, handball, volleyball and soccer on the console each need one recorded game before they count as tested.",
     "stepsBefore": "Open an issue on",
     "stepsLink": "GitHub",
     "stepsAfter": "with the console’s make and model.",

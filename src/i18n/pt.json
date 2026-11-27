@@ -58,7 +58,7 @@
   },
   "home": {
     "title": "Hallstream: os jogos em casa do seu clube no YouTube",
-    "description": "Uma aplicação grátis e de código aberto para Windows, Mac e Linux, para clubes de basquetebol, futsal, andebol, voleibol e futebol. Lê o resultado da consola Stramatel do pavilhão ou de um telemóvel, põe-no na transmissão com as cores do clube e prepara o OBS e o YouTube.",
+    "description": "Uma aplicação grátis e de código aberto para Windows, Mac e Linux, para clubes de basquetebol, futsal, andebol, voleibol e futebol. Lê o resultado da consola Stramatel, Daktronics ou Bodet do pavilhão ou de um telemóvel, põe-no na transmissão com as cores do clube e prepara o OBS e o YouTube.",
     "h1": "Os jogos em casa do seu clube, em direto no YouTube.",
     "coverAlt": "O Hallstream no ar: o marcador Clássico e o rodapé de um jogador sobre um campo de basquetebol",
     "coverCaption": "No ar com o estilo Clássico: o marcador e o rodapé do jogador que acabou de marcar.",
@@ -67,7 +67,7 @@
       "h2": "De onde vem o resultado",
       "intro": "O Hallstream lê o resultado da consola do pavilhão, quando há uma. Um telemóvel na mesa de marcação resolve todos os outros casos.",
       "consoleH3": "Da consola do pavilhão",
-      "console": "Uma caixa Stramatel Stream Box, emparelhada por Bluetooth. O resultado, o relógio, as faltas e os descontos chegam sozinhos.",
+      "console": "Uma caixa Stramatel Stream Box, emparelhada por Bluetooth. O resultado, o relógio, as faltas e os descontos chegam sozinhos. As consolas Daktronics e Bodet ligam-se por um cabo série, ainda por testar.",
       "consoleLink": "Consolas compatíveis",
       "phoneH3": "De um telemóvel na mesa de marcação",
       "phone": "Na horizontal, na página de marcação, para basquetebol, futsal, andebol, voleibol ou futebol. Também assume o resultado se a consola falhar a meio do jogo.",
@@ -126,29 +126,28 @@
       "h2": "Mais tarde",
       "intro": "Estas estão a caminho:",
       "items": [
-        "Mais consolas, por porta série",
-        "Versões assinadas, para o Windows deixar de avisar ao abrir a aplicação"
+        "A Fair-Play e mais consolas por cabo"
       ]
     }
   },
   "consoles": {
     "title": "Consolas compatíveis: que placards o Hallstream lê",
     "ogTitle": "Consolas compatíveis",
-    "description": "O Hallstream lê os placards Stramatel através da Stramatel Stream Box, por Bluetooth, testado só em jogos de basquetebol a sério. Qualquer pavilhão pode marcar o resultado das cinco modalidades num telemóvel.",
+    "description": "O Hallstream lê os placards Stramatel através da Stramatel Stream Box, por Bluetooth, testado só em jogos de basquetebol a sério, e as consolas Daktronics e Bodet por um cabo série, por testar. Qualquer pavilhão pode marcar o resultado das cinco modalidades num telemóvel.",
     "crumbHome": "Hallstream",
     "crumbGuides": "Guias",
     "crumbLabel": "Caminho até esta página",
     "h1": "Consolas compatíveis",
-    "answer": "O Hallstream lê o resultado, o relógio, as faltas e os descontos de tempo dos placards Stramatel através da Stramatel Stream Box, por Bluetooth, e isso está testado em jogos de basquetebol a sério. Um pavilhão sem consola compatível pode marcar o resultado num telemóvel na mesa de marcação; essa página é nova e ainda não foi usada num jogo. Serve basquetebol, futsal, andebol, voleibol e futebol. Na consola, só o basquetebol está testado. O futsal, o andebol, o voleibol e o futebol ficam por testar até alguém gravar um jogo a sério. As consolas Daktronics AllSport, Fair-Play e Bodet, por porta série RS-232, estão no plano de trabalho.",
-    "checked": "Verificado a 24 de novembro de 2026.",
+    "answer": "O Hallstream lê o resultado, o relógio, as faltas e os descontos de tempo dos placards Stramatel através da Stramatel Stream Box, por Bluetooth, e isso está testado em jogos de basquetebol a sério. Um pavilhão sem consola compatível pode marcar o resultado num telemóvel na mesa de marcação; essa página é nova e ainda não foi usada num jogo. Serve basquetebol, futsal, andebol, voleibol e futebol. Na consola, só o basquetebol está testado. O futsal, o andebol, o voleibol e o futebol ficam por testar até alguém gravar um jogo a sério. O Hallstream também lê uma Daktronics All Sport 5000 (basquetebol, voleibol) e uma Bodet Scorepad (basquetebol, andebol) por um cabo série RS-232; esses códigos vêm dos manuais e ainda não se leu nenhuma consola a sério. A Fair-Play está pedida.",
+    "checked": "Verificado a 27 de novembro de 2026.",
     "tableH2": "Consola a consola",
     "cols": ["Consola", "Ligação", "Modalidades", "Estado"],
     "rows": [
       ["Placards Stramatel, através da Stramatel Stream Box", "Bluetooth", "Basquetebol", "tested"],
       ["Stramatel Stream Box, modos de andebol, voleibol e hóquei", "Bluetooth", "Andebol, voleibol, hóquei", "ready"],
-      ["Daktronics AllSport", "Porta série RS-232", "Por confirmar", "wanted"],
+      ["Daktronics All Sport 5000", "Porta série RS-232, por um adaptador USB", "Basquetebol, voleibol", "ready"],
       ["Fair-Play", "Porta série RS-232", "Por confirmar", "wanted"],
-      ["Bodet", "Porta série RS-232", "Por confirmar", "wanted"],
+      ["Bodet Scorepad", "Porta série RS-232, por uma interface RJ45-RS232", "Basquetebol, andebol", "ready"],
       ["Qualquer consola, ou nenhuma: um telemóvel na mesa de marcação, na página de marcação", "O browser do telemóvel", "Basquetebol, futsal, andebol, voleibol, futebol", "new"]
     ],
     "status": {
@@ -159,16 +158,16 @@
     },
     "sportsH2": "Modalidade a modalidade",
     "sportsIntro": "A marcação pelo telemóvel serve as cinco modalidades. Só o basquetebol foi testado numa consola. Precisamos de ajuda: grave um jogo de outra modalidade e abra um pedido no GitHub.",
-    "sportsCols": ["Modalidade", "Marcação pelo telemóvel", "Consola Stramatel"],
+    "sportsCols": ["Modalidade", "Marcação pelo telemóvel", "Consola Stramatel", "Consola por cabo"],
     "sportsRows": [
-      ["Basquetebol", "Sim", "Testada em jogos a sério"],
-      ["Futsal", "Sim", "Por testar. Precisamos de ajuda: grave um jogo."],
-      ["Andebol", "Sim", "Códigos lidos, por testar. Precisamos de ajuda: grave um jogo."],
-      ["Voleibol", "Sim", "Códigos lidos, por testar. Precisamos de ajuda: grave um jogo."],
-      ["Futebol", "Sim", "Por testar. Precisamos de ajuda: grave um jogo."]
+      ["Basquetebol", "Sim", "Testada em jogos a sério", "Daktronics, Bodet: códigos lidos, por testar"],
+      ["Futsal", "Sim", "Por testar. Precisamos de ajuda: grave um jogo.", "Ainda sem códigos"],
+      ["Andebol", "Sim", "Códigos lidos, por testar. Precisamos de ajuda: grave um jogo.", "Bodet: códigos lidos, por testar"],
+      ["Voleibol", "Sim", "Códigos lidos, por testar. Precisamos de ajuda: grave um jogo.", "Daktronics: códigos lidos, por testar"],
+      ["Futebol", "Sim", "Por testar. Precisamos de ajuda: grave um jogo.", "Só pelo telemóvel"]
     ],
     "missingH2": "A sua consola não está na lista?",
-    "missing": "O Hallstream aprende uma consola lendo o que ela envia durante um jogo. Para acrescentar uma, quem contribui precisa de saber a marca, o modelo e como se liga, e mais tarde de uma gravação de uma sessão real para testar o descodificador. O plano de trabalho inclui um modo de captura que grava a sessão diretamente da consola. Até lá, abra um pedido com os dados abaixo. O futsal, o andebol, o voleibol e o futebol na consola precisam cada um de um jogo gravado antes de contarem como testados.",
+    "missing": "O Hallstream aprende uma consola lendo o que ela envia durante um jogo. Para acrescentar uma, quem contribui precisa de saber a marca, o modelo e como se liga, e mais tarde de uma gravação de uma sessão real para testar o descodificador. «Gravar a consola», no separador Marcação da aplicação, grava uma sessão da Stream Box ou do cabo; junte o ficheiro a um pedido com os dados abaixo. O futsal, o andebol, o voleibol e o futebol na consola precisam cada um de um jogo gravado antes de contarem como testados.",
     "stepsBefore": "Abra um pedido no",
     "stepsLink": "GitHub",
     "stepsAfter": "com a marca e o modelo da consola.",
