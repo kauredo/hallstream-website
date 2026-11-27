@@ -103,16 +103,18 @@ const schema = [
           <tr>
             <th scope="col" style="width:22%">{c.sportsCols[0]}</th>
             <th scope="col" style="width:22%">{c.sportsCols[1]}</th>
-            <th scope="col">{c.sportsCols[2]}</th>
+            <th scope="col" style="width:28%">{c.sportsCols[2]}</th>
+            <th scope="col">{c.sportsCols[3]}</th>
           </tr>
         </thead>
         <tbody>
           {
-            c.sportsRows.map(([sport, phone, console]) => (
+            c.sportsRows.map(([sport, phone, console, cable]) => (
               <tr>
                 <th scope="row">{sport}</th>
                 <td data-label={c.sportsCols[1]}>{phone}</td>
                 <td data-label={c.sportsCols[2]}>{console}</td>
+                <td data-label={c.sportsCols[3]}>{cable}</td>
               </tr>
             ))
           }
