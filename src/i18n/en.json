@@ -86,7 +86,7 @@
       "more": [
         ["Sports", "Basketball, futsal, handball, volleyball and soccer, each with its own rules for periods, sets, fouls, suspensions and cards. The phone scorer covers all five. The console is tested on basketball only."],
         ["OBS", "OBS Studio, the free streaming app, does the encoding. Install version 31 or later first. Hallstream sets it up over obs-websocket, with a scene for each camera and the overlay on top."],
-        ["Cameras", "Up to three. Each one can be DroidCam, a webcam or capture device, a source already in OBS, or a phone’s browser through VDO.Ninja, opened from a QR code in the panel with no app to install. VDO.Ninja needs internet. The panel switches the camera on air and tells you when a picture is missing or frozen. During a time-out, a camera on the bench can fill the window in the time-out screen."],
+        ["Cameras", "Up to four. Each one can be DroidCam, a webcam or capture device, a source already in OBS, or a phone’s browser through VDO.Ninja, opened from a QR code in the panel with no app to install. VDO.Ninja needs internet. The panel switches the camera on air and tells you when a picture is missing or frozen. During a time-out, a camera on the bench can fill the window in the time-out screen."],
         ["Squads and fixtures", "Type them in or import a CSV. Portuguese basketball clubs can pull both from the federation. The next fixture fills the “next game” screen."],
         ["Offline", "After the first load, the graphics, the panel and the scoring page keep working if the hall’s internet goes."],
         ["Demo mode", "Plays an invented game with no console attached, so you can learn it at home before Saturday."],
