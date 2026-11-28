@@ -7,7 +7,7 @@ export const pageDates: Record<string, { published: string; modified: string }> 
   "/pt/": { published: "2026-11-24", modified: "2026-11-27" },
   "/guides/supported-consoles/": { published: "2026-11-24", modified: "2026-11-27" },
   "/pt/guides/supported-consoles/": { published: "2026-11-24", modified: "2026-11-27" },
-  "/privacy/": { published: "2026-11-24", modified: "2026-11-26" },
-  "/pt/privacy/": { published: "2026-11-24", modified: "2026-11-26" },
+  "/privacy/": { published: "2026-11-24", modified: "2026-11-28" },
+  "/pt/privacy/": { published: "2026-11-24", modified: "2026-11-28" },
   "/vs/sl-live-stream/": { published: "2026-11-25", modified: "2026-11-26" },
 };
