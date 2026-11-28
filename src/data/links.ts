@@ -17,6 +17,14 @@ export const camerasGuide = {
   en: `${REPO}/blob/main/docs/cameras/GUIDE.en.md`,
 } as const;
 
+// What the privacy page's YouTube section must link to for Google's verification.
+export const google = {
+  permissions: "https://myaccount.google.com/permissions",
+  userDataPolicy: "https://developers.google.com/terms/api-services-user-data-policy",
+  youtubeTerms: "https://www.youtube.com/t/terms",
+  privacyPolicy: "https://policies.google.com/privacy",
+} as const;
+
 // The maker's other projects, cross-linked from every footer.
 export const maker: { name: string; href: string }[] = [
   { name: "Basketball Video Analyzer", href: withUtm("https://basketballvideoanalyzer.com") },
